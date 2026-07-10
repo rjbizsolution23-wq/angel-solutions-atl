@@ -1,0 +1,3 @@
+url,source_page,link_type,error_type,severity,recommended_fix
+https://www.angelsolutionsatl.com/copy-of-tax-solutions-1,https://www.angelsolutionsatl.com/,Internal Link,Orphan Duplicate Page,LOW,Remove or redirect duplicate page
+info@external-advisor.com,https://www.angelsolutionsatl.com/privacypolicy,mailto,Mismatched destination domain,HIGH,Correct email domain destination to info@AngelSolutionsATL.com

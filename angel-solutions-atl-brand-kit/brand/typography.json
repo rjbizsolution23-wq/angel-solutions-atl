@@ -1,0 +1,32 @@
+{
+  "typography": {
+    "headings": {
+      "font_family": "Playfair Display, serif",
+      "provider": "Google Fonts / Wix-hosted",
+      "weights": [
+        "400",
+        "600",
+        "700"
+      ],
+      "style": "normal"
+    },
+    "body": {
+      "font_family": "Inter, sans-serif",
+      "provider": "Google Fonts / Wix-hosted",
+      "weights": [
+        "300",
+        "400",
+        "500"
+      ],
+      "style": "normal"
+    },
+    "code": {
+      "font_family": "JetBrains Mono, monospace",
+      "provider": "System / Google Fonts",
+      "weights": [
+        "400"
+      ],
+      "style": "normal"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "palette": {
+    "primary": {
+      "hex": "#0F0F10",
+      "rgb": "rgb(15, 15, 16)",
+      "hsl": "hsl(240, 3%, 6%)",
+      "semantic_role": "Background & Primary Branding Dark Theme",
+      "frequency": "High"
+    },
+    "secondary": {
+      "hex": "#161618",
+      "rgb": "rgb(22, 22, 24)",
+      "hsl": "hsl(240, 4%, 9%)",
+      "semantic_role": "Surface and container backgrounds",
+      "frequency": "High"
+    },
+    "accent": {
+      "hex": "#D4AF37",
+      "rgb": "rgb(212, 175, 55)",
+      "hsl": "hsl(46, 65%, 52%)",
+      "semantic_role": "Gold Metallic accents, headlines, and call-to-action details",
+      "frequency": "Medium"
+    },
+    "text_heading": {
+      "hex": "#FFFFFF",
+      "rgb": "rgb(255, 255, 255)",
+      "hsl": "hsl(0, 0%, 100%)",
+      "semantic_role": "Primary heading elements",
+      "frequency": "High"
+    },
+    "text_body": {
+      "hex": "#E2E8F0",
+      "rgb": "rgb(226, 232, 240)",
+      "hsl": "hsl(214, 32%, 91%)",
+      "semantic_role": "Body paragraph elements",
+      "frequency": "High"
+    },
+    "text_muted": {
+      "hex": "#94A3B8",
+      "rgb": "rgb(148, 163, 184)",
+      "hsl": "hsl(215, 25%, 62%)",
+      "semantic_role": "Muted footnotes and small subtexts",
+      "frequency": "Medium"
+    },
+    "border": {
+      "hex": "#27272A",
+      "rgb": "rgb(39, 39, 42)",
+      "hsl": "hsl(240, 4%, 16%)",
+      "semantic_role": "Subtle card outlines and dividers",
+      "frequency": "Medium"
+    },
+    "cta": {
+      "hex": "#C59B27",
+      "rgb": "rgb(197, 155, 39)",
+      "hsl": "hsl(44, 67%, 46%)",
+      "semantic_role": "Interactive buttons and call-to-actions",
+      "frequency": "Medium"
+    },
+    "hover": {
+      "hex": "#F3E5AB",
+      "rgb": "rgb(243, 229, 171)",
+      "hsl": "hsl(48, 75%, 81%)",
+      "semantic_role": "Button interactive hover glows",
+      "frequency": "Medium"
+    }
+  }
+}

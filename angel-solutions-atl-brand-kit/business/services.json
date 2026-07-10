@@ -1,0 +1,38 @@
+{
+  "services": [
+    {
+      "name": "Personal Credit Building",
+      "description": "Custom credit challenge and trade-line structures to maximize score profiles.",
+      "monitoring_required": "Active credit monitoring at $24.99/month required"
+    },
+    {
+      "name": "Personal Funding",
+      "description": "Elite strategic personal line cards, loans, and credit injection profiles."
+    },
+    {
+      "name": "Business Formation",
+      "description": "Elite entity structuring, registrations, and virtual office options.",
+      "packages": [
+        "Starter Setup",
+        "Compliance Gold",
+        "Enterprise Suite"
+      ]
+    },
+    {
+      "name": "Corporate Credit Building",
+      "description": "Net-30 structures, vendor accounts, and tier profiles for corporate rating."
+    },
+    {
+      "name": "Business Funding",
+      "description": "Unsecured loans, working capital lines, and micro-structuring."
+    },
+    {
+      "name": "Tax Preparation",
+      "description": "Advanced corporate and personal income tax preparation and strategy."
+    },
+    {
+      "name": "Tax Resolution",
+      "description": "IRS representation, offer in compromise, audit defence, and debt relief."
+    }
+  ]
+}

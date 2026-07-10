@@ -1,0 +1,39 @@
+{
+  "tokens": {
+    "spacing": {
+      "xs": "4px",
+      "sm": "8px",
+      "md": "16px",
+      "lg": "24px",
+      "xl": "32px",
+      "xxl": "48px"
+    },
+    "border_radius": {
+      "sm": "4px",
+      "md": "8px",
+      "lg": "12px",
+      "xl": "16px",
+      "full": "9999px"
+    },
+    "border_width": {
+      "thin": "1px",
+      "medium": "2px",
+      "thick": "4px"
+    },
+    "shadows": {
+      "subtle": "0 2px 4px rgba(0,0,0,0.1)",
+      "medium": "0 4px 6px rgba(0,0,0,0.15)",
+      "elevated": "0 10px 15px rgba(0,0,0,0.25)",
+      "gold_glow": "0 0 12px rgba(212, 175, 55, 0.4)"
+    },
+    "breakpoints": {
+      "mobile": "375px",
+      "tablet": "768px",
+      "desktop": "1440px"
+    },
+    "transition": {
+      "duration": "200ms",
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)"
+    }
+  }
+}

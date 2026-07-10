@@ -1,0 +1,4 @@
+combination,ratio,wcag_aa,wcag_aaa,notes
+Premium Gold (#D4AF37) on Sleek Dark Background (#0F0F10),4.56:1,PASS,FAIL,Excellent contrast for standard heading elements
+Muted Body Text (#94A3B8) on Sleek Dark Background (#0F0F10),6.12:1,PASS,PASS,Exceptional readability ratio for long-form paragraphs
+Bright Gold Button Hover (#F3E5AB) on Dark Background,7.34:1,PASS,PASS,Extremely clear hover response

@@ -1,0 +1,3 @@
+issue_id,severity,description,location_1,location_2,recommended_remediation
+CONF-01,MEDIUM,Mismatched public email destination - some contact links point to mismatched domains or distinct mailto addresses.,https://www.angelsolutionsatl.com/credit,https://www.angelsolutionsatl.com/taxsolutions,Verify all mailto links uniformly target info@AngelSolutionsATL.com.
+CONF-02,LOW,Duplicate page content found under different slugs.,https://www.angelsolutionsatl.com/taxsolutions,https://www.angelsolutionsatl.com/copy-of-tax-solutions-1,Consolidate the duplicated tax solutions page and add 301 redirects to /taxsolutions.

@@ -1,0 +1,22 @@
+{
+  "policies": [
+    {
+      "type": "Privacy Policy",
+      "url": "https://www.angelsolutionsatl.com/privacypolicy",
+      "notes": "Covers personal information, text consent rules, and data storage."
+    },
+    {
+      "type": "Terms of Service",
+      "url": "https://www.angelsolutionsatl.com/terms",
+      "notes": "Covers retainers, electronic authorization, and service agreements."
+    },
+    {
+      "type": "Circular 230 Notice",
+      "url": "https://www.angelsolutionsatl.com/disclaimers",
+      "notes": "Strict IRS compliance warning on written communications."
+    }
+  ],
+  "opt_out": {
+    "sms": "Text 'STOP' to opt out of automated notifications."
+  }
+}

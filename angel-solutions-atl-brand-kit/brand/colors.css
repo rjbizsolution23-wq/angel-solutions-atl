@@ -1,0 +1,14 @@
+/* Angel Solutions ATL Color Token System */
+:root {
+  --brand-primary: #0F0F10;
+  --brand-secondary: #161618;
+  --brand-accent: #D4AF37;
+  --brand-background: #0F0F10;
+  --brand-surface: #161618;
+  --brand-heading: #FFFFFF;
+  --brand-body: #E2E8F0;
+  --brand-muted: #94A3B8;
+  --brand-border: #27272A;
+  --brand-cta: #C59B27;
+  --brand-hover: #F3E5AB;
+}

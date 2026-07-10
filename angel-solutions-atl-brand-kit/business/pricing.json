@@ -1,0 +1,37 @@
+{
+  "business_formation_packages": [
+    {
+      "name": "Silver Setup",
+      "price": "$450.00",
+      "fee_type": "One-time setup fee",
+      "description": "Entity formation, Articles of Organization, and basic Employer Identification Number (EIN) registration.",
+      "virtual_office_fee": "Optional separate fee"
+    },
+    {
+      "name": "Gold Setup",
+      "price": "$550.00",
+      "fee_type": "One-time setup fee",
+      "description": "Standard LLC formation, Operating Agreement, EIN, and custom corporate binder templates.",
+      "virtual_office_fee": "Optional separate fee"
+    },
+    {
+      "name": "Platinum Setup",
+      "price": "$650.00",
+      "fee_type": "One-time setup fee",
+      "description": "Premium LLC setup, operating structure templates, custom corporate bank resolutions, and Dun & Bradstreet Profile Initialization.",
+      "virtual_office_fee": "Optional separate fee"
+    }
+  ],
+  "credit_monitoring": {
+    "required": true,
+    "monthly_fee": "$24.99/month",
+    "details": "Active credit monitoring is required to participate in personal credit packages."
+  },
+  "payment_options": [
+    "PayPal",
+    "Sezzle",
+    "Zip",
+    "Afterpay",
+    "Affirm"
+  ]
+}

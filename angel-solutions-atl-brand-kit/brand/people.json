@@ -1,0 +1,16 @@
+{
+  "people": [
+    {
+      "name": "Jordynn Miller",
+      "title": "Founder/CEO",
+      "image_files": [
+        "assets/founder/founder-jordynn-miller-founder-ceo.png"
+      ],
+      "source_pages": [
+        "https://www.angelsolutionsatl.com/"
+      ],
+      "exact_supporting_text": "Jordynn Miller is publicly identified as Founder/CEO.",
+      "verified": true
+    }
+  ]
+}
