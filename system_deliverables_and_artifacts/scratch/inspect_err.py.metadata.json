@@ -1,0 +1,4 @@
+{
+  "summary": "Scratch script to parse and extract the exact offending context/hook causing the webpack build crash in .next/server/chunks/756.js.",
+  "updatedAt": "2026-07-11T07:02:21.804853Z"
+}

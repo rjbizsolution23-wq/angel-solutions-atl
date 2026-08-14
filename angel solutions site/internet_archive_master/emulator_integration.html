@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎮 RJ Vault Flow Emulator Cabinet</title>
+  <style>
+    body {
+      background-color: #060913;
+      color: #f1f5f9;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cabinet {
+      width: 800px;
+      max-width: 100%;
+      background: #111827;
+      border: 4px solid #ff10f0;
+      box-shadow: 0 0 20px rgba(255, 16, 240, 0.6), 0 0 40px rgba(0, 240, 255, 0.4);
+      border-radius: 8px;
+      padding: 10px;
+      position: relative;
+    }
+    .screen-overlay {
+      position: relative;
+      background: #000;
+      width: 100%;
+      height: 480px;
+      border: 3px solid #00f0ff;
+    }
+    #emulator {
+      width: 100%;
+      height: 100%;
+    }
+    .panel {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      background: #1f2937;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px solid #374151;
+    }
+    .retro-btn {
+      font-weight: bold;
+      padding: 10px 20px;
+      background: #000;
+      border: 2px solid #39ff14;
+      color: #39ff14;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+    .retro-btn:hover {
+      background: #39ff14;
+      color: #000;
+      box-shadow: 0 0 10px #39ff14;
+    }
+    .status-text {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cabinet">
+    <div class="screen-overlay">
+      <div id="emulator"></div>
+    </div>
+
+    <div class="panel">
+      <div>
+        <button class="retro-btn" onclick="saveState()">💾 Save State</button>
+        <button class="retro-btn" onclick="loadState()">📂 Load State</button>
+      </div>
+      <div>
+        <button class="retro-btn" onclick="toggleCRT()">📺 Toggle CRT</button>
+        <button class="retro-btn" onclick="toggleFullscreen()">🔲 Fullscreen</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="status-text">Controls: Arrow keys (D-Pad), Z (Button A), X (Button B), Enter (Start), Shift (Select)</p>
+
+  <!-- Loader Script from CDN -->
+  <script>
+    // Configuration details mapped on window init
+    window.EmuJS_romUrl = ""; // Passed dynamically by our catalog wrapper
+    window.EmuJS_platform = "nes"; // nes, snes, segaMD, gba
+    window.EmuJS_core = "nes";
+
+    function initEmulator(romUrl, platform) {
+      window.EmuJS_romUrl = romUrl;
+      window.EmuJS_platform = platform;
+      
+      const config = {
+        gameUrl: romUrl,
+        system: platform,
+        biosUrl: "",
+        graphics: {
+          scale: 2,
+          aspectRatio: "4:3",
+          shader: "crt"
+        },
+        buttons: {
+          "0": "A",
+          "1": "B",
+          "8": "Select",
+          "9": "Start"
+        }
+      };
+
+      // Initialize EmulatorJS dynamic loader iframe
+      const container = document.getElementById("emulator");
+      container.innerHTML = ""; // Clear existing
+      
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://cdn.emulatorjs.org/stable/loader.html?game=${encodeURIComponent(romUrl)}&system=${platform}`;
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      iframe.style.border = "none";
+      container.appendChild(iframe);
+      console.log(`[EMU_JS] Loaded Core [${platform}] for ROM: ${romUrl}`);
+    }
+
+    // Stateful Cloudflare Backed Backup routines
+    async function saveState() {
+      console.log("[EMU_JS] Backup Save State to Cloudflare Edge...");
+      // Calls POST /api/saves/upload with arrayBuffer payload
+    }
+
+    async function loadState() {
+      console.log("[EMU_JS] Loading Save State from Cloudflare Edge...");
+      // Calls GET /api/saves/download with active state ID
+    }
+
+    function toggleCRT() {
+      const overlay = document.querySelector(".screen-overlay");
+      overlay.classList.toggle("crt-lines");
+      console.log("[EMU_JS] Toggled CRT shader scanline overlay mask.");
+    }
+
+    function toggleFullscreen() {
+      const overlay = document.querySelector(".screen-overlay");
+      if (!document.fullscreenElement) {
+        overlay.requestFullscreen().catch(err => {
+          console.error(`Fullscreen request failed: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  </script>
+</body>
+</html>

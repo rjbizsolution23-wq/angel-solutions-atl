@@ -1,0 +1,269 @@
+{
+    "wallTime": 23,
+    "cpuTime": 2,
+    "truncated": false,
+    "executionModel": "stateless",
+    "outcome": "ok",
+    "scriptVersion": {
+        "id": "a29d1b14-e890-4967-b43d-78ab40375114"
+    },
+    "scriptName": "angel-solutions-webhook",
+    "diagnosticsChannelEvents": [],
+    "exceptions": [],
+    "logs": [
+        {
+            "message": [
+                "Duplicate webhook message mid detected: mid.instagram_test_message_id_112233. Skipping to prevent double response."
+            ],
+            "level": "log",
+            "timestamp": 1784771866459
+        }
+    ],
+    "eventTimestamp": 1784771866423,
+    "event": {
+        "request": {
+            "url": "https://angel-solutions-webhook.rickjefferson.workers.dev/webhook",
+            "method": "POST",
+            "headers": {
+                "accept-encoding": "gzip, br",
+                "cf-connecting-ip": "2600:1702:6ef0:6e50:d9b7:c374:3dce:46b9",
+                "cf-ipcountry": "US",
+                "cf-ray": "a1f713848970b31e",
+                "cf-visitor": "{\"scheme\":\"https\"}",
+                "connection": "Keep-Alive",
+                "content-length": "320",
+                "content-type": "application/json",
+                "host": "angel-solutions-webhook.rickjefferson.workers.dev",
+                "user-agent": "Mozilla/5.0",
+                "x-forwarded-proto": "https",
+                "x-real-ip": "2600:1702:6ef0:6e50:d9b7:c374:3dce:46b9"
+            },
+            "cf": {
+                "httpProtocol": "HTTP/1.1",
+                "clientAcceptEncoding": "identity",
+                "requestPriority": "",
+                "edgeRequestKeepAliveStatus": 1,
+                "requestHeaderNames": {},
+                "clientTcpRtt": 11,
+                "clientQuicRtt": 0,
+                "colo": "DFW",
+                "asn": 7018,
+                "asOrganization": "AT&T Enterprises, LLC",
+                "country": "US",
+                "isEUCountry": false,
+                "city": "Royse City",
+                "continent": "NA",
+                "region": "Texas",
+                "regionCode": "TX",
+                "timezone": "America/Chicago",
+                "longitude": "-96.33248",
+                "latitude": "32.97512",
+                "postalCode": "75189",
+                "metroCode": "623",
+                "tlsVersion": "TLSv1.3",
+                "tlsCipher": "AEAD-AES256-GCM-SHA384",
+                "tlsClientRandom": "DVVsPDAQ/IaWPclMMKKfB5x+xNunLyr0eb3w/1l19tQ=",
+                "tlsClientCiphersSha1": "EPPWGkMwL/+VHBbDlFeYFF2S3W0=",
+                "tlsClientExtensionsSha1": "f2lfS5cboRlewOSpRDi1Tw+Nqso=",
+                "tlsClientExtensionsSha1Le": "5ORuQXaNQ4cJhc2GOqm/lOsR/lY=",
+                "tlsExportedAuthenticator": {
+                    "clientHandshake": "25c629406ac7ebeccf27b9d27503ce6dbefd6dc9e6050374368a959e9c8efd33129505e29b8ede9275ef12e298c804b6",
+                    "serverHandshake": "17ee7c275d0e8178779050daaaf0db55d8987dfb33ff4ceb7ab19dbd5c14d76cb3580765534fa985cf508a5d2db8af29",
+                    "clientFinished": "da1027e2c6d8eef71100ca18c406e46199e73212da89583ecd1b22fb61241e8250bddb4ff80968f28caab80be344afef",
+                    "serverFinished": "cb1fcda487116dca7ac32c21efc8c07772cf42868d1fd0459d6db791508eeb333760d0817358b34132770c664b880ca9"
+                },
+                "tlsClientHelloLength": "1564",
+                "tlsClientAuth": {
+                    "certPresented": "0",
+                    "certVerified": "NONE",
+                    "certRevoked": "0",
+                    "certIssuerDN": "",
+                    "certSubjectDN": "",
+                    "certIssuerDNRFC2253": "",
+                    "certSubjectDNRFC2253": "",
+                    "certIssuerDNLegacy": "",
+                    "certSubjectDNLegacy": "",
+                    "certSerial": "",
+                    "certIssuerSerial": "",
+                    "certSKI": "",
+                    "certIssuerSKI": "",
+                    "certFingerprintSHA1": "",
+                    "certFingerprintSHA256": "",
+                    "certNotBefore": "",
+                    "certNotAfter": "",
+                    "certRFC9440": "",
+                    "certRFC9440TooLarge": false,
+                    "certChainRFC9440": "",
+                    "certChainRFC9440TooLarge": false
+                },
+                "verifiedBotCategory": "",
+                "edgeL4": {
+                    "deliveryRate": 396509
+                }
+            }
+        },
+        "response": {
+            "status": 200
+        }
+    }
+}
+{
+    "wallTime": 2420,
+    "cpuTime": 21,
+    "truncated": false,
+    "executionModel": "stateless",
+    "outcome": "ok",
+    "scriptVersion": {
+        "id": "a29d1b14-e890-4967-b43d-78ab40375114"
+    },
+    "scriptName": "angel-solutions-webhook",
+    "diagnosticsChannelEvents": [],
+    "exceptions": [],
+    "logs": [
+        {
+            "message": [
+                "Inbound DM received on instagram from test_instagram_user_id: \"hey how does your program work?\""
+            ],
+            "level": "log",
+            "timestamp": 1784771912270
+        },
+        {
+            "errorInfo": [
+                null,
+                {
+                    "name": "Error",
+                    "message": "This location does not allow duplicated contacts.",
+                    "stack": "    at Object.syncLeadToGoHighLevel (index.js:1465:15)\n    at async Object.handleDirectMessage (index.js:1011:5)\n    at async Object.processWebhookPayload (index.js:845:13)"
+                }
+            ],
+            "message": [
+                "GHL Webhook Sync failed for Lead 28102e5b-e8d9-47b7-96b9-7a8090e2b151:",
+                "Error: This location does not allow duplicated contacts."
+            ],
+            "level": "error",
+            "timestamp": 1784771912528
+        },
+        {
+            "message": [
+                "OpenRouter model candidate sequence: [\"openrouter/free\",\"google/gemma-4-26b-a4b-it:free\",\"nvidia/nemotron-nano-9b-v2:free\",\"google/gemma-4-31b-it:free\"]"
+            ],
+            "level": "log",
+            "timestamp": 1784771912573
+        },
+        {
+            "message": [
+                "Attempting to route conversation to OpenRouter via model: openrouter/free (with 7s timeout)"
+            ],
+            "level": "log",
+            "timestamp": 1784771912573
+        },
+        {
+            "message": [
+                "Successfully generated response using model: openrouter/free"
+            ],
+            "level": "log",
+            "timestamp": 1784771914450
+        },
+        {
+            "message": [
+                "Meta Send API Error for test_instagram_user_id: {\"error\":{\"message\":\"(#100) Param recipient[id] must be a valid ID string (e.g., \\\"123\\\")\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"Az6RYl1SIrsIyyTWNcuWsyp\"}}"
+            ],
+            "level": "error",
+            "timestamp": 1784771914659
+        },
+        {
+            "message": [
+                "Live response sent to test_instagram_user_id: \"Sure thing—basically we start by fixing any negative items on your report, then we line up funding options once you’re clean. What’s your credit looking like right now?\""
+            ],
+            "level": "log",
+            "timestamp": 1784771914659
+        }
+    ],
+    "eventTimestamp": 1784771912226,
+    "event": {
+        "request": {
+            "url": "https://angel-solutions-webhook.rickjefferson.workers.dev/webhook",
+            "method": "POST",
+            "headers": {
+                "accept-encoding": "gzip, br",
+                "cf-connecting-ip": "2600:1702:6ef0:6e50:d9b7:c374:3dce:46b9",
+                "cf-ipcountry": "US",
+                "cf-ray": "a1f714a28b9472f9",
+                "cf-visitor": "{\"scheme\":\"https\"}",
+                "connection": "Keep-Alive",
+                "content-length": "331",
+                "content-type": "application/json",
+                "host": "angel-solutions-webhook.rickjefferson.workers.dev",
+                "user-agent": "Mozilla/5.0",
+                "x-forwarded-proto": "https",
+                "x-real-ip": "2600:1702:6ef0:6e50:d9b7:c374:3dce:46b9"
+            },
+            "cf": {
+                "httpProtocol": "HTTP/1.1",
+                "clientAcceptEncoding": "identity",
+                "requestPriority": "",
+                "edgeRequestKeepAliveStatus": 1,
+                "requestHeaderNames": {},
+                "clientTcpRtt": 8,
+                "clientQuicRtt": 0,
+                "colo": "DFW",
+                "asn": 7018,
+                "asOrganization": "AT&T Enterprises, LLC",
+                "country": "US",
+                "isEUCountry": false,
+                "city": "Royse City",
+                "continent": "NA",
+                "region": "Texas",
+                "regionCode": "TX",
+                "timezone": "America/Chicago",
+                "longitude": "-96.33248",
+                "latitude": "32.97512",
+                "postalCode": "75189",
+                "metroCode": "623",
+                "tlsVersion": "TLSv1.3",
+                "tlsCipher": "AEAD-AES256-GCM-SHA384",
+                "tlsClientRandom": "rMT7IXWP2suueLbDOL0Eqyl9QrGm3ijUUzWlmCJAFus=",
+                "tlsClientCiphersSha1": "EPPWGkMwL/+VHBbDlFeYFF2S3W0=",
+                "tlsClientExtensionsSha1": "f2lfS5cboRlewOSpRDi1Tw+Nqso=",
+                "tlsClientExtensionsSha1Le": "5ORuQXaNQ4cJhc2GOqm/lOsR/lY=",
+                "tlsExportedAuthenticator": {
+                    "clientHandshake": "79336024b37ae5d396d12d5e2c39d3e61b258bfaa25ddcf33e5a80100a14b790e50fe8b809ba7694ee0aba141ecea594",
+                    "serverHandshake": "0dfa518816930f785145a794a72dbeb731f7c819d9cf02dc2118bedfb7f4ef6427d50b92d0ed9ee6985d2219a091ba92",
+                    "clientFinished": "2c1355f6d7951906afd66924017e41dcb7abf0e0a2bcb0e6b6465dd5bb5d0bba7d34b83b49741d4951afa11a9489f2cd",
+                    "serverFinished": "08164d80c569f07bee1d3a38baf5643473d442ec03789157df5893b6434a1c6c4e9f831500a01f807515cc621173c72f"
+                },
+                "tlsClientHelloLength": "1564",
+                "tlsClientAuth": {
+                    "certPresented": "0",
+                    "certVerified": "NONE",
+                    "certRevoked": "0",
+                    "certIssuerDN": "",
+                    "certSubjectDN": "",
+                    "certIssuerDNRFC2253": "",
+                    "certSubjectDNRFC2253": "",
+                    "certIssuerDNLegacy": "",
+                    "certSubjectDNLegacy": "",
+                    "certSerial": "",
+                    "certIssuerSerial": "",
+                    "certSKI": "",
+                    "certIssuerSKI": "",
+                    "certFingerprintSHA1": "",
+                    "certFingerprintSHA256": "",
+                    "certNotBefore": "",
+                    "certNotAfter": "",
+                    "certRFC9440": "",
+                    "certRFC9440TooLarge": false,
+                    "certChainRFC9440": "",
+                    "certChainRFC9440TooLarge": false
+                },
+                "verifiedBotCategory": "",
+                "edgeL4": {
+                    "deliveryRate": 388360
+                }
+            }
+        },
+        "response": {
+            "status": 200
+        }
+    }
+}

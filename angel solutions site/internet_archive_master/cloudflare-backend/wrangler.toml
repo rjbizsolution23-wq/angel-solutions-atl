@@ -1,0 +1,46 @@
+name = "prometheus-cloudflare-backend"
+main = "src/index.ts"
+compatibility_date = "2026-07-11"
+compatibility_flags = [ "nodejs_compat" ]
+
+# 1. Stateful Agents (Cloudflare Agents SDK & Durable Objects)
+[[durable_objects.bindings]]
+name = "PROMETHEUS_AGENTS"
+class_name = "PrometheusAgentDurableObject"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["PrometheusAgentDurableObject"]
+
+# 2. Relational Database (D1 SQLite Storage)
+[[d1_databases]]
+binding = "DB"
+database_name = "prometheus-v3-db"
+database_id = "a50f17c6-3df1-4aa3-85f5-98230a096591"
+
+# 3. Object Storage (ROMs, Epubs, narrated MP3 audiobooks, compiled binaries)
+[[r2_buckets]]
+binding = "STORAGE_BUCKET"
+bucket_name = "prometheus-v3-assets"
+
+# 4. Global Sessions, Rate Limiting & Configurations Cache
+[[kv_namespaces]]
+binding = "CACHE_STORE"
+id = "69919a9c49da4c4a8738978b1323b222"
+
+# 5. AI Search (BM25 + Vector Search hybrid index namespace)
+# [[ai_search_namespaces]]
+# binding = "AI_SEARCH"
+# id = "search-prometheus-v3"
+
+# 6. Web Scraping & Headless Automation
+[browser]
+binding = "BROWSER"
+
+# 7. Environment Variables & Credentials Fallback
+[vars]
+COMPANY_NAME = "RJ Business Solutions"
+BRAND_NAME = "RJ Archive Master"
+SUPPORT_EMAIL = "support@rickjeffersonsolutions.com"
+ENVIRONMENT = "production"
+DEBUG = "false"

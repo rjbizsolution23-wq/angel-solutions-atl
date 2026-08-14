@@ -1,0 +1,127 @@
+/*
+ * 🎮 RJ VAULT FLOW - RETRO ARCADE CUSTOM CSS
+ * Brand: RJ Business Solutions (Rick Jefferson, CEO)
+ * Aesthetic: 1980s Neon Cyberpunk / CRT Scanline Grid Cabinets
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --neon-pink: #ff10f0;
+  --neon-blue: #00f0ff;
+  --neon-green: #39ff14;
+  --dark-bg: #060913;
+  --arcade-gray: #1a1f2e;
+  --glow-shadow: 0 0 10px rgba(255, 16, 240, 0.6), 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+/* 🕹️ Retro Global Typography */
+body {
+  background-color: var(--dark-bg);
+  color: #f1f5f9;
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .retro-title {
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.retro-mono {
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
+}
+
+/* 📺 CRT Scanline Overlay Animation */
+.crt-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-container::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 10;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+.crt-screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 11;
+  pointer-events: none;
+  animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.18; }
+  50% { opacity: 0.22; }
+  100% { opacity: 0.18; }
+}
+
+/* 👾 Glowing Neon Card Elements */
+.retro-card {
+  background: rgba(10, 15, 30, 0.85);
+  border: 2px solid var(--neon-blue);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 4px;
+}
+
+.retro-card:hover {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 15px rgba(255, 16, 240, 0.6), 0 0 5px rgba(0, 240, 255, 0.4);
+  transform: translateY(-4px);
+}
+
+/* 🕹️ Retro Buttons & Control Panel */
+.retro-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.75rem;
+  background: var(--dark-bg);
+  border: 2px solid var(--neon-green);
+  color: var(--neon-green);
+  text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.retro-btn:hover {
+  background: var(--neon-green);
+  color: var(--dark-bg);
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.8);
+  transform: scale(1.05);
+}
+
+.retro-btn-pink {
+  border-color: var(--neon-pink);
+  color: var(--neon-pink);
+  text-shadow: 0 0 5px rgba(255, 16, 240, 0.5);
+}
+
+.retro-btn-pink:hover {
+  background: var(--neon-pink);
+  color: var(--dark-bg);
+  box-shadow: 0 0 15px rgba(255, 16, 240, 0.8);
+}
+
+/* 🌌 Grid lines Background Matrix */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+}

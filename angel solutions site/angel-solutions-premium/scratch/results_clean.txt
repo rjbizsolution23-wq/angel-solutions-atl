@@ -1,0 +1,6 @@
+StatsSection: FAIL
+AboutPreview: FAIL
+ServicesOverview: FAIL
+FeaturesSection: FAIL
+TestimonialsSection: FAIL
+CTASection: FAIL

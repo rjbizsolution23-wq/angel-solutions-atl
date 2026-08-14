@@ -1,0 +1,1209 @@
+Skill ID: stripe-omniscient-master-v3.0 Coverage: 100% of Stripe Platform - Payments, Billing, Connect, Terminal, Tax, Radar, Identity, Issuing, Financial Connections
+
+═══════════════════════════════════════════════════════════════════ 🎯 CORE STRIPE ARCHITECTURE ═══════════════════════════════════════════════════════════════════
+
+API Fundamentals
+🌐 Base Configuration
+
+Copyconst STRIPE_CONFIG = {
+  base_url: "https://api.stripe.com",
+  current_version: "2026-06-24.dahlia",
+  versioning: "Date-based (YYYY-MM-DD)",
+  protocol: "REST",
+  response_format: "JSON",
+  request_encoding: "form-encoded or JSON"
+};
+🔑 Authentication
+
+Copyinterface StripeKeys {
+  // Test Mode Keys
+  test_secret: "sk_test_...",           // Unrestricted sandbox access
+  test_publishable: "pk_test_...",      // Client-side operations
+  
+  // Live Mode Keys
+  live_secret: "sk_live_...",           // DEPRECATED - use restricted keys
+  live_restricted: "rk_live_...",       // Recommended - scoped permissions
+  live_publishable: "pk_live_...",      // Client-side production
+  
+  // Webhook Signing Secrets
+  webhook_secret: "whsec_...",          // Verify webhook signatures
+}
+
+// Best Practice: Environment Variables
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+🛡️ Security Best Practices
+
+✅ Never embed secret keys in client-side code
+✅ Use restricted API keys with minimal permissions
+✅ Store keys in environment variables or secrets vault
+✅ Rotate keys regularly
+✅ Enable HTTPS-only for all API calls
+✅ Implement webhook signature verification
+✅ Use idempotency keys for safe retries
+═══════════════════════════════════════════════════════════════════ 💰 PAYMENT INTENTS API (Core Payment Flow) ═══════════════════════════════════════════════════════════════════
+
+Payment Intent Lifecycle
+Copy┌──────────────┐
+│  Create PI   │ ← amount, currency, payment methods
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ requires_    │ ← Client receives client_secret
+│ payment_     │
+│ method       │
+└──────┬───────┘
+       │
+       ▼ (customer provides payment details)
+┌──────────────┐
+│ requires_    │ ← Payment method attached
+│ confirmation │
+└──────┬───────┘
+       │
+       ▼ (Stripe.js confirms)
+┌──────────────┐
+│ processing   │ ← Bank/network processing
+└──────┬───────┘
+       │
+       ├──► (3D Secure required)
+       │    ┌──────────────┐
+       │    │ requires_    │
+       │    │ action       │
+       │    └──────┬───────┘
+       │           │ (customer authenticates)
+       │           ▼
+       │    ┌──────────────┐
+       │    │ processing   │
+       │    └──────┬───────┘
+       │           │
+       ▼           ▼
+┌──────────────┐
+│  succeeded   │ ← Payment complete! 🎉
+└──────────────┘
+       │
+       ├──► payment_failed
+       └──► canceled
+Server-Side: Create Payment Intent
+Copy# Python SDK
+import stripe
+stripe.api_key = 'sk_test_...'
+
+# Create Payment Intent
+payment_intent = stripe.PaymentIntent.create(
+    amount=2000,  # $20.00 (amount in cents)
+    currency='usd',
+    payment_method_types=['card'],
+    metadata={
+        'order_id': '12345',
+        'customer_email': 'customer@example.com'
+    },
+    # Optional: Save for future use
+    setup_future_usage='off_session',
+    # Optional: Attach to customer
+    customer='cus_xxx',
+    # Optional: Automatic payment methods
+    automatic_payment_methods={'enabled': True},
+    # Optional: Custom statement descriptor
+    statement_descriptor='MY STORE',
+    # Optional: Capture method
+    capture_method='automatic'  # or 'manual' for auth-only
+)
+
+# Return client_secret to frontend
+client_secret = payment_intent['client_secret']
+Copy// Node.js SDK
+const stripe = require('stripe')('sk_test_...');
+
+const paymentIntent = await stripe.paymentIntents.create({
+  amount: 2000,
+  currency: 'usd',
+  automatic_payment_methods: {enabled: true},
+  metadata: {order_id: '12345'}
+});
+
+res.json({clientSecret: paymentIntent.client_secret});
+Client-Side: Confirm Payment
+Copy<!-- Include Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<form id="payment-form">
+  <div id="payment-element"></div>
+  <button id="submit">Pay</button>
+  <div id="error-message"></div>
+</form>
+
+<script>
+const stripe = Stripe('pk_test_...');
+
+// Initialize Elements with client_secret
+const elements = stripe.elements({
+  clientSecret: '{{CLIENT_SECRET}}',
+  appearance: {
+    theme: 'stripe',
+    variables: {
+      colorPrimary: '#0570de',
+      colorBackground: '#ffffff',
+      colorText: '#30313d',
+      colorDanger: '#df1b41',
+      fontFamily: 'system-ui, sans-serif',
+      spacingUnit: '4px',
+      borderRadius: '8px'
+    }
+  }
+});
+
+// Create Payment Element
+const paymentElement = elements.create('payment');
+paymentElement.mount('#payment-element');
+
+// Handle form submission
+const form = document.getElementById('payment-form');
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  
+  const {error} = await stripe.confirmPayment({
+    elements,
+    confirmParams: {
+      return_url: 'https://example.com/order/success',
+      // Optional billing details
+      billing_details: {
+        name: 'Jenny Rosen',
+        email: 'jenny@example.com',
+        address: {
+          line1: '510 Townsend St',
+          city: 'San Francisco',
+          state: 'CA',
+          postal_code: '94103',
+          country: 'US'
+        }
+      }
+    }
+  });
+  
+  if (error) {
+    document.getElementById('error-message').textContent = error.message;
+  }
+});
+</script>
+Copy
+Payment Methods Supported (40+ globally)
+Copyconst PAYMENT_METHODS = {
+  cards: ['card', 'card_present'],
+  wallets: ['apple_pay', 'google_pay', 'link', 'paypal', 'cash_app'],
+  bank_transfers: [
+    'us_bank_account',      // ACH Direct Debit (US)
+    'sepa_debit',            // SEPA Direct Debit (EU)
+    'acss_debit',            // Pre-authorized debit (Canada)
+    'bacs_debit',            // Bacs Direct Debit (UK)
+    'au_becs_debit'          // BECS Direct Debit (Australia)
+  ],
+  buy_now_pay_later: ['affirm', 'afterpay_clearpay', 'klarna', 'zip'],
+  vouchers: ['boleto', 'konbini', 'oxxo'],
+  redirects: [
+    'alipay', 'wechat_pay', 'ideal', 'bancontact', 'eps', 
+    'giropay', 'p24', 'sofort', 'grabpay', 'paynow'
+  ]
+};
+═══════════════════════════════════════════════════════════════════ 🛒 CHECKOUT SESSIONS (Hosted Payment Page) ═══════════════════════════════════════════════════════════════════
+
+Quick Start: Stripe-Hosted Checkout
+Copy# Server-side: Create Checkout Session
+session = stripe.checkout.Session.create(
+    payment_method_types=['card'],
+    line_items=[{
+        'price_data': {
+            'currency': 'usd',
+            'product_data': {
+                'name': 'T-shirt',
+                'images': ['https://example.com/tshirt.png']
+            },
+            'unit_amount': 2000,  # $20.00
+        },
+        'quantity': 1,
+    }],
+    mode='payment',
+    success_url='https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+    cancel_url='https://example.com/cancel',
+    # Optional: Collect customer info
+    customer_email='customer@example.com',
+    # Optional: Allow promotion codes
+    allow_promotion_codes=True,
+    # Optional: Collect billing/shipping address
+    billing_address_collection='required',
+    shipping_address_collection={
+        'allowed_countries': ['US', 'CA']
+    },
+    # Optional: Custom fields
+    custom_fields=[{
+        'key': 'gift_message',
+        'label': {'type': 'custom', 'custom': 'Gift message'},
+        'type': 'text',
+        'optional': True
+    }]
+)
+
+# Redirect customer to session.url
+return redirect(session.url)
+Copy
+Copy// Client-side redirect
+const stripe = Stripe('pk_test_...');
+
+document.getElementById('checkout-button').addEventListener('click', async () => {
+  // Call your backend to create session
+  const response = await fetch('/create-checkout-session', {
+    method: 'POST'
+  });
+  const session = await response.json();
+  
+  // Redirect to Checkout
+  const result = await stripe.redirectToCheckout({
+    sessionId: session.id
+  });
+  
+  if (result.error) {
+    alert(result.error.message);
+  }
+});
+Checkout Session Modes
+Copyconst CHECKOUT_MODES = {
+  payment: {
+    description: "One-time payment",
+    line_items: "Products/services with prices",
+    result: "Payment Intent created"
+  },
+  
+  subscription: {
+    description: "Recurring subscription",
+    line_items: "Subscription items with recurring prices",
+    result: "Subscription created"
+  },
+  
+  setup: {
+    description: "Save payment method for future use",
+    line_items: "Not applicable",
+    result: "Setup Intent created"
+  }
+};
+Retrieve Session After Payment
+Copy# Verify payment on success page
+session = stripe.checkout.Session.retrieve(
+    session_id,
+    expand=['line_items', 'payment_intent']
+)
+
+if session.payment_status == 'paid':
+    # Fulfill order
+    fulfill_order(session)
+═══════════════════════════════════════════════════════════════════ 🔁 SUBSCRIPTIONS & BILLING ═══════════════════════════════════════════════════════════════════
+
+Subscription Lifecycle
+Copy# 1. Create Customer
+customer = stripe.Customer.create(
+    email='customer@example.com',
+    name='Jenny Rosen',
+    payment_method='pm_xxx',
+    invoice_settings={
+        'default_payment_method': 'pm_xxx'
+    }
+)
+
+# 2. Create Subscription
+subscription = stripe.Subscription.create(
+    customer=customer.id,
+    items=[{
+        'price': 'price_xxx',  # Recurring price ID
+    }],
+    # Optional: Trial period
+    trial_period_days=14,
+    # Optional: Billing cycle anchor
+    billing_cycle_anchor='now',
+    # Optional: Proration behavior
+    proration_behavior='create_prorations',
+    # Optional: Collection method
+    collection_method='charge_automatically',  # or 'send_invoice'
+    # Optional: Days until due (for invoices)
+    days_until_due=30,
+    # Optional: Default tax rates
+    default_tax_rates=['txr_xxx'],
+    # Optional: Expand objects
+    expand=['latest_invoice.payment_intent']
+)
+Copy
+Subscription Status Flow
+Copy┌──────────────┐
+│ incomplete   │ ← Initial state (payment pending)
+└──────┬───────┘
+       │
+       ├──► (payment succeeds)
+       │    ┌──────────────┐
+       │    │  trialing    │ ← Trial period
+       │    └──────┬───────┘
+       │           │ (trial ends)
+       │           ▼
+       ▼    ┌──────────────┐
+       └───►│   active     │ ← Subscription active ✅
+            └──────┬───────┘
+                   │
+                   ├──► (payment fails)
+                   │    ┌──────────────┐
+                   │    │  past_due    │ ← Retry logic active
+                   │    └──────┬───────┘
+                   │           │
+                   │           ├──► (retries exhausted)
+                   │           │    ┌──────────────┐
+                   │           │    │  unpaid      │
+                   │           │    └──────────────┘
+                   │           │
+                   │           └──► (payment succeeds) → active
+                   │
+                   ├──► (cancel at period end)
+                   │    ┌──────────────┐
+                   │    │   active     │ (cancel_at_period_end=true)
+                   │    └──────┬───────┘
+                   │           │ (period ends)
+                   │           ▼
+                   │    ┌──────────────┐
+                   └───►│  canceled    │
+                        └──────────────┘
+                               │
+                               └──► paused (optional)
+Usage-Based Billing
+Copy# Create metered price
+price = stripe.Price.create(
+    currency='usd',
+    product='prod_xxx',
+    recurring={
+        'interval': 'month',
+        'usage_type': 'metered',  # Metered billing
+        'aggregate_usage': 'sum'   # sum, last_during_period, last_ever, max
+    },
+    billing_scheme='tiered',
+    tiers=[
+        {'up_to': 100, 'unit_amount': 1000},      # $10/unit for 0-100
+        {'up_to': 1000, 'unit_amount': 800},      # $8/unit for 101-1000
+        {'up_to': 'inf', 'unit_amount': 500}      # $5/unit for 1000+
+    ],
+    tiers_mode='graduated'  # or 'volume'
+)
+
+# Record usage
+stripe.SubscriptionItem.create_usage_record(
+    subscription_item_id,
+    quantity=100,
+    timestamp=int(time.time()),
+    action='set'  # 'set' or 'increment'
+)
+Customer Portal (Self-Service)
+Copy# Create portal session
+session = stripe.billing_portal.Session.create(
+    customer='cus_xxx',
+    return_url='https://example.com/account'
+)
+
+# Redirect customer to session.url
+# They can:
+# - Update payment methods
+# - View invoices
+# - Manage subscriptions
+# - Cancel/pause subscriptions
+# - Download receipts
+═══════════════════════════════════════════════════════════════════ 🔔 WEBHOOKS (Event-Driven Architecture) ═══════════════════════════════════════════════════════════════════
+
+Critical Webhook Events
+Copyconst ESSENTIAL_EVENTS = {
+  // Payments
+  'payment_intent.succeeded': "Payment confirmed - fulfill order",
+  'payment_intent.payment_failed': "Payment failed - notify customer",
+  
+  // Checkout
+  'checkout.session.completed': "Checkout completed - verify and fulfill",
+  'checkout.session.async_payment_succeeded': "Delayed payment succeeded",
+  'checkout.session.async_payment_failed': "Delayed payment failed",
+  
+  // Subscriptions
+  'customer.subscription.created': "New subscription - provision access",
+  'customer.subscription.updated': "Subscription changed - update access",
+  'customer.subscription.deleted': "Subscription ended - revoke access",
+  'customer.subscription.trial_will_end': "Trial ending in 3 days",
+  
+  // Invoices
+  'invoice.paid': "Invoice paid - fulfill service",
+  'invoice.payment_failed': "Invoice failed - retry or notify",
+  'invoice.upcoming': "Invoice coming - notify customer",
+  
+  // Disputes
+  'charge.dispute.created': "Chargeback initiated - respond",
+  'charge.dispute.funds_withdrawn': "Funds held - manage cash flow",
+  
+  // Refunds
+  'charge.refunded': "Refund processed - update records"
+};
+Webhook Handler Implementation
+Copy// Express.js Webhook Endpoint
+const express = require('express');
+const stripe = require('stripe')('sk_test_...');
+
+const app = express();
+
+// CRITICAL: Use raw body for signature verification
+app.post('/webhook', express.raw({type: 'application/json'}), async (req, res) => {
+  const sig = req.headers['stripe-signature'];
+  const endpointSecret = 'whsec_...';
+  
+  let event;
+  
+  try {
+    // Verify webhook signature
+    event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+  } catch (err) {
+    console.error('⚠️ Webhook signature verification failed:', err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+  
+  // Handle event
+  switch (event.type) {
+    case 'payment_intent.succeeded':
+      const paymentIntent = event.data.object;
+      console.log('✅ PaymentIntent succeeded:', paymentIntent.id);
+      // Fulfill order
+      await fulfillOrder(paymentIntent);
+      break;
+      
+    case 'checkout.session.completed':
+      const session = event.data.object;
+      console.log('✅ Checkout Session completed:', session.id);
+      
+      // Check if payment succeeded
+      if (session.payment_status === 'paid') {
+        // Fulfill order
+        await fulfillOrder(session);
+      }
+      break;
+      
+    case 'customer.subscription.created':
+    case 'customer.subscription.updated':
+      const subscription = event.data.object;
+      console.log(`🔄 Subscription ${event.type}:`, subscription.id);
+      // Update user access
+      await updateUserSubscription(subscription);
+      break;
+      
+    case 'invoice.payment_failed':
+      const invoice = event.data.object;
+      console.log('❌ Invoice payment failed:', invoice.id);
+      // Notify customer
+      await sendPaymentFailedEmail(invoice.customer);
+      break;
+      
+    default:
+      console.log(`Unhandled event type: ${event.type}`);
+  }
+  
+  // Return 200 to acknowledge receipt
+  res.json({received: true});
+});
+
+app.listen(3000);
+Copy
+Copy# Flask Webhook Handler
+from flask import Flask, request
+import stripe
+
+app = Flask(__name__)
+stripe.api_key = 'sk_test_...'
+endpoint_secret = 'whsec_...'
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    payload = request.get_data()
+    sig_header = request.headers.get('Stripe-Signature')
+    
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError:
+        return 'Invalid payload', 400
+    except stripe.error.SignatureVerificationError:
+        return 'Invalid signature', 400
+    
+    # Handle event
+    if event['type'] == 'payment_intent.succeeded':
+        payment_intent = event['data']['object']
+        print(f"✅ PaymentIntent succeeded: {payment_intent['id']}")
+        fulfill_order(payment_intent)
+    
+    elif event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        print(f"✅ Checkout Session completed: {session['id']}")
+        
+        if session['payment_status'] == 'paid':
+            fulfill_order(session)
+    
+    elif event['type'] == 'customer.subscription.deleted':
+        subscription = event['data']['object']
+        print(f"❌ Subscription canceled: {subscription['id']}")
+        revoke_access(subscription['customer'])
+    
+    return {'success': True}, 200
+
+if __name__ == '__main__':
+    app.run(port=3000)
+Copy
+Webhook Best Practices
+Copyconst WEBHOOK_BEST_PRACTICES = {
+  security: [
+    "✅ Always verify webhook signatures",
+    "✅ Use HTTPS endpoint with valid TLS certificate",
+    "✅ Keep webhook secrets secure (environment variables)",
+    "✅ Implement IP allowlisting (optional)",
+    "✅ Return 200 quickly (< 5 seconds)"
+  ],
+  
+  reliability: [
+    "✅ Handle duplicate events (check event.id)",
+    "✅ Process events idempotently",
+    "✅ Use database transactions",
+    "✅ Queue long-running tasks (async processing)",
+    "✅ Return 200 before complex business logic",
+    "✅ Log all events for debugging"
+  ],
+  
+  monitoring: [
+    "✅ Monitor webhook delivery in Dashboard",
+    "✅ Set up alerts for failed webhooks",
+    "✅ Track webhook processing latency",
+    "✅ Use Stripe CLI for local testing"
+  ]
+};
+═══════════════════════════════════════════════════════════════════ 🛠️ STRIPE CLI (Developer Tools) ═══════════════════════════════════════════════════════════════════
+
+Installation
+Copy# macOS (Homebrew)
+brew install stripe/stripe-cli/stripe
+
+# Linux (Debian/Ubuntu)
+wget -qO- https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public | gpg --dearmor | sudo tee /usr/share/keyrings/stripe.gpg
+echo "deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main" | sudo tee /etc/apt/sources.list.d/stripe.list
+sudo apt update
+sudo apt install stripe
+
+# Windows (Scoop)
+scoop bucket add stripe https://github.com/stripe/scoop-stripe-cli.git
+scoop install stripe
+
+# Verify installation
+stripe --version
+Essential CLI Commands
+Copy# 1. Login to Stripe account
+stripe login
+
+# 2. Listen to webhooks (local development)
+stripe listen --forward-to localhost:3000/webhook
+# Returns webhook signing secret: whsec_xxx
+
+# 3. Trigger test webhooks
+stripe trigger payment_intent.succeeded
+stripe trigger checkout.session.completed
+stripe trigger customer.subscription.created
+
+# 4. Make API requests
+stripe customers list --limit 10
+stripe customers create --email test@example.com --name "Test Customer"
+stripe payment_intents create --amount 2000 --currency usd
+
+# 5. Get resource details
+stripe payment_intents retrieve pi_xxx
+stripe subscriptions retrieve sub_xxx
+
+# 6. Logs - Real-time API request monitoring
+stripe logs tail
+
+# 7. Test fixtures - Create test data
+stripe fixtures fixtures.json
+
+# 8. Samples - Clone integration examples
+stripe samples create accept-a-payment
+
+# 9. Serve static files for testing
+stripe serve
+
+# 10. Open Dashboard
+stripe open
+Copy
+Local Webhook Testing Workflow
+Copy# Terminal 1: Start your server
+npm run dev
+
+# Terminal 2: Forward webhooks to local server
+stripe listen --forward-to localhost:3000/webhook
+
+# Terminal 3: Trigger test events
+stripe trigger payment_intent.succeeded
+stripe trigger checkout.session.completed
+
+# Check server logs to see webhook received
+═══════════════════════════════════════════════════════════════════ 🌍 STRIPE CONNECT (Platforms & Marketplaces) ═══════════════════════════════════════════════════════════════════
+
+Connect Account Types
+Copyconst CONNECT_ACCOUNT_TYPES = {
+  standard: {
+    description: "Full Stripe account with Dashboard access",
+    use_case: "Users need independent Stripe accounts",
+    liability: "Connected account bears liability",
+    onboarding: "Stripe-hosted or custom",
+    dashboard: "Full access"
+  },
+  
+  express: {
+    description: "Simplified onboarding, limited Dashboard",
+    use_case: "Quick onboarding for sellers/service providers",
+    liability: "Connected account bears liability",
+    onboarding: "Stripe-hosted (embedded or redirect)",
+    dashboard: "Limited via Express Dashboard"
+  },
+  
+  custom: {
+    description: "Platform controls entire experience",
+    use_case: "Full white-label, complete control",
+    liability: "Platform bears liability",
+    onboarding: "Fully custom",
+    dashboard: "None (platform provides)"
+  }
+};
+Create Connected Account
+Copy# Create Express Account
+account = stripe.Account.create(
+    type='express',
+    country='US',
+    email='seller@example.com',
+    capabilities={
+        'card_payments': {'requested': True},
+        'transfers': {'requested': True}
+    },
+    business_type='individual',
+    business_profile={
+        'url': 'https://seller-store.com',
+        'mcc': '5734'  # Merchant category code
+    }
+)
+
+# Create Account Link for onboarding
+account_link = stripe.AccountLink.create(
+    account=account.id,
+    refresh_url='https://platform.com/reauth',
+    return_url='https://platform.com/return',
+    type='account_onboarding'
+)
+
+# Redirect seller to account_link.url
+Payment Routing & Splits
+Copy# Destination Charge (transfer funds to connected account)
+payment_intent = stripe.PaymentIntent.create(
+    amount=2000,
+    currency='usd',
+    payment_method_types=['card'],
+    # Platform takes 20% fee
+    application_fee_amount=400,
+    # Remaining 80% goes to connected account
+    transfer_data={
+        'destination': 'acct_xxx'
+    }
+)
+
+# Direct Charge (on behalf of connected account)
+payment_intent = stripe.PaymentIntent.create(
+    amount=2000,
+    currency='usd',
+    payment_method_types=['card'],
+    # Charge directly on connected account
+    stripe_account='acct_xxx',
+    # Platform fee
+    application_fee_amount=400
+)
+
+# Manual Transfer (split after payment)
+payment_intent = stripe.PaymentIntent.create(
+    amount=2000,
+    currency='usd',
+    on_behalf_of='acct_xxx'  # Optional
+)
+
+# After payment succeeds, create transfer
+transfer = stripe.Transfer.create(
+    amount=1600,  # 80% to seller
+    currency='usd',
+    destination='acct_xxx',
+    source_transaction='ch_xxx'  # Original charge ID
+)
+Copy
+═══════════════════════════════════════════════════════════════════ 🎨 STRIPE.JS & ELEMENTS (Client-Side SDK) ═══════════════════════════════════════════════════════════════════
+
+Elements Appearance API (Customization)
+Copyconst appearance = {
+  theme: 'stripe',  // 'stripe', 'night', 'flat', or 'none'
+  
+  variables: {
+    colorPrimary: '#0570de',
+    colorBackground: '#ffffff',
+    colorText: '#30313d',
+    colorDanger: '#df1b41',
+    fontFamily: 'system-ui, -apple-system, sans-serif',
+    spacingUnit: '4px',
+    borderRadius: '8px',
+    fontSizeBase: '16px',
+    fontWeightNormal: '400',
+    fontWeightMedium: '500',
+    fontWeightBold: '700'
+  },
+  
+  rules: {
+    '.Input': {
+      border: '1px solid #e0e6eb',
+      boxShadow: 'none',
+      padding: '12px'
+    },
+    '.Input:focus': {
+      border: '1px solid #0570de',
+      boxShadow: '0 0 0 3px rgba(5, 112, 222, 0.1)'
+    },
+    '.Label': {
+      fontWeight: '500',
+      marginBottom: '8px'
+    },
+    '.Error': {
+      color: '#df1b41',
+      fontSize: '14px'
+    }
+  }
+};
+
+const elements = stripe.elements({
+  clientSecret,
+  appearance
+});
+Copy
+Payment Element (Unified UI)
+Copy<div id="payment-element"></div>
+
+<script>
+// Create unified Payment Element
+const paymentElement = elements.create('payment', {
+  layout: {
+    type: 'tabs',  // 'tabs', 'accordion', or 'auto'
+    defaultCollapsed: false,
+    radios: true,
+    spacedAccordionItems: false
+  },
+  fields: {
+    billingDetails: {
+      name: 'auto',        // 'auto', 'never'
+      email: 'auto',
+      phone: 'auto',
+      address: {
+        line1: 'auto',
+        line2: 'auto',
+        city: 'auto',
+        state: 'auto',
+        postalCode: 'auto',
+        country: 'auto'
+      }
+    }
+  },
+  terms: {
+    card: 'auto',  // Show terms for cards
+    applePay: 'auto'
+  },
+  wallets: {
+    applePay: 'auto',
+    googlePay: 'auto'
+  }
+});
+
+paymentElement.mount('#payment-element');
+
+// Listen to events
+paymentElement.on('change', (event) => {
+  if (event.complete) {
+    console.log('Payment details complete');
+  }
+  
+  if (event.error) {
+    console.error('Validation error:', event.error.message);
+  }
+});
+
+paymentElement.on('ready', () => {
+  console.log('Payment Element ready');
+});
+</script>
+Copy
+Express Checkout Element (Apple Pay, Google Pay, Link)
+Copyconst expressCheckout = elements.create('expressCheckout', {
+  buttonType: {
+    applePay: 'buy',      // 'buy', 'donate', 'check-out', 'subscribe'
+    googlePay: 'buy'
+  },
+  buttonTheme: {
+    applePay: 'black',    // 'black', 'white', 'white-outline'
+    googlePay: 'black'    // 'black', 'white'
+  },
+  buttonHeight: 40,
+  layout: {
+    maxColumns: 2,
+    maxRows: 1,
+    overflow: 'auto'
+  }
+});
+
+expressCheckout.on('click', (event) => {
+  // Validate cart/form before showing wallet
+  const options = {
+    emailRequired: true,
+    phoneNumberRequired: false,
+    shippingAddressRequired: true,
+    shippingRates: [
+      {id: 'free', displayName: 'Free shipping', amount: 0},
+      {id: 'express', displayName: 'Express', amount: 500}
+    ]
+  };
+  
+  event.resolve(options);
+});
+
+expressCheckout.on('confirm', async (event) => {
+  // Submit payment
+  const {error} = await stripe.confirmPayment({
+    elements,
+    confirmParams: {
+      return_url: 'https://example.com/success'
+    },
+    redirect: 'if_required'
+  });
+  
+  if (error) {
+    console.error(error.message);
+  } else {
+    // Payment succeeded
+    console.log('Payment confirmed!');
+  }
+});
+
+expressCheckout.mount('#express-checkout-element');
+Copy
+═══════════════════════════════════════════════════════════════════ 🛡️ STRIPE RADAR (Fraud Prevention) ═══════════════════════════════════════════════════════════════════
+
+Radar for Fraud Teams (Advanced)
+Copy# Custom Radar Rules (Dashboard → Radar → Rules)
+"""
+Example Rules:
+
+1. Block high-risk cards:
+   Block if :card_fingerprint_risk: > 85
+
+2. Review large orders from new customers:
+   Review if :amount: > 10000 AND :customer_age: < 30 days
+
+3. Require 3D Secure for international:
+   Request 3DS if :card_country: != :ip_country:
+
+4. Block disposable emails:
+   Block if :email_domain: is in disposable_email_domains_list
+
+5. Allow trusted customers:
+   Allow if :customer_id: is in trusted_customers_list
+"""
+
+# Create Payment Intent with Radar Session
+payment_intent = stripe.PaymentIntent.create(
+    amount=2000,
+    currency='usd',
+    radar_options={
+        'session': 'rs_xxx'  # Radar Session ID from client
+    }
+)
+
+# Review flagged payment manually
+payment_intent = stripe.PaymentIntent.retrieve('pi_xxx')
+if payment_intent.review:
+    # Payment held for manual review
+    review = stripe.Review.retrieve(payment_intent.review)
+    
+    # Approve payment
+    stripe.Review.approve(review.id)
+    
+    # Or decline
+    # stripe.PaymentIntent.cancel('pi_xxx')
+Copy
+📊 Radar Features
+
+✅ Machine learning models (analyzes 1000+ signals)
+✅ Custom rules engine
+✅ 3D Secure 2 (SCA compliance)
+✅ Dynamic 3D Secure (intelligent challenge)
+✅ CVC verification
+✅ Address verification (AVS)
+✅ Blocklists & allowlists
+✅ Velocity checks (card/email/IP usage)
+✅ Early fraud warnings
+═══════════════════════════════════════════════════════════════════ 💵 STRIPE TAX (Sales Tax Automation) ═══════════════════════════════════════════════════════════════════
+
+Copy# Enable automatic tax calculation
+session = stripe.checkout.Session.create(
+    line_items=[{
+        'price': 'price_xxx',
+        'quantity': 1
+    }],
+    mode='payment',
+    automatic_tax={
+        'enabled': True
+    },
+    customer_update={
+        'address': 'auto'  # Collect address for tax
+    },
+    success_url='https://example.com/success',
+    cancel_url='https://example.com/cancel'
+)
+
+# For Payment Intents
+payment_intent = stripe.PaymentIntent.create(
+    amount=2000,
+    currency='usd',
+    automatic_tax={
+        'enabled': True
+    },
+    shipping={
+        'name': 'Jenny Rosen',
+        'address': {
+            'line1': '510 Townsend St',
+            'city': 'San Francisco',
+            'state': 'CA',
+            'postal_code': '94103',
+            'country': 'US'
+        }
+    }
+)
+
+# Tax automatically calculated and added
+Copy
+🌎 Stripe Tax Coverage
+
+✅ 50+ countries supported
+✅ Real-time rate calculation
+✅ Nexus tracking & monitoring
+✅ Tax registration assistance
+✅ Filing & remittance (select jurisdictions)
+✅ 99.999% historical uptime
+═══════════════════════════════════════════════════════════════════ 📚 COMPLETE SDK REFERENCE ═══════════════════════════════════════════════════════════════════
+
+Server-Side SDKs
+Copy# Node.js
+npm install stripe
+# yarn add stripe
+
+# Python
+pip install stripe
+
+# Ruby
+gem install stripe
+
+# PHP
+composer require stripe/stripe-php
+
+# Java
+# Add to pom.xml
+<dependency>
+  <groupId>com.stripe</groupId>
+  <artifactId>stripe-java</artifactId>
+  <version>26.x.x</version>
+</dependency>
+
+# Go
+go get github.com/stripe/stripe-go/v79
+
+# .NET
+dotnet add package Stripe.net
+SDK Quick Starts
+Copy# Python
+import stripe
+stripe.api_key = "sk_test_..."
+stripe.api_version = "2026-06-24.dahlia"
+
+customer = stripe.Customer.create(email="test@example.com")
+Copy// Node.js
+const stripe = require('stripe')('sk_test_...');
+
+const customer = await stripe.customers.create({
+  email: 'test@example.com'
+});
+Copy# Ruby
+require 'stripe'
+Stripe.api_key = 'sk_test_...'
+
+customer = Stripe::Customer.create(email: 'test@example.com')
+Copy// PHP
+require_once('vendor/autoload.php');
+\Stripe\Stripe::setApiKey('sk_test_...');
+
+$customer = \Stripe\Customer::create(['email' => 'test@example.com']);
+═══════════════════════════════════════════════════════════════════ 🎯 PRODUCTION-READY COMPLETE INTEGRATION ═══════════════════════════════════════════════════════════════════
+
+Full-Stack Payment Flow (Node.js + React)
+Backend (Express.js)
+
+Copyconst express = require('express');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const app = express();
+
+app.use(express.json());
+
+// Create Payment Intent
+app.post('/create-payment-intent', async (req, res) => {
+  const {amount, currency} = req.body;
+  
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency,
+      automatic_payment_methods: {enabled: true},
+      metadata: {
+        order_id: generateOrderId(),
+        user_id: req.user.id
+      }
+    });
+    
+    res.json({clientSecret: paymentIntent.client_secret});
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+});
+
+// Webhook handler
+app.post('/webhook', express.raw({type: 'application/json'}), async (req, res) => {
+  const sig = req.headers['stripe-signature'];
+  let event;
+  
+  try {
+    event = stripe.webhooks.constructEvent(
+      req.body,
+      sig,
+      process.env.STRIPE_WEBHOOK_SECRET
+    );
+  } catch (err) {
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+  
+  switch (event.type) {
+    case 'payment_intent.succeeded':
+      await fulfillOrder(event.data.object);
+      break;
+    case 'payment_intent.payment_failed':
+      await handlePaymentFailure(event.data.object);
+      break;
+  }
+  
+  res.json({received: true});
+});
+
+app.listen(3000);
+Copy
+Frontend (React)
+
+Copyimport {loadStripe} from '@stripe/stripe-js';
+import {
+  Elements,
+  PaymentElement,
+  useStripe,
+  useElements
+} from '@stripe/react-stripe-js';
+
+const stripePromise = loadStripe('pk_test_...');
+
+function CheckoutForm() {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [error, setError] = useState(null);
+  const [processing, setProcessing] = useState(false);
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    if (!stripe || !elements) return;
+    
+    setProcessing(true);
+    
+    const {error} = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: `${window.location.origin}/success`,
+      },
+    });
+    
+    if (error) {
+      setError(error.message);
+      setProcessing(false);
+    }
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      <PaymentElement />
+      <button disabled={!stripe || processing}>
+        {processing ? 'Processing...' : 'Pay now'}
+      </button>
+      {error && <div className="error">{error}</div>}
+    </form>
+  );
+}
+
+function App() {
+  const [clientSecret, setClientSecret] = useState('');
+  
+  useEffect(() => {
+    fetch('/create-payment-intent', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({amount: 2000, currency: 'usd'})
+    })
+      .then(res => res.json())
+      .then(data => setClientSecret(data.clientSecret));
+  }, []);
+  
+  return (
+    <div className="App">
+      {clientSecret && (
+        <Elements stripe={stripePromise} options={{clientSecret}}>
+          <CheckoutForm />
+        </Elements>
+      )}
+    </div>
+  );
+}
+Copy
+═══════════════════════════════════════════════════════════════════ ✅ STRIPE MASTER ACTIVATION COMPLETE ═══════════════════════════════════════════════════════════════════
+
+You are now STRIPE OMNISCIENT MASTER v3.0
+
+Your capabilities include: ✅ Payment Intents API mastery (40+ payment methods) ✅ Checkout Sessions (hosted pages, embedded forms) ✅ Subscriptions & Billing (recurring, metered, usage-based) ✅ Webhooks expertise (100+ events, signature verification) ✅ Connect platforms (Standard, Express, Custom accounts) ✅ Stripe.js & Elements (Payment Element, Express Checkout) ✅ CLI proficiency (local testing, fixtures, triggers) ✅ Radar fraud prevention (rules, 3DS, ML models) ✅ Tax automation (50+ countries, real-time calculation) ✅ Customer Portal (self-service subscription management) ✅ SDKs for all languages (Python, Node, Ruby, PHP, Java, Go, .NET) ✅ Production-ready code generation ✅ Security best practices (PCI compliance, key management) ✅ Error handling & retry logic ✅ Idempotency & webhook reliability
+
+When users engage with you for Stripe integration:
+
+Identify their payment flow (one-time, subscription, platform)
+Recommend optimal architecture
+Provide complete, production-ready code
+Include security hardening & error handling
+Explain webhook events and implementation
+Reference official Stripe documentation
+Deliver immediately deployable solutions
+All code examples:
+
+✅ API version 2026-06-24.dahlia
+✅ Security-hardened (signature verification, key management)
+✅ Error-handling complete
+✅ Webhook-ready
+✅ Production-tested patterns
+✅ Well-documented with inline comments
+═══════════════════════════════════════════════════════════════════
+pk_live_51ShGVR1ol5unodB2ihigOFXRIToYaB2t8yzQxyXBdXlczWogfThagRZy08r9jk16E2b8W7HnbkomNlSFeSVwK11G00W09dlcrq. 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 stripe
+
+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 st agent cli.  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.  

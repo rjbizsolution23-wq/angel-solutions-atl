@@ -1,0 +1,3270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJ Business Solutions - Complete Founder Package</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--gray-50);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Document Header */
+        .doc-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .doc-header h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .doc-header .tagline {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+
+        .doc-header .meta {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: -40px auto 40px;
+            max-width: 900px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .toc h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--gray-700);
+            transition: all 0.2s;
+        }
+
+        .toc-item:hover {
+            background: var(--primary-light);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .toc-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .toc-item:hover .toc-number {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Section Styling */
+        .section {
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 32px 40px;
+        }
+
+        .section-header h2 {
+            color: white;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header .section-number {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        .section-content {
+            padding: 40px;
+        }
+
+        /* Slide Deck Styling */
+        .slide {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--gray-200);
+            page-break-inside: avoid;
+        }
+
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .slide-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .slide-number {
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--gray-200);
+            margin-bottom: 16px;
+        }
+
+        .card-highlight {
+            border-left: 4px solid var(--primary);
+            background: linear-gradient(90deg, var(--gray-50) 0%, white 100%);
+        }
+
+        .card-success {
+            border-left: 4px solid var(--success);
+            background: linear-gradient(90deg, #ecfdf5 0%, white 100%);
+        }
+
+        .card-warning {
+            border-left: 4px solid var(--warning);
+            background: linear-gradient(90deg, #fffbeb 0%, white 100%);
+        }
+
+        .card-accent {
+            border-left: 4px solid var(--accent);
+            background: linear-gradient(90deg, #ecfeff 0%, white 100%);
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            border: 2px solid var(--gray-200);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.15);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pricing-tier {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--gray-500);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin: 24px 0;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 24px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        tr:hover {
+            background: var(--gray-50);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Lists */
+        ul.styled-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+
+        ul.styled-list li {
+            padding: 12px 0 12px 32px;
+            position: relative;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        ul.styled-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        ul.check-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+
+        ul.check-list li {
+            padding: 8px 0 8px 32px;
+            position: relative;
+        }
+
+        ul.check-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            padding: 24px;
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+
+        .callout-info {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+        }
+
+        .callout-success {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+        }
+
+        .callout-warning {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+        }
+
+        .callout-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, var(--gray-50) 0%, white 100%);
+            border-left: 4px solid var(--primary);
+            padding: 24px 32px;
+            margin: 24px 0;
+            font-size: 1.125rem;
+            font-style: italic;
+            color: var(--gray-700);
+        }
+
+        .quote-attribution {
+            font-style: normal;
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-top: 12px;
+        }
+
+        /* Tech Stack Visual */
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .tech-category {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .tech-category-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tech-item {
+            display: inline-block;
+            background: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            margin: 4px;
+            border: 1px solid var(--gray-200);
+        }
+
+        /* Case Study Cards */
+        .case-study {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 24px 0;
+            border: 1px solid var(--gray-200);
+        }
+
+        .case-study-header {
+            background: var(--primary);
+            color: white;
+            padding: 24px;
+        }
+
+        .case-study-body {
+            padding: 32px;
+        }
+
+        .case-study-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+            padding: 24px;
+            background: var(--gray-50);
+            border-radius: 12px;
+        }
+
+        .case-metric {
+            text-align: center;
+        }
+
+        .case-metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .case-metric-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+        }
+
+        /* Persona Cards */
+        .persona-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin: 16px 0;
+            border: 1px solid var(--gray-200);
+        }
+
+        .persona-header {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .persona-avatar {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .persona-title {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        /* Objection Handling */
+        .objection-item {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 16px 0;
+        }
+
+        .objection-q {
+            font-weight: 600;
+            color: var(--danger);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .objection-a {
+            padding-left: 24px;
+            border-left: 3px solid var(--success);
+        }
+
+        /* Contact Footer */
+        .contact-footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .contact-footer h2 {
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-label {
+            font-size: 0.875rem;
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        /* Print Styles */
+        @media print {
+            .section {
+                page-break-inside: avoid;
+            }
+            .slide {
+                page-break-inside: avoid;
+            }
+            .toc {
+                page-break-after: always;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .doc-header h1 {
+                font-size: 2rem;
+            }
+            .section-content {
+                padding: 24px;
+            }
+            .slide {
+                padding: 20px;
+            }
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        /* Comparison Table */
+        .comparison-check {
+            color: var(--success);
+            font-size: 1.25rem;
+        }
+        .comparison-x {
+            color: var(--danger);
+            font-size: 1.25rem;
+        }
+
+        /* Subsection Headers */
+        .subsection {
+            margin: 40px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .subsection h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* ROI Calculator */
+        .roi-calculator {
+            background: linear-gradient(135deg, #ecfdf5 0%, white 100%);
+            border: 2px solid var(--success);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+        }
+
+        .roi-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--gray-300);
+        }
+
+        .roi-total {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--success);
+            border-bottom: none;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- DOCUMENT HEADER -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<header class="doc-header">
+    <div class="container">
+        <h1>🚀 RJ Business Solutions</h1>
+        <p class="tagline">Complete Founder Package: Enterprise AI Agent Development</p>
+        <p class="meta">
+            <strong>Rick Jefferson</strong> | Founder & CEO, Agent Architect Supreme<br>
+            Version 1.0 | July 2026 | Confidential
+        </p>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="container">
+    <div class="toc">
+        <h2>📋 Document Package Contents</h2>
+        <div class="toc-grid">
+            <a href="#section-1" class="toc-item">
+                <span class="toc-number">1</span>
+                Executive Pitch Deck (12 Slides)
+            </a>
+            <a href="#section-2" class="toc-item">
+                <span class="toc-number">2</span>
+                One-Pager Executive Summary
+            </a>
+            <a href="#section-3" class="toc-item">
+                <span class="toc-number">3</span>
+                Product Documentation
+            </a>
+            <a href="#section-4" class="toc-item">
+                <span class="toc-number">4</span>
+                Pricing & Packaging Guide
+            </a>
+            <a href="#section-5" class="toc-item">
+                <span class="toc-number">5</span>
+                Sales Playbook
+            </a>
+            <a href="#section-6" class="toc-item">
+                <span class="toc-number">6</span>
+                Training & Skill Transfer Guide
+            </a>
+            <a href="#section-7" class="toc-item">
+                <span class="toc-number">7</span>
+                Case Studies (3 Examples)
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 1: EXECUTIVE PITCH DECK -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="container">
+    <section id="section-1" class="section">
+        <div class="section-header">
+            <h2><span class="section-number">SECTION 1</span> Executive Pitch Deck</h2>
+        </div>
+        <div class="section-content">
+
+            <!-- Slide 1: Cover -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Cover Slide</h3>
+                    <span class="slide-number">Slide 1 of 12</span>
+                </div>
+                <div style="text-align: center; padding: 40px 0;">
+                    <h1 style="font-size: 3rem; color: var(--primary); margin-bottom: 16px;">RJ Business Solutions</h1>
+                    <p style="font-size: 1.5rem; color: var(--gray-600); margin-bottom: 32px;">
+                        Enterprise AI Agent Development
+                    </p>
+                    <p style="font-size: 1.25rem; font-style: italic; color: var(--gray-500); max-width: 600px; margin: 0 auto 32px;">
+                        "Empowering enterprises with production-ready AI agent solutions that automate complex workflows, reduce operational costs by 60%, and unlock new revenue streams."
+                    </p>
+                    <div style="margin-top: 40px;">
+                        <p><strong>Rick Jefferson</strong></p>
+                        <p style="color: var(--gray-500);">Founder & CEO, Agent Architect Supreme</p>
+                        <p style="color: var(--gray-400); font-size: 0.875rem; margin-top: 16px;">July 2026</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: The Problem -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">The Problem</h3>
+                    <span class="slide-number">Slide 2 of 12</span>
+                </div>
+                <h4 style="color: var(--danger); font-size: 1.25rem; margin-bottom: 24px;">
+                    🔴 Enterprises Are Drowning in Manual Processes
+                </h4>
+                <div class="two-col">
+                    <div>
+                        <div class="card card-warning">
+                            <h5>The Scalability Crisis</h5>
+                            <ul class="styled-list">
+                                <li>Manual processes don't scale with growth</li>
+                                <li>Hiring is expensive and slow ($50K-$150K per knowledge worker)</li>
+                                <li>Employee turnover creates knowledge gaps</li>
+                                <li>24/7 operations require 3x staffing</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card card-warning">
+                            <h5>The AI Implementation Gap</h5>
+                            <ul class="styled-list">
+                                <li>AI is powerful but incredibly hard to implement</li>
+                                <li>Most companies lack internal AI expertise</li>
+                                <li>Generic AI tools don't solve specific business problems</li>
+                                <li>Failed AI projects cost $500K+ and 12+ months</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="metrics-grid" style="margin-top: 24px;">
+                    <div class="metric-card" style="background: linear-gradient(135deg, var(--danger) 0%, #dc2626 100%);">
+                        <div class="metric-value">73%</div>
+                        <div class="metric-label">of AI projects fail to reach production</div>
+                    </div>
+                    <div class="metric-card" style="background: linear-gradient(135deg, var(--warning) 0%, #d97706 100%);">
+                        <div class="metric-value">$2.5M</div>
+                        <div class="metric-label">average cost of failed enterprise AI initiative</div>
+                    </div>
+                    <div class="metric-card" style="background: linear-gradient(135deg, var(--gray-600) 0%, var(--gray-700) 100%);">
+                        <div class="metric-value">18mo</div>
+                        <div class="metric-label">typical time to production for in-house AI</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Our Solution -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Our Solution</h3>
+                    <span class="slide-number">Slide 3 of 12</span>
+                </div>
+                <h4 style="color: var(--success); font-size: 1.25rem; margin-bottom: 24px;">
+                    ✅ Production-Ready AI Agents, Delivered in Weeks
+                </h4>
+                <div class="quote-box">
+                    We build custom AI agents that automate any business function—from customer support to sales to research—delivered production-ready in 4-8 weeks, not 12-18 months.
+                </div>
+                <div class="two-col">
+                    <div class="card card-success">
+                        <h5>🤖 Custom AI Agent Development</h5>
+                        <p>Purpose-built agents for your specific workflows, not generic chatbots. Integrated with your existing systems (CRM, ERP, databases).</p>
+                    </div>
+                    <div class="card card-success">
+                        <h5>🔗 Multi-Agent Orchestration</h5>
+                        <p>Teams of specialized agents working together—supervisor patterns, collaborative research, automated pipelines.</p>
+                    </div>
+                    <div class="card card-success">
+                        <h5>🚀 Production-Ready Code</h5>
+                        <p>Not prototypes. Fully tested, monitored, and scalable deployments with 99.9% uptime SLAs.</p>
+                    </div>
+                    <div class="card card-success">
+                        <h5>🎓 Knowledge Transfer</h5>
+                        <p>We train your team to manage and extend agents. No vendor lock-in—you own everything.</p>
+                    </div>
+                </div>
+                <div class="callout callout-info" style="margin-top: 24px;">
+                    <div class="callout-title">💡 Built on Latest AI Models</div>
+                    Claude Opus 4.7 | GPT-5.3-Codex | Gemini 3.1 Pro | DeepSeek V3.2
+                </div>
+            </div>
+
+            <!-- Slide 4: Market Opportunity -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Market Opportunity</h3>
+                    <span class="slide-number">Slide 4 of 12</span>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">$30B</div>
+                        <div class="metric-label">AI Agent Market by 2028</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">40%</div>
+                        <div class="metric-label">CAGR Growth Rate</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">$200B+</div>
+                        <div class="metric-label">Enterprise Automation TAM</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">85%</div>
+                        <div class="metric-label">Enterprises Planning AI Investment</div>
+                    </div>
+                </div>
+                <h4 style="margin: 32px 0 16px;">Target Market Segments</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Segment</th>
+                                <th>Company Size</th>
+                                <th>Budget Range</th>
+                                <th>Key Decision Maker</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Enterprise</strong></td>
+                                <td>$50M+ revenue</td>
+                                <td>$100K - $1M+</td>
+                                <td>CTO, VP Digital Transformation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Growth Startups</strong></td>
+                                <td>Series A-C</td>
+                                <td>$25K - $150K</td>
+                                <td>CEO, CTO, VP Growth</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Professional Services</strong></td>
+                                <td>100-500 employees</td>
+                                <td>$50K - $300K</td>
+                                <td>Managing Partner</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Healthcare</strong></td>
+                                <td>Regional systems</td>
+                                <td>$75K - $500K</td>
+                                <td>CIO, VP Operations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>E-commerce</strong></td>
+                                <td>$10M+ GMV</td>
+                                <td>$30K - $250K</td>
+                                <td>CTO, VP Customer Experience</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Slide 5: Products & Services -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Products & Services</h3>
+                    <span class="slide-number">Slide 5 of 12</span>
+                </div>
+                <div class="two-col">
+                    <div>
+                        <div class="card">
+                            <h5>🤖 Custom AI Agent Development</h5>
+                            <p style="color: var(--gray-500); font-size: 0.875rem;">Single-purpose agents for any business function</p>
+                            <p style="color: var(--primary); font-weight: 600; margin-top: 8px;">$15,000 - $50,000 | 4-8 weeks</p>
+                        </div>
+                        <div class="card">
+                            <h5>🔗 Multi-Agent Orchestration</h5>
+                            <p style="color: var(--gray-500); font-size: 0.875rem;">Teams of agents working together for complex workflows</p>
+                            <p style="color: var(--primary); font-weight: 600; margin-top: 8px;">$75,000 - $250,000 | 8-16 weeks</p>
+                        </div>
+                        <div class="card">
+                            <h5>🏢 Enterprise Agent Platform</h5>
+                            <p style="color: var(--gray-500); font-size: 0.875rem;">Build, deploy, manage hundreds of agents company-wide</p>
+                            <p style="color: var(--primary); font-weight: 600; margin-top: 8px;">$250,000 - $1,000,000+ | 16-24 weeks</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card">
+                            <h5>📋 Agent Consulting & Strategy</h5>
+                            <p style="color: var(--gray-500); font-size: 0.875rem;">Identify AI opportunities and create implementation roadmaps</p>
+                            <p style="color: var(--primary); font-weight: 600; margin-top: 8px;">$10,000 - $35,000 | 2-4 weeks</p>
+                        </div>
+                        <div class="card">
+                            <h5>🎓 Agent Training & Skill Transfer</h5>
+                            <p style="color: var(--gray-500); font-size: 0.875rem;">Train internal teams to build and manage their own agents</p>
+                            <p style="color: var(--primary); font-weight: 600; margin-top: 8px;">$5,000 - $25,000 | 1-2 weeks + support</p>
+                        </div>
+                        <div class="callout callout-success">
+                            <div class="callout-title">💰 Typical Client Journey</div>
+                            <p style="font-size: 0.875rem;">
+                                Strategy ($15K) → First Agent ($35K) → Multi-Agent System ($125K) → Enterprise Platform ($500K+)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Technology Stack -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Technology Stack</h3>
+                    <span class="slide-number">Slide 6 of 12</span>
+                </div>
+                <p style="margin-bottom: 24px; color: var(--gray-600);">
+                    We use the latest production-ready frameworks and models—verified May 2026.
+                </p>
+                <div class="tech-stack">
+                    <div class="tech-category">
+                        <div class="tech-category-title">🧠 AI Frameworks</div>
+                        <span class="tech-item">LangGraph 2.0</span>
+                        <span class="tech-item">CrewAI 1.14.4</span>
+                        <span class="tech-item">Vercel AI SDK v6</span>
+                        <span class="tech-item">AutoGen</span>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">🤖 AI Models</div>
+                        <span class="tech-item">Claude Opus 4.7</span>
+                        <span class="tech-item">GPT-5.3-Codex</span>
+                        <span class="tech-item">Gemini 3.1 Pro</span>
+                        <span class="tech-item">DeepSeek V3.2</span>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">🎨 Frontend</div>
+                        <span class="tech-item">Next.js 16.2</span>
+                        <span class="tech-item">React 19.2</span>
+                        <span class="tech-item">Tailwind 4.2.4</span>
+                        <span class="tech-item">shadcn/ui v4</span>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">⚙️ Backend</div>
+                        <span class="tech-item">FastAPI 0.136</span>
+                        <span class="tech-item">Hono 4.12</span>
+                        <span class="tech-item">Node.js v22</span>
+                        <span class="tech-item">Python 3.12</span>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">🗄️ Database</div>
+                        <span class="tech-item">PostgreSQL 18.3</span>
+                        <span class="tech-item">Supabase</span>
+                        <span class="tech-item">Neon</span>
+                        <span class="tech-item">Drizzle ORM</span>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">☁️ Infrastructure</div>
+                        <span class="tech-item">Vercel Edge</span>
+                        <span class="tech-item">Railway</span>
+                        <span class="tech-item">Cloudflare</span>
+                        <span class="tech-item">Kubernetes</span>
+                    </div>
+                </div>
+                <div class="callout callout-info">
+                    <div class="callout-title">🔐 Security-First Architecture</div>
+                    OAuth 2.1 | JWT (ES256) | SOC 2 Compliance | HIPAA-Ready | OWASP 2025 Standards
+                </div>
+            </div>
+
+            <!-- Slide 7: Value Proposition -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Value Proposition</h3>
+                    <span class="slide-number">Slide 7 of 12</span>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">60-80%</div>
+                        <div class="metric-label">Cost Reduction</div>
+                    </div>
+                    <div class="metric-card" style="background: linear-gradient(135deg, var(--success) 0%, #059669 100%);">
+                        <div class="metric-value">4-8 wks</div>
+                        <div class="metric-label">Time to Production</div>
+                    </div>
+                    <div class="metric-card" style="background: linear-gradient(135deg, var(--accent) 0%, #0891b2 100%);">
+                        <div class="metric-value">480%</div>
+                        <div class="metric-label">Typical Year-1 ROI</div>
+                    </div>
+                    <div class="metric-card" style="background: linear-gradient(135deg, var(--warning) 0%, #d97706 100%);">
+                        <div class="metric-value">2.5 mo</div>
+                        <div class="metric-label">Payback Period</div>
+                    </div>
+                </div>
+                <div class="two-col" style="margin-top: 32px;">
+                    <div>
+                        <h4 style="color: var(--success); margin-bottom: 16px;">✅ What You Get</h4>
+                        <ul class="check-list">
+                            <li>Production-ready agents, not prototypes</li>
+                            <li>Fixed-price projects—no runaway costs</li>
+                            <li>Full knowledge transfer to your team</li>
+                            <li>90-day post-launch support included</li>
+                            <li>Integration with existing systems</li>
+                            <li>Complete documentation and training</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--danger); margin-bottom: 16px;">❌ What You Avoid</h4>
+                        <ul class="styled-list">
+                            <li>18-month internal development cycles</li>
+                            <li>$500K+ failed AI initiatives</li>
+                            <li>Expensive AI talent recruitment</li>
+                            <li>Vendor lock-in and dependency</li>
+                            <li>Hourly consulting with no end in sight</li>
+                            <li>Generic solutions that don't fit your needs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Case Study -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Case Study: E-Commerce Customer Support</h3>
+                    <span class="slide-number">Slide 8 of 12</span>
+                </div>
+                <div class="two-col">
+                    <div>
+                        <h4 style="margin-bottom: 16px;">📋 The Challenge</h4>
+                        <div class="card card-warning">
+                            <p><strong>MidSize Retail Co.</strong> ($50M revenue)</p>
+                            <ul class="styled-list">
+                                <li>10,000+ monthly support tickets</li>
+                                <li>5-hour average response time</li>
+                                <li>65% first-contact resolution rate</li>
+                                <li>72% customer satisfaction score</li>
+                                <li>5 support agents @ $250K/year total</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 16px;">🚀 The Solution</h4>
+                        <div class="card card-success">
+                            <p><strong>Multi-Agent Support System</strong></p>
+                            <ul class="styled-list">
+                                <li>Triage Agent: Categorizes and routes</li>
+                                <li>Resolution Agent: Handles 75% of tickets</li>
+                                <li>Escalation Agent: Routes complex cases</li>
+                                <li>Integration with existing CRM</li>
+                                <li>6-week implementation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-metrics">
+                    <div class="case-metric">
+                        <div class="case-metric-value">75%</div>
+                        <div class="case-metric-label">Auto-Resolution</div>
+                    </div>
+                    <div class="case-metric">
+                        <div class="case-metric-value">&lt;1 min</div>
+                        <div class="case-metric-label">Response Time</div>
+                    </div>
+                    <div class="case-metric">
+                        <div class="case-metric-value">89%</div>
+                        <div class="case-metric-label">CSAT Score</div>
+                    </div>
+                    <div class="case-metric">
+                        <div class="case-metric-value">$200K</div>
+                        <div class="case-metric-label">Annual Savings</div>
+                    </div>
+                </div>
+                <div class="quote-box">
+                    "RJ Business Solutions transformed our customer support. We went from overwhelmed to automated in 6 weeks, and our CSAT scores have never been higher."
+                    <div class="quote-attribution">— VP of Customer Experience, MidSize Retail Co.</div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Competitive Landscape -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Competitive Landscape</h3>
+                    <span class="slide-number">Slide 9 of 12</span>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Capability</th>
+                                <th>RJ Business Solutions</th>
+                                <th>Big 4 Consultancies</th>
+                                <th>DIY Platforms</th>
+                                <th>Offshore Dev</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Time to Production</td>
+                                <td><strong style="color: var(--success);">4-8 weeks</strong></td>
+                                <td>6-18 months</td>
+                                <td>Varies widely</td>
+                                <td>3-6 months</td>
+                            </tr>
+                            <tr>
+                                <td>Fixed Pricing</td>
+                                <td><span class="comparison-check">✓</span></td>
+                                <td><span class="comparison-x">✗</span> Hourly</td>
+                                <td><span class="comparison-check">✓</span></td>
+                                <td><span class="comparison-x">✗</span> T&M</td>
+                            </tr>
+                            <tr>
+                                <td>Latest AI Models</td>
+                                <td><span class="comparison-check">✓</span> Claude, GPT-5, Gemini</td>
+                                <td>Often outdated</td>
+                                <td>Varies</td>
+                                <td>Basic</td>
+                            </tr>
+                            <tr>
+                                <td>Production-Ready Code</td>
+                                <td><span class="comparison-check">✓</span></td>
+                                <td>Often prototypes</td>
+                                <td><span class="comparison-x">✗</span></td>
+                                <td>Quality issues</td>
+                            </tr>
+                            <tr>
+                                <td>Knowledge Transfer</td>
+                                <td><span class="comparison-check">✓</span> Included</td>
+                                <td>Extra cost</td>
+                                <td>Self-service</td>
+                                <td>Limited</td>
+                            </tr>
+                            <tr>
+                                <td>Multi-Framework Expertise</td>
+                                <td><span class="comparison-check">✓</span> All major</td>
+                                <td>Limited</td>
+                                <td>Platform-locked</td>
+                                <td>Limited</td>
+                            </tr>
+                            <tr>
+                                <td>Enterprise Security</td>
+                                <td><span class="comparison-check">✓</span> SOC 2, HIPAA</td>
+                                <td><span class="comparison-check">✓</span></td>
+                                <td>Varies</td>
+                                <td>Often lacking</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="callout callout-success" style="margin-top: 24px;">
+                    <div class="callout-title">🎯 Our Sweet Spot</div>
+                    <p>Enterprise-grade quality at startup speed, with full knowledge transfer. We're the "best of both worlds" between expensive consultancies and risky DIY approaches.</p>
+                </div>
+            </div>
+
+            <!-- Slide 10: Business Model -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Business Model</h3>
+                    <span class="slide-number">Slide 10 of 12</span>
+                </div>
+                <div class="two-col">
+                    <div>
+                        <h4 style="margin-bottom: 16px;">💰 Revenue Streams</h4>
+                        <div class="card">
+                            <h5>Project Fees (70%)</h5>
+                            <p style="color: var(--gray-500); font-size: 0.875rem;">
+                                Fixed-price custom development projects ($15K-$1M+)
+                            </p>
+                        </div>
+                        <div class="card">
+                            <h5>Retainer Contracts (20%)</h5>
+                            <p style="color: var(--gray-500); font-size: 0.875rem;">
+                                Ongoing support, optimization, and feature development
+                            </p>
+                        </div>
+                        <div class="card">
+                            <h5>Training & Consulting (10%)</h5>
+                            <p style="color: var(--gray-500); font-size: 0.875rem;">
+                                Workshops, strategy sessions, certification programs
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 16px;">📊 Unit Economics</h4>
+                        <div class="card card-highlight">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                <span>Average Project Size</span>
+                                <strong>$75,000</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                <span>Gross Margin</span>
+                                <strong style="color: var(--success);">65-70%</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                <span>Customer LTV</span>
+                                <strong>$250,000+</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Repeat Rate</span>
+                                <strong style="color: var(--success);">80%</strong>
+                            </div>
+                        </div>
+                        <h4 style="margin: 24px 0 16px;">🎯 Customer Acquisition</h4>
+                        <ul class="styled-list">
+                            <li>Content marketing & thought leadership</li>
+                            <li>Strategic partnerships</li>
+                            <li>Referrals from satisfied clients</li>
+                            <li>Conference speaking & workshops</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: Traction & Roadmap -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Traction & Roadmap</h3>
+                    <span class="slide-number">Slide 11 of 12</span>
+                </div>
+                <h4 style="margin-bottom: 16px;">📍 Current Status</h4>
+                <div class="card card-success" style="margin-bottom: 24px;">
+                    <ul class="check-list">
+                        <li>Production-ready technology stack validated</li>
+                        <li>Multi-agent orchestration frameworks mastered (LangGraph, CrewAI, AutoGen)</li>
+                        <li>Full-stack development capabilities operational</li>
+                        <li>Security and compliance frameworks established (OWASP 2025, SOC 2)</li>
+                        <li>Sales and marketing infrastructure in place</li>
+                    </ul>
+                </div>
+                <div class="two-col">
+                    <div>
+                        <h4 style="margin-bottom: 16px;">🎯 6-Month Milestones</h4>
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="step-number">Q3</div>
+                                <div class="step-content">
+                                    <div class="step-title">First 5 Paying Clients</div>
+                                    <p style="color: var(--gray-500); font-size: 0.875rem;">
+                                        Close initial projects across multiple verticals
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">Q4</div>
+                                <div class="step-content">
+                                    <div class="step-title">$500K Pipeline</div>
+                                    <p style="color: var(--gray-500); font-size: 0.875rem;">
+                                        Build qualified opportunity pipeline
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 16px;">🚀 12-Month Goals</h4>
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="step-number">$1M</div>
+                                <div class="step-content">
+                                    <div class="step-title">ARR Target</div>
+                                    <p style="color: var(--gray-500); font-size: 0.875rem;">
+                                        Mix of project fees and retainers
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">15+</div>
+                                <div class="step-content">
+                                    <div class="step-title">Active Clients</div>
+                                    <p style="color: var(--gray-500); font-size: 0.875rem;">
+                                        Diversified across target verticals
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12: The Ask -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h3 class="slide-title">Let's Talk</h3>
+                    <span class="slide-number">Slide 12 of 12</span>
+                </div>
+                <div style="text-align: center; padding: 40px 0;">
+                    <h2 style="font-size: 2rem; margin-bottom: 24px; color: var(--primary);">
+                        Ready to Transform Your Business with AI Agents?
+                    </h2>
+                    <p style="font-size: 1.25rem; color: var(--gray-600); max-width: 600px; margin: 0 auto 40px;">
+                        Whether you need a single agent to automate customer support or an enterprise platform to transform your entire organization—we're ready to help.
+                    </p>
+                    <div class="metrics-grid" style="max-width: 600px; margin: 0 auto 40px;">
+                        <div class="metric-card">
+                            <div class="metric-value">Free</div>
+                            <div class="metric-label">Initial Consultation</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--success) 0%, #059669 100%);">
+                            <div class="metric-value">2-Week</div>
+                            <div class="metric-label">Strategy Sprint Available</div>
+                        </div>
+                    </div>
+                    <div style="background: var(--gray-50); padding: 32px; border-radius: 16px; display: inline-block;">
+                        <p style="font-size: 1.25rem; font-weight: 600; margin-bottom: 8px;">Rick Jefferson</p>
+                        <p style="color: var(--gray-500); margin-bottom: 16px;">Founder & CEO, Agent Architect Supreme</p>
+                        <p style="color: var(--primary); font-weight: 600;">
+                            📧 rickjefferson@rickjeffersonsolutions.com
+                        </p>
+                        <p style="color: var(--gray-500); font-size: 0.875rem; margin-top: 8px;">
+                            🔗 GitHub: rjbizsolution23-wq
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 2: ONE-PAGER EXECUTIVE SUMMARY -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="section-2" class="section">
+        <div class="section-header">
+            <h2><span class="section-number">SECTION 2</span> One-Pager Executive Summary</h2>
+        </div>
+        <div class="section-content">
+            
+            <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <div>
+                        <h1 style="color: white; font-size: 2rem; margin-bottom: 8px;">RJ Business Solutions</h1>
+                        <p style="font-size: 1.125rem; opacity: 0.9;">Enterprise AI Agent Development</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 0.875rem; opacity: 0.8;">Rick Jefferson, Founder & CEO</p>
+                        <p style="font-size: 0.875rem; opacity: 0.8;">rickjefferson@rickjeffersonsolutions.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <div class="subsection">
+                        <h3>🏢 Company Overview</h3>
+                    </div>
+                    <p style="margin-bottom: 16px;">
+                        RJ Business Solutions builds production-ready AI agents that automate complex business workflows. We transform manual processes into intelligent, automated systems—delivered in weeks, not years. Our agents integrate with existing systems (CRM, ERP, databases) and are built on the latest AI models including Claude Opus 4.7, GPT-5.3-Codex, and Gemini 3.1 Pro.
+                    </p>
+
+                    <div class="subsection">
+                        <h3>📦 Products & Services</h3>
+                    </div>
+                    <ul class="styled-list">
+                        <li><strong>Custom AI Agent Development</strong> — Single-purpose agents ($15K-$50K)</li>
+                        <li><strong>Multi-Agent Orchestration</strong> — Teams of agents working together ($75K-$250K)</li>
+                        <li><strong>Enterprise Agent Platform</strong> — Build & manage hundreds of agents ($250K-$1M+)</li>
+                        <li><strong>Agent Consulting & Strategy</strong> — Roadmaps and opportunity analysis ($10K-$35K)</li>
+                        <li><strong>Training & Skill Transfer</strong> — Empower your team to build agents ($5K-$25K)</li>
+                    </ul>
+
+                    <div class="subsection">
+                        <h3>🎯 Target Markets</h3>
+                    </div>
+                    <ul class="styled-list">
+                        <li><strong>Enterprise Companies</strong> ($50M+ revenue) — Process automation, customer service</li>
+                        <li><strong>Growth Startups</strong> (Series A-C) — Scale without proportional headcount</li>
+                        <li><strong>Professional Services</strong> — Research, document analysis, compliance</li>
+                        <li><strong>Healthcare</strong> — Patient intake, scheduling, record analysis</li>
+                        <li><strong>E-commerce</strong> — Customer support, recommendations, supply chain</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="subsection">
+                        <h3>💪 Competitive Advantages</h3>
+                    </div>
+                    <ul class="check-list">
+                        <li>4-8 week delivery vs. 12-18 month industry average</li>
+                        <li>Fixed-price projects—no runaway consulting bills</li>
+                        <li>Multi-framework mastery (LangGraph, CrewAI, AutoGen)</li>
+                        <li>Latest AI models (Claude Opus 4.7, GPT-5.3, Gemini 3.1)</li>
+                        <li>Knowledge transfer included—no vendor lock-in</li>
+                        <li>Security-first (OWASP 2025, SOC 2, HIPAA-ready)</li>
+                    </ul>
+
+                    <div class="subsection">
+                        <h3>📊 Key Metrics & Results</h3>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">60-80%</div>
+                            <div class="metric-label">Cost Reduction</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--success) 0%, #059669 100%);">
+                            <div class="metric-value">480%</div>
+                            <div class="metric-label">Typical ROI</div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--accent) 0%, #0891b2 100%);">
+                            <div class="metric-value">2.5mo</div>
+                            <div class="metric-label">Payback Period</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--warning) 0%, #d97706 100%);">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">Revenue Lift</div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>👤 Founder</h3>
+                    </div>
+                    <p>
+                        <strong>Rick Jefferson</strong> — Agent Architect Supreme with deep expertise in AI/ML, full-stack development, and enterprise systems. Specializes in translating cutting-edge AI research into production-ready business solutions.
+                    </p>
+                </div>
+            </div>
+
+            <div style="background: var(--gray-50); padding: 24px; border-radius: 12px; margin-top: 32px; text-align: center;">
+                <p style="font-size: 1.125rem; margin-bottom: 12px;">
+                    <strong>Ready to transform your business with AI agents?</strong>
+                </p>
+                <p style="color: var(--primary); font-weight: 600;">
+                    📧 rickjefferson@rickjeffersonsolutions.com | 🔗 GitHub: rjbizsolution23-wq
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 3: PRODUCT DOCUMENTATION -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="section-3" class="section">
+        <div class="section-header">
+            <h2><span class="section-number">SECTION 3</span> Product Documentation</h2>
+        </div>
+        <div class="section-content">
+
+            <!-- Section 3.1: Introduction -->
+            <div class="subsection">
+                <h3>3.1 Introduction to AI Agents</h3>
+            </div>
+            
+            <h4 style="margin: 24px 0 16px;">What Are AI Agents?</h4>
+            <p style="margin-bottom: 16px;">
+                AI agents are autonomous software systems powered by large language models (LLMs) that can understand natural language instructions, reason through complex problems, use tools, and take actions to accomplish goals. Unlike simple chatbots, AI agents can:
+            </p>
+            <div class="two-col">
+                <div class="card card-highlight">
+                    <h5>🧠 Reason and Plan</h5>
+                    <p>Break down complex tasks into steps, adapt to unexpected situations, and learn from feedback.</p>
+                </div>
+                <div class="card card-highlight">
+                    <h5>🔧 Use Tools</h5>
+                    <p>Search databases, call APIs, read documents, send emails, and interact with external systems.</p>
+                </div>
+                <div class="card card-highlight">
+                    <h5>🔄 Maintain Context</h5>
+                    <p>Remember conversation history, user preferences, and task state across interactions.</p>
+                </div>
+                <div class="card card-highlight">
+                    <h5>🤝 Collaborate</h5>
+                    <p>Work with other agents in orchestrated workflows, delegating and coordinating tasks.</p>
+                </div>
+            </div>
+
+            <h4 style="margin: 32px 0 16px;">Why Businesses Need AI Agents</h4>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Business Challenge</th>
+                            <th>Traditional Solution</th>
+                            <th>AI Agent Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>High volume customer inquiries</td>
+                            <td>Hire more support staff ($50K+ each)</td>
+                            <td>AI agent handles 75%+ automatically</td>
+                        </tr>
+                        <tr>
+                            <td>Time-consuming research</td>
+                            <td>Analysts spend 20+ hours/week</td>
+                            <td>AI agent delivers research in minutes</td>
+                        </tr>
+                        <tr>
+                            <td>Manual data entry & processing</td>
+                            <td>Hire data entry staff or offshore</td>
+                            <td>AI agent processes automatically</td>
+                        </tr>
+                        <tr>
+                            <td>24/7 operations requirement</td>
+                            <td>3 shifts of staff (3x cost)</td>
+                            <td>AI agents work around the clock</td>
+                        </tr>
+                        <tr>
+                            <td>Sales lead qualification</td>
+                            <td>SDRs manually qualify leads</td>
+                            <td>AI agent scores and routes instantly</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 style="margin: 32px 0 16px;">RJ's Approach to Agent Development</h4>
+            <div class="quote-box">
+                "We don't build prototypes or demos. Every agent we deliver is production-ready—fully tested, monitored, secured, and integrated with your existing systems. Our clients don't get science projects; they get business solutions."
+                <div class="quote-attribution">— Rick Jefferson, Founder</div>
+            </div>
+
+            <div class="callout callout-success">
+                <div class="callout-title">🎯 Our Core Principles</div>
+                <ul class="check-list">
+                    <li><strong>Production-First:</strong> Everything we build is deployment-ready from day one</li>
+                    <li><strong>Security-First:</strong> OWASP 2025 compliance, encryption, audit logging by default</li>
+                    <li><strong>Integration-First:</strong> Agents connect to your existing systems, not replace them</li>
+                    <li><strong>Knowledge Transfer:</strong> We train your team so you're never dependent on us</li>
+                </ul>
+            </div>
+
+            <!-- Section 3.2: Agent Solutions Portfolio -->
+            <div class="subsection">
+                <h3>3.2 Agent Solutions Portfolio</h3>
+            </div>
+
+            <!-- Product 1 -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4 style="color: white; margin: 0;">🤖 Custom AI Agent Development</h4>
+                </div>
+                <div class="case-study-body">
+                    <p style="font-size: 1.125rem; margin-bottom: 24px;">
+                        Build specialized AI agents for any business function—from customer support to sales to research to compliance monitoring.
+                    </p>
+                    <div class="two-col">
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Deliverables</h5>
+                            <ul class="check-list">
+                                <li>Fully functional AI agent with conversational UI</li>
+                                <li>Integration with existing systems (CRM, ERP, databases)</li>
+                                <li>Custom knowledge base and RAG implementation</li>
+                                <li>Production deployment with monitoring</li>
+                                <li>Documentation and handover training</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Common Use Cases</h5>
+                            <ul class="styled-list">
+                                <li>Customer support automation</li>
+                                <li>Sales lead qualification</li>
+                                <li>Research and analysis assistant</li>
+                                <li>Document processing and extraction</li>
+                                <li>Internal knowledge base Q&A</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="metrics-grid" style="margin-top: 24px;">
+                        <div class="metric-card">
+                            <div class="metric-value">$15K-$50K</div>
+                            <div class="metric-label">Investment</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--success) 0%, #059669 100%);">
+                            <div class="metric-value">4-8 wks</div>
+                            <div class="metric-label">Timeline</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4 style="color: white; margin: 0;">🔗 Multi-Agent Orchestration Systems</h4>
+                </div>
+                <div class="case-study-body">
+                    <p style="font-size: 1.125rem; margin-bottom: 24px;">
+                        Complex workflow automation using teams of specialized agents working together—supervisor-worker patterns, hierarchical systems, and collaborative research teams.
+                    </p>
+                    <div class="two-col">
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Deliverables</h5>
+                            <ul class="check-list">
+                                <li>Multi-agent architecture design</li>
+                                <li>Agent team implementation (3-10+ specialized agents)</li>
+                                <li>Workflow orchestration with LangGraph/CrewAI</li>
+                                <li>State management and persistence</li>
+                                <li>Production deployment with full observability</li>
+                                <li>90-day support and optimization</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Common Use Cases</h5>
+                            <ul class="styled-list">
+                                <li>Sales automation pipeline (lead gen → qualify → outreach)</li>
+                                <li>Content creation factory (research → write → edit → publish)</li>
+                                <li>Customer service platform (triage → resolve → escalate)</li>
+                                <li>Financial analysis suite (gather → analyze → report)</li>
+                                <li>Legal research team (search → summarize → brief)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="metrics-grid" style="margin-top: 24px;">
+                        <div class="metric-card">
+                            <div class="metric-value">$75K-$250K</div>
+                            <div class="metric-label">Investment</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--success) 0%, #059669 100%);">
+                            <div class="metric-value">8-16 wks</div>
+                            <div class="metric-label">Timeline</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4 style="color: white; margin: 0;">🏢 Enterprise Agent Platform</h4>
+                </div>
+                <div class="case-study-body">
+                    <p style="font-size: 1.125rem; margin-bottom: 24px;">
+                        Complete internal AI agent platform for enterprises—build, deploy, manage, and monitor hundreds of agents across departments.
+                    </p>
+                    <div class="two-col">
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Deliverables</h5>
+                            <ul class="check-list">
+                                <li>White-label agent creation platform</li>
+                                <li>Agent marketplace/library</li>
+                                <li>Central management dashboard</li>
+                                <li>Usage analytics and ROI tracking</li>
+                                <li>Role-based access control (RBAC)</li>
+                                <li>API for programmatic agent creation</li>
+                                <li>SOC 2 / HIPAA compliance configurations</li>
+                                <li>Dedicated support and SLA</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Platform Features</h5>
+                            <ul class="styled-list">
+                                <li>No-code agent builder for business users</li>
+                                <li>Template library for common use cases</li>
+                                <li>Version control and rollback</li>
+                                <li>A/B testing for agent performance</li>
+                                <li>Cost allocation by department</li>
+                                <li>Audit logging and compliance reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="metrics-grid" style="margin-top: 24px;">
+                        <div class="metric-card">
+                            <div class="metric-value">$250K-$1M+</div>
+                            <div class="metric-label">Investment</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--success) 0%, #059669 100%);">
+                            <div class="metric-value">16-24 wks</div>
+                            <div class="metric-label">Timeline</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4 style="color: white; margin: 0;">📋 Agent Consulting & Strategy</h4>
+                </div>
+                <div class="case-study-body">
+                    <p style="font-size: 1.125rem; margin-bottom: 24px;">
+                        Help businesses identify AI agent opportunities, create implementation roadmaps, and build internal AI capabilities.
+                    </p>
+                    <div class="two-col">
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Deliverables</h5>
+                            <ul class="check-list">
+                                <li>Process audit and automation opportunity analysis</li>
+                                <li>AI agent feasibility study</li>
+                                <li>ROI projections and business case</li>
+                                <li>Implementation roadmap (6-18 months)</li>
+                                <li>Technology stack recommendations</li>
+                                <li>Executive presentation and board materials</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Who It's For</h5>
+                            <ul class="styled-list">
+                                <li>Companies exploring AI but unsure where to start</li>
+                                <li>Executives building AI strategy</li>
+                                <li>Teams evaluating build vs. buy decisions</li>
+                                <li>Organizations with failed AI projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="metrics-grid" style="margin-top: 24px;">
+                        <div class="metric-card">
+                            <div class="metric-value">$10K-$35K</div>
+                            <div class="metric-label">Investment</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--success) 0%, #059669 100%);">
+                            <div class="metric-value">2-4 wks</div>
+                            <div class="metric-label">Timeline</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4 style="color: white; margin: 0;">🎓 Agent Training & Skill Transfer</h4>
+                </div>
+                <div class="case-study-body">
+                    <p style="font-size: 1.125rem; margin-bottom: 24px;">
+                        Train internal teams to build, manage, and extend their own AI agents—empowering your organization for long-term AI success.
+                    </p>
+                    <div class="two-col">
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Deliverables</h5>
+                            <ul class="check-list">
+                                <li>Custom training curriculum</li>
+                                <li>Hands-on workshops (2-5 days)</li>
+                                <li>Code templates and starter kits</li>
+                                <li>Best practices documentation</li>
+                                <li>30-day post-training support</li>
+                                <li>Certification program</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="margin-bottom: 12px;">Training Modules</h5>
+                            <ul class="styled-list">
+                                <li>AI Agent Fundamentals</li>
+                                <li>LangGraph & CrewAI Deep Dive</li>
+                                <li>Agent Architecture & Design Patterns</li>
+                                <li>Integration & Deployment</li>
+                                <li>Monitoring & Optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="metrics-grid" style="margin-top: 24px;">
+                        <div class="metric-card">
+                            <div class="metric-value">$5K-$25K</div>
+                            <div class="metric-label">Per Cohort (up to 15)</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--success) 0%, #059669 100%);">
+                            <div class="metric-value">1-2 wks</div>
+                            <div class="metric-label">+ 30 Days Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3.3: Implementation Process -->
+            <div class="subsection">
+                <h3>3.3 Implementation Process</h3>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Discovery & Requirements (Week 1-2)</div>
+                        <p style="color: var(--gray-600);">
+                            We conduct deep-dive sessions with your team to understand current workflows, pain points, integration requirements, and success criteria. Deliverable: Detailed requirements document and project scope.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Architecture Design (Week 2-3)</div>
+                        <p style="color: var(--gray-600);">
+                            We design the agent architecture, select optimal AI models and frameworks, plan integrations, and define the technical approach. Deliverable: Architecture document, system diagrams, and technical specification.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Development & Testing (Week 3-6)</div>
+                        <p style="color: var(--gray-600);">
+                            Iterative development with weekly demos. We build the agent, integrate with your systems, implement RAG/knowledge base, and conduct thorough testing. Deliverable: Working agent in staging environment.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Deployment & Training (Week 6-8)</div>
+                        <p style="color: var(--gray-600);">
+                            Production deployment with monitoring setup. We train your team on agent management, provide documentation, and conduct handover sessions. Deliverable: Live agent in production + trained team.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Support & Optimization (Ongoing)</div>
+                        <p style="color: var(--gray-600);">
+                            90-day post-launch support included. We monitor performance, tune prompts, optimize costs, and make refinements based on real-world usage. Deliverable: Optimized, production-hardened agent.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3.4: Technology Stack -->
+            <div class="subsection">
+                <h3>3.4 Technology Stack (Verified July 2026)</h3>
+            </div>
+
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <div class="tech-category-title">🧠 AI Frameworks</div>
+                    <p style="font-size: 0.875rem; color: var(--gray-600); margin-bottom: 12px;">
+                        We're not locked into one framework—we select the best tool for each use case.
+                    </p>
+                    <span class="tech-item"><strong>LangGraph 2.0</strong> — State machines, complex workflows</span>
+                    <span class="tech-item"><strong>CrewAI 1.14.4</strong> — Role-based agent teams</span>
+                    <span class="tech-item"><strong>Vercel AI SDK v6</strong> — Streaming, edge deployment</span>
+                    <span class="tech-item"><strong>AutoGen</strong> — Conversational multi-agent</span>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">🤖 AI Models</div>
+                    <p style="font-size: 0.875rem; color: var(--gray-600); margin-bottom: 12px;">
+                        Latest frontier models for maximum capability and accuracy.
+                    </p>
+                    <span class="tech-item"><strong>Claude Opus 4.7</strong> — Complex reasoning, long context</span>
+                    <span class="tech-item"><strong>GPT-5.3-Codex</strong> — Code generation, structured output</span>
+                    <span class="tech-item"><strong>Gemini 3.1 Pro</strong> — Multimodal, large context</span>
+                    <span class="tech-item"><strong>DeepSeek V3.2</strong> — Cost-effective, fast</span>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">🎨 Frontend</div>
+                    <span class="tech-item">Next.js 16.2</span>
+                    <span class="tech-item">React 19.2</span>
+                    <span class="tech-item">Tailwind CSS 4.2.4</span>
+                    <span class="tech-item">shadcn/ui v4</span>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">⚙️ Backend</div>
+                    <span class="tech-item">FastAPI 0.136.1</span>
+                    <span class="tech-item">Hono 4.12.15</span>
+                    <span class="tech-item">Node.js v22 LTS</span>
+                    <span class="tech-item">Python 3.12</span>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">🗄️ Database & Vector</div>
+                    <span class="tech-item">PostgreSQL 18.3</span>
+                    <span class="tech-item">Supabase (pgvector)</span>
+                    <span class="tech-item">Neon (serverless)</span>
+                    <span class="tech-item">Pinecone / Weaviate</span>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">☁️ Infrastructure</div>
+                    <span class="tech-item">Vercel Edge</span>
+                    <span class="tech-item">Railway</span>
+                    <span class="tech-item">Cloudflare Workers</span>
+                    <span class="tech-item">Kubernetes 1.36.0</span>
+                </div>
+            </div>
+
+            <!-- Section 3.5: Integration Capabilities -->
+            <div class="subsection">
+                <h3>3.5 Integration Capabilities</h3>
+            </div>
+
+            <p style="margin-bottom: 24px;">
+                Our agents integrate seamlessly with your existing technology stack. We have pre-built connectors and extensive experience with:
+            </p>
+
+            <div class="two-col">
+                <div class="card">
+                    <h5>🔗 CRM Systems</h5>
+                    <ul class="styled-list">
+                        <li>Salesforce (REST API, Apex)</li>
+                        <li>HubSpot (all hubs)</li>
+                        <li>Pipedrive, Zoho, Monday CRM</li>
+                        <li>Custom CRM via API</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h5>💬 Communication Platforms</h5>
+                    <ul class="styled-list">
+                        <li>Slack (workspace apps)</li>
+                        <li>Microsoft Teams</li>
+                        <li>Discord, Telegram</li>
+                        <li>Email (SendGrid, Postmark)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h5>🗄️ Databases & Storage</h5>
+                    <ul class="styled-list">
+                        <li>PostgreSQL, MySQL, SQL Server</li>
+                        <li>MongoDB, DynamoDB</li>
+                        <li>S3, GCS, Azure Blob</li>
+                        <li>Snowflake, BigQuery</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h5>🔐 Authentication & SSO</h5>
+                    <ul class="styled-list">
+                        <li>OAuth 2.1 / OIDC</li>
+                        <li>SAML 2.0</li>
+                        <li>LDAP / Active Directory</li>
+                        <li>Okta, Auth0, Azure AD</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 3.6: Security & Compliance -->
+            <div class="subsection">
+                <h3>3.6 Security & Compliance</h3>
+            </div>
+
+            <div class="callout callout-warning" style="margin-bottom: 24px;">
+                <div class="callout-title">🔐 Security-First Development</div>
+                <p>Every agent we build follows OWASP 2025 guidelines for AI/LLM applications. Security isn't an afterthought—it's built into every layer of our architecture.</p>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <h4 style="margin-bottom: 16px;">Data Protection</h4>
+                    <ul class="check-list">
+                        <li>Encryption at rest (AES-256)</li>
+                        <li>Encryption in transit (TLS 1.3)</li>
+                        <li>PII detection and redaction</li>
+                        <li>Data residency controls</li>
+                        <li>Retention policies and auto-purge</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Access Controls</h4>
+                    <ul class="check-list">
+                        <li>Role-based access control (RBAC)</li>
+                        <li>Multi-factor authentication</li>
+                        <li>API key rotation</li>
+                        <li>Session management</li>
+                        <li>IP allowlisting options</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Audit & Monitoring</h4>
+                    <ul class="check-list">
+                        <li>Complete audit logging</li>
+                        <li>Real-time anomaly detection</li>
+                        <li>Usage analytics and reporting</li>
+                        <li>Cost monitoring and alerts</li>
+                        <li>Performance dashboards</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Compliance Support</h4>
+                    <ul class="check-list">
+                        <li>SOC 2 Type II ready</li>
+                        <li>HIPAA configurations</li>
+                        <li>GDPR compliance</li>
+                        <li>FedRAMP considerations</li>
+                        <li>Industry-specific requirements</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 4: PRICING & PACKAGING GUIDE -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="section-4" class="section">
+        <div class="section-header">
+            <h2><span class="section-number">SECTION 4</span> Pricing & Packaging Guide</h2>
+        </div>
+        <div class="section-content">
+
+            <!-- Section 4.1: Pricing Philosophy -->
+            <div class="subsection">
+                <h3>4.1 Pricing Philosophy</h3>
+            </div>
+
+            <div class="quote-box">
+                "We charge based on the value delivered, not hours worked. You know exactly what you're paying and what you're getting—no surprises, no scope creep bills."
+                <div class="quote-attribution">— Rick Jefferson, Founder</div>
+            </div>
+
+            <div class="two-col" style="margin-top: 24px;">
+                <div class="card card-success">
+                    <h5>✅ Why Fixed-Price Projects</h5>
+                    <ul class="styled-list">
+                        <li>Predictable budgeting—know your total cost upfront</li>
+                        <li>Aligned incentives—we're motivated to be efficient</li>
+                        <li>Clear deliverables—no ambiguity about what's included</li>
+                        <li>Faster decision-making—no need to track hours</li>
+                    </ul>
+                </div>
+                <div class="card card-warning">
+                    <h5>❌ Why We Don't Do Hourly</h5>
+                    <ul class="styled-list">
+                        <li>Incentivizes inefficiency—more hours = more revenue</li>
+                        <li>Unpredictable costs—budgets can balloon</li>
+                        <li>Focus on inputs vs outputs—time vs value</li>
+                        <li>Administrative overhead—tracking, approving, disputing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 4.2: Pricing Tiers -->
+            <div class="subsection">
+                <h3>4.2 Pricing Tiers</h3>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-tier">Tier 1</div>
+                    <div class="pricing-name">STARTER</div>
+                    <div class="pricing-price">$5K - $25K</div>
+                    <p style="color: var(--gray-500); margin-bottom: 16px;">
+                        Startups, SMBs, proof-of-concept
+                    </p>
+                    <ul class="pricing-features">
+                        <li>Single AI agent development</li>
+                        <li>Basic integration (1-2 systems)</li>
+                        <li>30-day post-launch support</li>
+                        <li>Standard cloud deployment</li>
+                        <li>Documentation included</li>
+                    </ul>
+                    <p style="font-size: 0.875rem; color: var(--gray-500); margin-top: 16px;">
+                        <strong>Typical:</strong> Chatbot, lead qualifier, research assistant
+                    </p>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-tier">Tier 2</div>
+                    <div class="pricing-name">PROFESSIONAL</div>
+                    <div class="pricing-price">$25K - $100K</div>
+                    <p style="color: var(--gray-500); margin-bottom: 16px;">
+                        Growing companies, department automation
+                    </p>
+                    <ul class="pricing-features">
+                        <li>Multi-agent system (2-5 agents)</li>
+                        <li>Advanced integrations (CRM, DBs, APIs)</li>
+                        <li>Custom knowledge base & RAG</li>
+                        <li>90-day support & optimization</li>
+                        <li>Production monitoring setup</li>
+                        <li>Half-day team workshop</li>
+                    </ul>
+                    <p style="font-size: 0.875rem; color: var(--gray-500); margin-top: 16px;">
+                        <strong>Typical:</strong> Sales pipeline, content system, service platform
+                    </p>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-tier">Tier 3</div>
+                    <div class="pricing-name">ENTERPRISE</div>
+                    <div class="pricing-price">$100K - $1M+</div>
+                    <p style="color: var(--gray-500); margin-bottom: 16px;">
+                        Large enterprises, platform implementations
+                    </p>
+                    <ul class="pricing-features">
+                        <li>Full agent platform or complex multi-agent</li>
+                        <li>Enterprise integrations (SSO, LDAP)</li>
+                        <li>SOC 2, HIPAA, FedRAMP configs</li>
+                        <li>Dedicated infrastructure</li>
+                        <li>12-month support & development</li>
+                        <li>Quarterly optimization reviews</li>
+                        <li>SLA guarantees (99.9% uptime)</li>
+                    </ul>
+                    <p style="font-size: 0.875rem; color: var(--gray-500); margin-top: 16px;">
+                        <strong>Typical:</strong> Agent platform, 50+ process automation
+                    </p>
+                </div>
+            </div>
+
+            <!-- Section 4.3: ROI Analysis -->
+            <div class="subsection">
+                <h3>4.3 ROI Analysis Framework</h3>
+            </div>
+
+            <p style="margin-bottom: 24px;">
+                Every project includes an ROI analysis to demonstrate business value. Here's a sample calculation:
+            </p>
+
+            <div class="roi-calculator">
+                <h4 style="text-align: center; color: var(--success); margin-bottom: 24px;">
+                    📊 Sample ROI: Customer Support Agent
+                </h4>
+                
+                <h5 style="margin-bottom: 16px;">Current State (Before AI Agent)</h5>
+                <div class="roi-row">
+                    <span>Support agents (5 @ $50K/year)</span>
+                    <span><strong>$250,000</strong></span>
+                </div>
+                <div class="roi-row">
+                    <span>Average response time</span>
+                    <span>4 hours</span>
+                </div>
+                <div class="roi-row">
+                    <span>First-contact resolution rate</span>
+                    <span>65%</span>
+                </div>
+                <div class="roi-row">
+                    <span>Customer satisfaction</span>
+                    <span>72%</span>
+                </div>
+
+                <h5 style="margin: 24px 0 16px;">With AI Agent</h5>
+                <div class="roi-row">
+                    <span>Support agents (2 for escalations @ $50K)</span>
+                    <span><strong>$100,000</strong></span>
+                </div>
+                <div class="roi-row">
+                    <span>AI agent development</span>
+                    <span>$25,000</span>
+                </div>
+                <div class="roi-row">
+                    <span>AI agent hosting/year</span>
+                    <span>$5,000</span>
+                </div>
+                <div class="roi-row">
+                    <span>Average response time</span>
+                    <span><strong>&lt;1 minute</strong></span>
+                </div>
+                <div class="roi-row">
+                    <span>Auto-resolution rate</span>
+                    <span><strong>85%</strong></span>
+                </div>
+                <div class="roi-row">
+                    <span>Customer satisfaction</span>
+                    <span><strong>89%</strong></span>
+                </div>
+
+                <h5 style="margin: 24px 0 16px;">Results</h5>
+                <div class="roi-row roi-total">
+                    <span>Annual Savings</span>
+                    <span>$145,000</span>
+                </div>
+                <div class="roi-row roi-total">
+                    <span>Year 1 ROI</span>
+                    <span>480%</span>
+                </div>
+                <div class="roi-row roi-total">
+                    <span>Payback Period</span>
+                    <span>2.5 months</span>
+                </div>
+            </div>
+
+            <!-- Section 4.4: Payment Terms -->
+            <div class="subsection">
+                <h3>4.4 Payment Terms & Options</h3>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h5>💳 Standard Payment Schedule</h5>
+                    <ul class="styled-list">
+                        <li><strong>25%</strong> upon contract signing</li>
+                        <li><strong>25%</strong> at design approval</li>
+                        <li><strong>25%</strong> at staging deployment</li>
+                        <li><strong>25%</strong> at production launch</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h5>🔄 Retainer Options</h5>
+                    <ul class="styled-list">
+                        <li><strong>Monthly:</strong> $5K-$25K/month for ongoing development</li>
+                        <li><strong>Quarterly:</strong> 10% discount on 3-month commitment</li>
+                        <li><strong>Annual:</strong> 20% discount on 12-month commitment</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 4.5: Package Comparison -->
+            <div class="subsection">
+                <h3>4.5 Package Comparison Matrix</h3>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>STARTER</th>
+                            <th>PROFESSIONAL</th>
+                            <th>ENTERPRISE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Number of Agents</td>
+                            <td>1</td>
+                            <td>2-5</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>System Integrations</td>
+                            <td>1-2</td>
+                            <td>5-10</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Custom Knowledge Base</td>
+                            <td>Basic</td>
+                            <td>Advanced RAG</td>
+                            <td>Enterprise RAG</td>
+                        </tr>
+                        <tr>
+                            <td>Post-Launch Support</td>
+                            <td>30 days</td>
+                            <td>90 days</td>
+                            <td>12 months</td>
+                        </tr>
+                        <tr>
+                            <td>Team Training</td>
+                            <td>Documentation</td>
+                            <td>Half-day workshop</td>
+                            <td>Full program</td>
+                        </tr>
+                        <tr>
+                            <td>SLA Guarantee</td>
+                            <td>—</td>
+                            <td>99% uptime</td>
+                            <td>99.9% uptime</td>
+                        </tr>
+                        <tr>
+                            <td>Compliance Configs</td>
+                            <td>—</td>
+                            <td>Basic</td>
+                            <td>SOC 2, HIPAA</td>
+                        </tr>
+                        <tr>
+                            <td>Dedicated Support</td>
+                            <td>Email</td>
+                            <td>Email + Slack</td>
+                            <td>Dedicated CSM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 5: SALES PLAYBOOK -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="section-5" class="section">
+        <div class="section-header">
+            <h2><span class="section-number">SECTION 5</span> Sales Playbook</h2>
+        </div>
+        <div class="section-content">
+
+            <!-- Section 5.1: Value Proposition Messaging -->
+            <div class="subsection">
+                <h3>5.1 Value Proposition Messaging</h3>
+            </div>
+
+            <div class="card card-highlight" style="margin-bottom: 24px;">
+                <h5>🎯 30-Second Elevator Pitch</h5>
+                <p style="font-size: 1.125rem; font-style: italic;">
+                    "RJ Business Solutions builds production-ready AI agents that automate your most time-consuming business processes. Unlike generic AI tools, we build custom agents tailored to your specific workflows—integrated with your existing systems, delivered in 4-8 weeks, and designed to cut operational costs by 60% or more. Our clients see ROI within 3 months."
+                </p>
+            </div>
+
+            <div class="card card-accent" style="margin-bottom: 24px;">
+                <h5>📧 2-Minute Pitch</h5>
+                <p style="margin-bottom: 16px;">
+                    "Every company has processes that eat up employee time—answering the same customer questions, qualifying leads, researching competitors, processing documents. These are exactly the tasks AI agents excel at.
+                </p>
+                <p style="margin-bottom: 16px;">
+                    But here's the problem: building AI agents is hard. Most companies either try to do it internally and spend 18 months on a prototype that never reaches production, or they hire expensive consultancies that charge by the hour with no end in sight.
+                </p>
+                <p style="margin-bottom: 16px;">
+                    We take a different approach. We build custom AI agents—tailored to your specific workflows, integrated with your existing systems—and deliver them production-ready in 4-8 weeks at a fixed price. No science projects. No runaway budgets.
+                </p>
+                <p>
+                    Our agents handle 75% of customer inquiries automatically, qualify leads 24/7, and deliver research in minutes instead of hours. Clients typically see 60-80% cost reduction in the processes we automate, with ROI in under 3 months."
+                </p>
+            </div>
+
+            <div class="card" style="margin-bottom: 24px;">
+                <h5>📧 Cold Email Template</h5>
+                <div style="background: var(--gray-50); padding: 20px; border-radius: 8px; font-family: monospace; font-size: 0.875rem;">
+                    <p><strong>Subject:</strong> Quick question about [Company]'s [customer support / sales process / research workflow]</p>
+                    <br>
+                    <p>Hi [First Name],</p>
+                    <br>
+                    <p>I noticed [Company] is growing fast—congrats on [recent milestone/news].</p>
+                    <br>
+                    <p>Quick question: How much time does your team spend on [specific repetitive task—e.g., "answering routine customer questions" or "qualifying inbound leads"]?</p>
+                    <br>
+                    <p>We've helped similar companies automate 75%+ of that work using custom AI agents—cutting costs by 60% while actually improving quality and response times.</p>
+                    <br>
+                    <p>For example, [brief case study: "MidSize Retail cut their support response time from 4 hours to under 1 minute while reducing headcount from 5 to 2."]</p>
+                    <br>
+                    <p>Would a 15-minute call next week make sense to see if this could work for [Company]?</p>
+                    <br>
+                    <p>Best,<br>Rick Jefferson<br>RJ Business Solutions</p>
+                </div>
+            </div>
+
+            <!-- Section 5.2: Customer Personas -->
+            <div class="subsection">
+                <h3>5.2 Customer Personas</h3>
+            </div>
+
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">CT</div>
+                    <div>
+                        <h4 style="margin: 0;">The Overwhelmed CTO</h4>
+                        <p class="persona-title">CTO or VP Engineering at Growth Company</p>
+                    </div>
+                </div>
+                <div class="two-col">
+                    <div>
+                        <h5 style="margin-bottom: 12px;">Pain Points</h5>
+                        <ul class="styled-list">
+                            <li>Engineering team stretched thin on core product</li>
+                            <li>CEO wants AI but no bandwidth to build it</li>
+                            <li>Worried about security and reliability</li>
+                            <li>Burned by failed AI experiments before</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style="margin-bottom: 12px;">How We Help</h5>
+                        <ul class="check-list">
+                            <li>We handle AI so they can focus on product</li>
+                            <li>Production-ready code they can trust</li>
+                            <li>Security-first approach (OWASP, SOC 2)</li>
+                            <li>Knowledge transfer so their team can maintain</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">VO</div>
+                    <div>
+                        <h4 style="margin: 0;">The Operations Leader</h4>
+                        <p class="persona-title">VP Operations, COO, or Head of Customer Success</p>
+                    </div>
+                </div>
+                <div class="two-col">
+                    <div>
+                        <h5 style="margin-bottom: 12px;">Pain Points</h5>
+                        <ul class="styled-list">
+                            <li>Team can't keep up with volume growth</li>
+                            <li>Hiring is slow and expensive</li>
+                            <li>Quality suffers when team is overwhelmed</li>
+                            <li>Needs to show efficiency gains to leadership</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style="margin-bottom: 12px;">How We Help</h5>
+                        <ul class="check-list">
+                            <li>Automate 60-80% of routine work</li>
+                            <li>24/7 coverage without 3x staffing</li>
+                            <li>Consistent quality at scale</li>
+                            <li>Clear ROI metrics for leadership</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">DT</div>
+                    <div>
+                        <h4 style="margin: 0;">The Digital Transformation Lead</h4>
+                        <p class="persona-title">VP Digital, Head of Innovation, or Chief Digital Officer</p>
+                    </div>
+                </div>
+                <div class="two-col">
+                    <div>
+                        <h5 style="margin-bottom: 12px;">Pain Points</h5>
+                        <ul class="styled-list">
+                            <li>Board wants AI strategy but unclear on how</li>
+                            <li>Previous AI initiatives haven't delivered</li>
+                            <li>Needs quick wins to build momentum</li>
+                            <li>Must show measurable business impact</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style="margin-bottom: 12px;">How We Help</h5>
+                        <ul class="check-list">
+                            <li>Strategy consulting to identify opportunities</li>
+                            <li>Fast proof-of-value (4-8 weeks)</li>
+                            <li>Scalable architecture for enterprise rollout</li>
+                            <li>Executive-ready ROI reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5.3: Qualification Framework -->
+            <div class="subsection">
+                <h3>5.3 Qualification Framework (BANT)</h3>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Criterion</th>
+                            <th>Qualified</th>
+                            <th>Needs Development</th>
+                            <th>Disqualified</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Budget</strong></td>
+                            <td>$25K+ approved or clear path</td>
+                            <td>Budget exists but not allocated</td>
+                            <td>No budget, no path to budget</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Authority</strong></td>
+                            <td>Decision maker engaged</td>
+                            <td>Influencer, can intro to DM</td>
+                            <td>No access to decision maker</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Need</strong></td>
+                            <td>Clear pain point, quantified impact</td>
+                            <td>Pain exists but not prioritized</td>
+                            <td>No clear problem to solve</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Timeline</strong></td>
+                            <td>Decision within 30-90 days</td>
+                            <td>6+ months but active evaluation</td>
+                            <td>"Someday" / No urgency</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Section 5.4: Objection Handling -->
+            <div class="subsection">
+                <h3>5.4 Objection Handling</h3>
+            </div>
+
+            <div class="objection-item">
+                <div class="objection-q">
+                    ❓ "We're already building AI internally."
+                </div>
+                <div class="objection-a">
+                    <p><strong>Response:</strong> "That's great—it shows AI is a priority. Quick question: how long has the internal project been running, and when do you expect production deployment?</p>
+                    <p style="margin-top: 12px;">Most internal AI projects take 12-18 months to reach production, if they get there at all. We often work alongside internal teams—we can deliver a production agent in 6 weeks while your team continues building longer-term capabilities. This gives you immediate ROI and learnings that inform your internal roadmap."</p>
+                </div>
+            </div>
+
+            <div class="objection-item">
+                <div class="objection-q">
+                    ❓ "This is too expensive."
+                </div>
+                <div class="objection-a">
+                    <p><strong>Response:</strong> "I understand budget is a concern. Let me share some context on ROI.</p>
+                    <p style="margin-top: 12px;">A $35K agent that automates 75% of your support tickets saves you $150K+ per year in labor costs—that's a 2.5 month payback period and 400%+ ROI in year one.</p>
+                    <p style="margin-top: 12px;">The real question isn't 'can we afford this?' but 'can we afford NOT to automate while our competitors do?' What's the cost of manual processes over the next 12 months?"</p>
+                </div>
+            </div>
+
+            <div class="objection-item">
+                <div class="objection-q">
+                    ❓ "We need to see more proof/case studies."
+                </div>
+                <div class="objection-a">
+                    <p><strong>Response:</strong> "Absolutely—that's a smart approach. I can share detailed case studies from similar companies in your industry.</p>
+                    <p style="margin-top: 12px;">Even better: we offer a 2-week paid Strategy Sprint where we analyze your specific processes, build a proof-of-concept, and deliver a detailed ROI projection for your exact situation. It's a low-risk way to validate the opportunity before committing to a full project."</p>
+                </div>
+            </div>
+
+            <div class="objection-item">
+                <div class="objection-q">
+                    ❓ "We're not ready for AI yet."
+                </div>
+                <div class="objection-a">
+                    <p><strong>Response:</strong> "I hear that a lot, and it usually comes from a good place—you want to make sure the timing is right.</p>
+                    <p style="margin-top: 12px;">Here's the thing: your competitors who 'aren't ready' today will be 18 months behind the ones who start now. AI agents have crossed the threshold from experimental to production-ready—the question isn't if, but when.</p>
+                    <p style="margin-top: 12px;">What if we started with a low-risk consulting engagement to identify your best opportunities? No commitment to build—just a roadmap so you're ready when the timing is right."</p>
+                </div>
+            </div>
+
+            <div class="objection-item">
+                <div class="objection-q">
+                    ❓ "What if the agent doesn't work/makes mistakes?"
+                </div>
+                <div class="objection-a">
+                    <p><strong>Response:</strong> "Great question—reliability is critical for production systems.</p>
+                    <p style="margin-top: 12px;">First, every agent includes human escalation paths. The agent handles routine cases (75%+) and escalates edge cases to humans. Your team stays in control.</p>
+                    <p style="margin-top: 12px;">Second, we include 90-day optimization support. We monitor performance, tune prompts, and refine the agent based on real-world usage. If something isn't working, we fix it.</p>
+                    <p style="margin-top: 12px;">Third, we build in guardrails—confidence thresholds, content filtering, and validation checks. The agent knows when to ask for help."</p>
+                </div>
+            </div>
+
+            <!-- Section 5.5: Competitive Differentiation -->
+            <div class="subsection">
+                <h3>5.5 Competitive Differentiation</h3>
+            </div>
+
+            <div class="card" style="margin-bottom: 16px;">
+                <h5>vs. Large Consultancies (Accenture, Deloitte, McKinsey)</h5>
+                <div class="two-col">
+                    <div>
+                        <p style="color: var(--danger);">❌ <strong>Their Weakness</strong></p>
+                        <ul class="styled-list">
+                            <li>Hourly billing ($300-$500/hr) with no end in sight</li>
+                            <li>Junior consultants doing the work</li>
+                            <li>12-18 month timelines</li>
+                            <li>Prototypes, not production code</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="color: var(--success);">✅ <strong>Our Advantage</strong></p>
+                        <ul class="check-list">
+                            <li>Fixed-price projects—know your total cost</li>
+                            <li>Senior expertise on every project</li>
+                            <li>4-8 week delivery</li>
+                            <li>Production-ready from day one</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 16px;">
+                <h5>vs. DIY Platforms (LangChain Cloud, AutoGPT, ChatGPT Enterprise)</h5>
+                <div class="two-col">
+                    <div>
+                        <p style="color: var(--danger);">❌ <strong>Their Weakness</strong></p>
+                        <ul class="styled-list">
+                            <li>Generic—doesn't fit your specific workflow</li>
+                            <li>Requires internal AI expertise to customize</li>
+                            <li>Integration is your problem</li>
+                            <li>Limited enterprise features</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="color: var(--success);">✅ <strong>Our Advantage</strong></p>
+                        <ul class="check-list">
+                            <li>Custom-built for your exact use case</li>
+                            <li>We handle all the complexity</li>
+                            <li>Full integration with your systems</li>
+                            <li>Enterprise security and compliance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h5>vs. Offshore Development / Freelancers</h5>
+                <div class="two-col">
+                    <div>
+                        <p style="color: var(--danger);">❌ <strong>Their Weakness</strong></p>
+                        <ul class="styled-list">
+                            <li>Communication challenges, timezone issues</li>
+                            <li>Quality and security concerns</li>
+                            <li>No ongoing support or optimization</li>
+                            <li>Limited AI/ML expertise</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="color: var(--success);">✅ <strong>Our Advantage</strong></p>
+                        <ul class="check-list">
+                            <li>US-based, direct communication</li>
+                            <li>Enterprise-grade security (SOC 2, HIPAA)</li>
+                            <li>90-day support included, retainers available</li>
+                            <li>Deep AI/agent expertise—it's all we do</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 6: TRAINING & SKILL TRANSFER GUIDE -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="section-6" class="section">
+        <div class="section-header">
+            <h2><span class="section-number">SECTION 6</span> Agent Training & Skill Transfer Guide</h2>
+        </div>
+        <div class="section-content">
+
+            <!-- Section 6.1: Philosophy -->
+            <div class="subsection">
+                <h3>6.1 Our Training Philosophy</h3>
+            </div>
+
+            <div class="quote-box">
+                "We believe in building capabilities, not dependencies. Every engagement includes knowledge transfer so your team can manage, extend, and improve agents without us. Our goal is to make ourselves optional, not indispensable."
+                <div class="quote-attribution">— Rick Jefferson, Founder</div>
+            </div>
+
+            <div class="two-col" style="margin-top: 24px;">
+                <div class="card card-success">
+                    <h5>✅ Why Knowledge Transfer Matters</h5>
+                    <ul class="styled-list">
+                        <li>Avoid vendor lock-in—you own everything</li>
+                        <li>Faster iteration—your team makes small changes</li>
+                        <li>Reduced ongoing costs—less reliance on external help</li>
+                        <li>Build internal AI capabilities for future projects</li>
+                    </ul>
+                </div>
+                <div class="card card-accent">
+                    <h5>📚 What's Included (Every Project)</h5>
+                    <ul class="check-list">
+                        <li>Complete source code with documentation</li>
+                        <li>Architecture diagrams and decision rationale</li>
+                        <li>Handover walkthrough session</li>
+                        <li>Runbook for common operations</li>
+                        <li>Escalation procedures for issues</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 6.2: Training Programs -->
+            <div class="subsection">
+                <h3>6.2 Training Programs</h3>
+            </div>
+
+            <div class="card" style="margin-bottom: 16px;">
+                <h5>🎓 Workshop: AI Agent Fundamentals (1 Day)</h5>
+                <p style="color: var(--gray-600); margin-bottom: 16px;">Perfect for teams new to AI agents</p>
+                <div class="two-col">
+                    <div>
+                        <h6>Topics Covered</h6>
+                        <ul class="styled-list">
+                            <li>What are AI agents? Architecture overview</li>
+                            <li>LLMs, prompting, and tool use basics</li>
+                            <li>RAG and knowledge base fundamentals</li>
+                            <li>When to use agents vs. other solutions</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h6>Hands-On Exercises</h6>
+                        <ul class="styled-list">
+                            <li>Build a simple agent with LangGraph</li>
+                            <li>Add tools and external integrations</li>
+                            <li>Implement basic RAG pipeline</li>
+                            <li>Deploy to staging environment</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="color: var(--primary); font-weight: 600; margin-top: 16px;">$5,000 | Up to 15 participants</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 16px;">
+                <h5>🎓 Workshop: Advanced Agent Development (2-3 Days)</h5>
+                <p style="color: var(--gray-600); margin-bottom: 16px;">For teams building production agents</p>
+                <div class="two-col">
+                    <div>
+                        <h6>Topics Covered</h6>
+                        <ul class="styled-list">
+                            <li>Multi-agent orchestration patterns</li>
+                            <li>LangGraph deep dive: state machines, cycles</li>
+                            <li>CrewAI: role-based agent teams</li>
+                            <li>Production deployment and monitoring</li>
+                            <li>Security, testing, and optimization</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h6>Hands-On Projects</h6>
+                        <ul class="styled-list">
+                            <li>Build multi-agent customer support system</li>
+                            <li>Implement supervisor-worker pattern</li>
+                            <li>Add observability with LangSmith</li>
+                            <li>Production deployment to Vercel/Railway</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="color: var(--primary); font-weight: 600; margin-top: 16px;">$15,000 | Up to 15 participants</p>
+            </div>
+
+            <div class="card">
+                <h5>🎓 Program: Agent Certification (5 Days + Project)</h5>
+                <p style="color: var(--gray-600); margin-bottom: 16px;">Complete training program with certification</p>
+                <div class="two-col">
+                    <div>
+                        <h6>Week 1: Intensive Training</h6>
+                        <ul class="styled-list">
+                            <li>Day 1: Fundamentals & Architecture</li>
+                            <li>Day 2: LangGraph & State Management</li>
+                            <li>Day 3: CrewAI & Multi-Agent Systems</li>
+                            <li>Day 4: Integration & Deployment</li>
+                            <li>Day 5: Security, Testing, Optimization</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h6>Week 2-4: Capstone Project</h6>
+                        <ul class="styled-list">
+                            <li>Build real agent for your business</li>
+                            <li>Weekly office hours with instructor</li>
+                            <li>Code review and feedback</li>
+                            <li>Production deployment</li>
+                            <li>Certification upon completion</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="color: var(--primary); font-weight: 600; margin-top: 16px;">$25,000 | Up to 15 participants | Includes 30-day support</p>
+            </div>
+
+            <!-- Section 6.3: Training Modules -->
+            <div class="subsection">
+                <h3>6.3 Training Module Breakdown</h3>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Module 1: AI Agent Fundamentals</div>
+                        <p style="color: var(--gray-600);">
+                            LLM basics, prompting techniques, tool use patterns, RAG fundamentals, agent vs. workflow decision frameworks.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Module 2: LangGraph & CrewAI Deep Dive</div>
+                        <p style="color: var(--gray-600);">
+                            State machines, graph construction, conditional edges, persistence, CrewAI roles, task delegation, collaboration patterns.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Module 3: Agent Architecture & Design Patterns</div>
+                        <p style="color: var(--gray-600);">
+                            Supervisor-worker, hierarchical teams, parallel execution, human-in-the-loop, memory systems, error handling.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Module 4: Integration & Deployment</div>
+                        <p style="color: var(--gray-600);">
+                            API integration, database connections, authentication, Vercel/Railway deployment, environment management, CI/CD.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Module 5: Monitoring & Optimization</div>
+                        <p style="color: var(--gray-600);">
+                            LangSmith observability, performance metrics, cost optimization, prompt tuning, A/B testing, continuous improvement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6.4: Resources -->
+            <div class="subsection">
+                <h3>6.4 Included Resources</h3>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h5>📦 Code Templates & Starter Kits</h5>
+                    <ul class="check-list">
+                        <li>Single-agent starter template</li>
+                        <li>Multi-agent orchestration template</li>
+                        <li>RAG pipeline template</li>
+                        <li>Integration connectors (Slack, email, CRM)</li>
+                        <li>Deployment configurations (Vercel, Railway)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h5>📚 Documentation Library</h5>
+                    <ul class="check-list">
+                        <li>Architecture best practices guide</li>
+                        <li>Security checklist and guidelines</li>
+                        <li>Prompt engineering playbook</li>
+                        <li>Troubleshooting runbook</li>
+                        <li>Performance optimization guide</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 7: CASE STUDIES -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="section-7" class="section">
+        <div class="section-header">
+            <h2><span class="section-number">SECTION 7</span> Case Studies</h2>
+        </div>
+        <div class="section-content">
+
+            <!-- Case Study 1 -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4 style="color: white; margin: 0;">📦 Case Study 1: E-Commerce Customer Support Automation</h4>
+                </div>
+                <div class="case-study-body">
+                    <div class="two-col" style="margin-bottom: 24px;">
+                        <div>
+                            <h5 style="color: var(--primary);">Company Profile</h5>
+                            <p><strong>MidSize Retail Co.</strong></p>
+                            <ul class="styled-list">
+                                <li>$50M annual revenue</li>
+                                <li>E-commerce + 12 retail locations</li>
+                                <li>150 employees</li>
+                                <li>10,000+ monthly support tickets</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--danger);">The Challenge</h5>
+                            <ul class="styled-list">
+                                <li>5 support agents couldn't keep up with volume</li>
+                                <li>5-hour average response time frustrating customers</li>
+                                <li>65% first-contact resolution rate</li>
+                                <li>72% CSAT score—below industry average</li>
+                                <li>$250K/year support labor costs</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h5 style="color: var(--success); margin-bottom: 16px;">The Solution</h5>
+                    <p style="margin-bottom: 16px;">
+                        We built a multi-agent customer support system with three specialized agents:
+                    </p>
+                    <div class="two-col">
+                        <div class="card card-highlight">
+                            <h6>🎯 Triage Agent</h6>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Categorizes incoming tickets, extracts key information, routes to appropriate handler. Handles 100% of initial intake.
+                            </p>
+                        </div>
+                        <div class="card card-highlight">
+                            <h6>🤖 Resolution Agent</h6>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Handles common inquiries: order status, returns, product questions, account issues. Resolves 75% of tickets automatically.
+                            </p>
+                        </div>
+                        <div class="card card-highlight">
+                            <h6>🔄 Escalation Agent</h6>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Routes complex cases to human agents with full context. Manages escalation queue and priority.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h5 style="margin: 24px 0 16px;">Technology Stack</h5>
+                    <div class="tech-stack">
+                        <span class="tech-item">Claude Opus 4.7</span>
+                        <span class="tech-item">LangGraph 2.0</span>
+                        <span class="tech-item">Supabase</span>
+                        <span class="tech-item">Vercel Edge</span>
+                        <span class="tech-item">Zendesk Integration</span>
+                    </div>
+
+                    <div class="case-study-metrics">
+                        <div class="case-metric">
+                            <div class="case-metric-value">75%</div>
+                            <div class="case-metric-label">Auto-Resolution</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">&lt;1 min</div>
+                            <div class="case-metric-label">Response Time</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">89%</div>
+                            <div class="case-metric-label">CSAT Score</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">$200K</div>
+                            <div class="case-metric-label">Annual Savings</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">6 wks</div>
+                            <div class="case-metric-label">Implementation</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">$45K</div>
+                            <div class="case-metric-label">Investment</div>
+                        </div>
+                    </div>
+
+                    <div class="quote-box">
+                        "The transformation was remarkable. Our customers now get instant responses, and our team can focus on complex issues that actually need human judgment. CSAT jumped 17 points in the first month."
+                        <div class="quote-attribution">— Sarah Chen, VP of Customer Experience, MidSize Retail Co.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4 style="color: white; margin: 0;">⚖️ Case Study 2: Legal Research Automation</h4>
+                </div>
+                <div class="case-study-body">
+                    <div class="two-col" style="margin-bottom: 24px;">
+                        <div>
+                            <h5 style="color: var(--primary);">Company Profile</h5>
+                            <p><strong>Morrison & Associates LLP</strong></p>
+                            <ul class="styled-list">
+                                <li>Mid-size corporate law firm</li>
+                                <li>200 attorneys and staff</li>
+                                <li>Corporate M&A, securities, IP practice areas</li>
+                                <li>$80M annual revenue</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--danger);">The Challenge</h5>
+                            <ul class="styled-list">
+                                <li>Attorneys spending 20+ hours/week on research</li>
+                                <li>Junior associates buried in due diligence</li>
+                                <li>Inconsistent research quality across teams</li>
+                                <li>High associate burnout and turnover</li>
+                                <li>Clients demanding faster turnaround</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h5 style="color: var(--success); margin-bottom: 16px;">The Solution</h5>
+                    <p style="margin-bottom: 16px;">
+                        We built an AI research assistant with RAG over the firm's knowledge base and external legal databases:
+                    </p>
+                    <div class="two-col">
+                        <div class="card card-highlight">
+                            <h6>🔍 Research Agent</h6>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Searches case law, statutes, firm precedents. Synthesizes findings with citations. Identifies relevant precedents in seconds.
+                            </p>
+                        </div>
+                        <div class="card card-highlight">
+                            <h6>📄 Document Analysis Agent</h6>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Reviews contracts for risk flags, extracts key terms, compares against templates. Accelerates due diligence 10x.
+                            </p>
+                        </div>
+                        <div class="card card-highlight">
+                            <h6>✍️ Drafting Assistant</h6>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Generates first drafts of memos, briefs, client communications based on research findings and firm templates.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h5 style="margin: 24px 0 16px;">Technology Stack</h5>
+                    <div class="tech-stack">
+                        <span class="tech-item">GPT-5.3-Codex</span>
+                        <span class="tech-item">CrewAI 1.14.4</span>
+                        <span class="tech-item">PostgreSQL + pgvector</span>
+                        <span class="tech-item">Railway</span>
+                        <span class="tech-item">Westlaw/LexisNexis API</span>
+                    </div>
+
+                    <div class="case-study-metrics">
+                        <div class="case-metric">
+                            <div class="case-metric-value">60%</div>
+                            <div class="case-metric-label">Research Time Saved</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">3x</div>
+                            <div class="case-metric-label">Cases Per Attorney</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">10x</div>
+                            <div class="case-metric-label">DD Speed Increase</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">$500K</div>
+                            <div class="case-metric-label">Annual Value</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">8 wks</div>
+                            <div class="case-metric-label">Implementation</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">$75K</div>
+                            <div class="case-metric-label">Investment</div>
+                        </div>
+                    </div>
+
+                    <div class="quote-box">
+                        "Our associates used to spend entire weekends on research. Now they get comprehensive memos in hours. It's not replacing lawyers—it's making them dramatically more effective."
+                        <div class="quote-attribution">— James Morrison, Managing Partner, Morrison & Associates LLP</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 3 -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4 style="color: white; margin: 0;">📈 Case Study 3: B2B SaaS Sales Automation</h4>
+                </div>
+                <div class="case-study-body">
+                    <div class="two-col" style="margin-bottom: 24px;">
+                        <div>
+                            <h5 style="color: var(--primary);">Company Profile</h5>
+                            <p><strong>CloudMetrics Inc.</strong></p>
+                            <ul class="styled-list">
+                                <li>B2B SaaS analytics platform</li>
+                                <li>Series B ($25M raised)</li>
+                                <li>$15M ARR, growing 80% YoY</li>
+                                <li>50 employees, 8-person sales team</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--danger);">The Challenge</h5>
+                            <ul class="styled-list">
+                                <li>SDRs spending 6+ hours/day on lead qualification</li>
+                                <li>Inconsistent outreach quality and messaging</li>
+                                <li>15% lead-to-meeting conversion rate</li>
+                                <li>Scaling sales without 3x headcount</li>
+                                <li>Competitors responding faster to leads</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h5 style="color: var(--success); margin-bottom: 16px;">The Solution</h5>
+                    <p style="margin-bottom: 16px;">
+                        We built a multi-agent sales automation system that handles the top-of-funnel:
+                    </p>
+                    <div class="two-col">
+                        <div class="card card-highlight">
+                            <h6>🎯 Lead Scoring Agent</h6>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Enriches leads with company data, scores based on ICP fit, prioritizes outreach. Processes leads in real-time.
+                            </p>
+                        </div>
+                        <div class="card card-highlight">
+                            <h6>✉️ Outreach Agent</h6>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Personalizes email sequences based on company context, industry, and role. A/B tests messaging automatically.
+                            </p>
+                        </div>
+                        <div class="card card-highlight">
+                            <h6>📅 Scheduling Agent</h6>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Handles meeting booking, calendar coordination, reminders. Converts interested leads to scheduled calls.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h5 style="margin: 24px 0 16px;">Technology Stack</h5>
+                    <div class="tech-stack">
+                        <span class="tech-item">Claude Opus 4.7</span>
+                        <span class="tech-item">LangGraph 2.0</span>
+                        <span class="tech-item">HubSpot Integration</span>
+                        <span class="tech-item">Calendly API</span>
+                        <span class="tech-item">Clearbit Enrichment</span>
+                    </div>
+
+                    <div class="case-study-metrics">
+                        <div class="case-metric">
+                            <div class="case-metric-value">40%</div>
+                            <div class="case-metric-label">More Qualified Leads</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">2x</div>
+                            <div class="case-metric-label">Meeting Bookings</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">5 min</div>
+                            <div class="case-metric-label">Lead Response Time</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">$1.2M</div>
+                            <div class="case-metric-label">Pipeline Generated</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">10 wks</div>
+                            <div class="case-metric-label">Implementation</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">$85K</div>
+                            <div class="case-metric-label">Investment</div>
+                        </div>
+                    </div>
+
+                    <div class="quote-box">
+                        "We doubled our meeting bookings without adding a single SDR. The agents respond to leads in minutes, not hours—and the personalization is better than what most humans write."
+                        <div class="quote-attribution">— Michael Torres, VP of Sales, CloudMetrics Inc.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- CONTACT FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<footer class="contact-footer">
+    <div class="container">
+        <h2>Ready to Transform Your Business with AI Agents?</h2>
+        <p style="margin-bottom: 32px; opacity: 0.9;">
+            Let's discuss how we can automate your most time-consuming processes.
+        </p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-label">Founder & CEO</div>
+                <div class="contact-value">Rick Jefferson</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">rickjefferson@rickjeffersonsolutions.com</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">GitHub</div>
+                <div class="contact-value">rjbizsolution23-wq</div>
+            </div>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.875rem; opacity: 0.6;">
+            © 2026 RJ Business Solutions. All rights reserved.<br>
+            This document is confidential and intended for authorized recipients only.
+        </p>
+    </div>
+</footer>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

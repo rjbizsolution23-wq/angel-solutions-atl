@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --rj-blue: #2563eb;
+    --rj-sky-blue: #0ea5e9;
+    --rj-deep-blue: #1e3a8a;
+    --rj-navy: #0f172a;
+    --rj-white: #ffffff;
+    --rj-soft-white: #f8fafc;
+    --rj-light-blue: #eff6ff;
+    --rj-border-blue: #bfdbfe;
+    --rj-muted-blue: #dbeafe;
+    
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 6.9%;
+    --card-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+  }
+}
+
+body {
+  background-color: var(--rj-navy);
+  color: var(--rj-soft-white);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism v3 Premium Design Pattern */
+.glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.75) 0%,
+    rgba(30, 41, 59, 0.45) 100%
+  );
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(14, 165, 233, 0.3);
+  box-shadow: 
+    0 20px 48px rgba(14, 165, 233, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Retro Arcade Cabinet Scanlines and Glow Effects */
+.arcade-monitor {
+  position: relative;
+  background: #020617;
+  border: 6px solid #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 
+    0 0 40px rgba(14, 165, 233, 0.25),
+    inset 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.arcade-monitor::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 20;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+.glow-text-blue {
+  text-shadow: 0 0 8px rgba(14, 165, 233, 0.6);
+}
+
+.glow-text-green {
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--rj-navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rj-sky-blue);
+}

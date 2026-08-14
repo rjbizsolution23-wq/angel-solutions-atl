@@ -1,0 +1,326 @@
+// =====================================================================
+// ANGEL SOLUTIONS ATL - MASTER SYSTEM BLUEPRINT HTML TEMPLATE
+// =====================================================================
+// Auto-generated from 8f4ed056a_angel_solutions_atl_master_blueprint (1).html.
+// =====================================================================
+
+export const BLUEPRINT_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Angel Solutions ATL — Master System Blueprint</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  :root {
+    --background: #faf8f4; --card: #ffffff; --foreground: #1c1917;
+    --muted: #f1ede6; --muted-foreground: #78716c; --border: #e7e2d9;
+    --primary: #b45309; --primary-foreground: #ffffff;
+    --destructive: #fee2e2; --destructive-foreground: #991b1b;
+    --code-bg: #1c1917; --code-fg: #f1ede6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2.5rem 1.5rem 4rem; background: var(--background); color: var(--foreground);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.55;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; }
+  .header h1 { font-size: 1.7rem; margin: 0 0 0.35rem; }
+  .header p { color: var(--muted-foreground); margin: 0; font-size: 0.9rem; }
+  .toc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+  .toc a {
+    font-size: 0.78rem; padding: 0.35rem 0.75rem; border-radius: 999px;
+    background: var(--muted); color: var(--foreground); text-decoration: none; border: 1px solid var(--border);
+  }
+  .section { margin: 2.75rem 0; scroll-margin-top: 1rem; }
+  .section-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .section-sub { font-size: 0.875rem; color: var(--muted-foreground); margin-bottom: 1.1rem; }
+  .sub-title { font-size: 0.95rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 0.85rem; padding: 1.25rem 1.4rem; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  th, td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-weight: 600; background: var(--muted); }
+  tr:last-child td { border-bottom: none; }
+  code { font-size: 0.82em; background: var(--muted); padding: 0.1rem 0.35rem; border-radius: 0.25rem; }
+  pre {
+    background: var(--code-bg); color: var(--code-fg); padding: 1rem 1.2rem; border-radius: 0.6rem;
+    overflow-x: auto; font-size: 0.78rem; line-height: 1.5;
+  }
+  pre code { background: none; padding: 0; color: inherit; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.15rem 0.6rem;
+    border-radius: 999px; font-size: 0.72rem; font-weight: 600; white-space: nowrap;
+  }
+  .badge-critical { background: var(--destructive); color: var(--destructive-foreground); }
+  .badge-warn { background: #fef3c7; color: #92400e; }
+  .badge-ok { background: var(--muted); color: var(--foreground); }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+  .pill { font-size: 0.78rem; padding: 0.2rem 0.65rem; border-radius: 999px; background: var(--muted); }
+  .callout { background: var(--muted); border-radius: 0.75rem; padding: 0.9rem 1.1rem; font-size: 0.85rem; margin-top: 0.85rem; }
+  .callout-danger { background: var(--destructive); color: var(--destructive-foreground); }
+  ol, ul { font-size: 0.88rem; padding-left: 1.4rem; }
+  li { margin-bottom: 0.3rem; }
+  .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted-foreground); }
+  strong { color: var(--foreground); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <h1>Angel Solutions ATL — Master System Blueprint</h1>
+    <p>Full engineering handoff · Jordynn Miller · July 2026 · For internal dev team use</p>
+  <div class="telemetry-card" style="background: var(--card); border: 1px solid var(--border); border-radius: 0.85rem; padding: 1.25rem 1.4rem; margin-top: 1.5rem; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05);">
+    <h3 style="margin-top:0; font-size:1rem; font-family:-apple-system, sans-serif; display:flex; align-items:center; gap:0.5rem; color:var(--primary);">
+      <span style="width:8px; height:8px; border-radius:50%; background:#10b981; display:inline-block; box-shadow:0 0 8px #10b981;"></span>
+      Live Cloudflare D1 Telemetry
+    </h3>
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem; text-align:center; margin-top:1rem;">
+      <div style="background:var(--background); padding:0.75rem; border-radius:0.5rem; border:1px solid var(--border);">
+        <div style="font-size:1.5rem; font-weight:700; color:var(--primary);">{{LEAD_COUNT}}</div>
+        <div style="font-size:0.7rem; color:var(--muted-foreground); text-transform:uppercase; font-weight:600;">Total Leads</div>
+      </div>
+      <div style="background:var(--background); padding:0.75rem; border-radius:0.5rem; border:1px solid var(--border);">
+        <div style="font-size:1.5rem; font-weight:700; color:var(--primary);">{{QUALIFIED_COUNT}}</div>
+        <div style="font-size:0.7rem; color:var(--muted-foreground); text-transform:uppercase; font-weight:600;">Qualified</div>
+      </div>
+      <div style="background:var(--background); padding:0.75rem; border-radius:0.5rem; border:1px solid var(--border);">
+        <div style="font-size:1.5rem; font-weight:700; color:var(--primary);">{{BOOKED_COUNT}}</div>
+        <div style="font-size:0.7rem; color:var(--muted-foreground); text-transform:uppercase; font-weight:600;">Booked</div>
+      </div>
+      <div style="background:var(--background); padding:0.75rem; border-radius:0.5rem; border:1px solid var(--border);">
+        <div style="font-size:1.5rem; font-weight:700; color:var(--primary);">{{CONVERSION_RATE}}%</div>
+        <div style="font-size:0.7rem; color:var(--muted-foreground); text-transform:uppercase; font-weight:600;">Conv. Rate</div>
+      </div>
+    </div>
+  </div>
+
+    <div class="toc">
+      <a href="#overview">Overview</a>
+      <a href="#flows">Architecture &amp; Flows</a>
+      <a href="#datamodel">Data Model</a>
+      <a href="#functions">Backend Functions</a>
+      <a href="#ai">AI Layer</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#compliance">Compliance Logic</a>
+      <a href="#secrets">Secrets &amp; Env</a>
+      <a href="#backlog">Open Gaps / Backlog</a>
+    </div>
+  </div>
+
+  <div class="section" id="overview">
+    <div class="section-title">1. System Overview</div>
+    <div class="card">
+      <p style="font-size:0.9rem; margin-top:0;">This system replaces Angel Solutions ATL's ManyChat automation with a custom pipeline: Meta (Instagram + Facebook) comments/DMs are read via Graph API, classified and drafted by an LLM (Cloudflare Workers AI, Llama 3.1 8B), checked against compliance rules, and synced to GoHighLevel as the CRM. It currently runs in <strong>shadow mode</strong> — every action is drafted, logged, and held for human review rather than actually delivered, gated by <code>ClientComplianceLaunch.launch_approval_status</code>.</p>
+      <p style="font-size:0.9rem;"><strong>Stack:</strong> Base44 backend functions (Deno/TypeScript) · Cloudflare Workers AI (LLM) · Meta Graph API (Instagram + Facebook) · GoHighLevel API (CRM + SMS) · Base44 entities (data layer) · Base44 scheduled automations (cron triggers).</p>
+      <p style="font-size:0.9rem; margin-bottom:0;"><strong>Client identifier:</strong> all data is scoped by <code>intake_id = "6a46c0696b95e7dc9dd6251c"</code> (Angel Solutions ATL). This is currently hardcoded per client — see Backlog §9.4 for the multi-tenant gap.</p>
+    </div>
+  </div>
+
+  <div class="section" id="flows">
+    <div class="section-title">2. Architecture &amp; Flows</div>
+
+    <div class="sub-title">2.1 Message handling pipeline</div>
+    <div class="card">
+      <div class="mermaid">
+flowchart LR
+    A["Instagram or Facebook<br/>comment / DM"] --> C{"AI classifies"}
+    C -->|"spam/offensive/competitor"| D["Should hide<br/>(NOT YET WIRED - see backlog)"]
+    C -->|"positive/question"| E["Draft reply"]
+    C -->|"escalation triggers"| F["Escalate: SMS via GHL,<br/>pause thread 24h"]
+    C -->|"opt_out"| G["Ack once,<br/>pause nurture"]
+    C -->|"collab"| H["Flag for human,<br/>no auto-reply"]
+    E --> I["Compliance filter +<br/>approved-link strip"]
+    I --> J["Log to Conversation<br/>(shadow) or SEND<br/>(NOT YET WIRED - see backlog)"]
+      </div>
+    </div>
+
+    <div class="sub-title">2.2 Lead lifecycle</div>
+    <div class="card">
+      <div class="mermaid">
+flowchart TD
+    Start(["Inbound DM/comment"]) --> New["Lead.create (NEW)"]
+    New --> Extract["LLM extracts name/service/timeline"]
+    Extract --> Qualified["lead_state → QUALIFIED"]
+    Qualified --> Quiet{"Goes quiet?"}
+    Quiet -->|"yes"| Nurture["FollowUpStep cycle,<br/>7 touches / 18 days"]
+    Quiet -->|"no, replies"| Reply["Continue conversation"]
+    Nurture --> Booked["lead_state → BOOKED"]
+    Nurture --> OptOut["follow_up_paused = true"]
+    Reply --> Escalate["lead_state → ASSIGN"]
+    Booked --> CRM["upsertGhlContact()"]
+      </div>
+    </div>
+
+    <div class="sub-title">2.3 Escalation + auto-clear</div>
+    <div class="card">
+      <div class="mermaid">
+flowchart LR
+    A["Trigger detected"] --> B["Conversation.bot_active = false"]
+    B --> C["Lead.paused_until = now + 24h"]
+    C --> D["Escalation record created"]
+    D --> E["SMS sent to Rick via GHL"]
+    E --> F{"Human resolves<br/>within 24h?"}
+    F -->|"yes"| G["Stays paused until<br/>manually cleared"]
+    F -->|"no"| H["autoClearExpiredPause()<br/>reactivates on next message"]
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="datamodel">
+    <div class="section-title">3. Data Model</div>
+    <div class="section-sub">14 entities. All records scoped by <code>intake_id</code>. Full schemas below (key fields only for brevity — see Base44 entity manager for exhaustive field lists).</div>
+    <div class="card">
+      <table>
+        <thead><tr><th>Entity</th><th>Purpose</th><th>Key fields</th></tr></thead>
+        <tbody>
+          <tr><td>ClientIntake</td><td>Primary client record</td><td>business_name, business_email, website_url, service_regions</td></tr>
+          <tr><td>ClientOffers</td><td>Products/services sold</td><td>service_name, price, ideal_buyer, objection scripts</td></tr>
+          <tr><td>ClientSocialAccounts</td><td>Meta account config</td><td>platform, handle, facebook_page_id, ai_should_reply_*</td></tr>
+          <tr><td>ClientBrandVoice</td><td>Voice/tone rules</td><td>voice_traits, phrases_to_avoid, ai_speaks_as</td></tr>
+          <tr><td>ClientAutomationRules</td><td>DM/comment behavior config</td><td>dm_escalation_triggers, followup_cadence, followup_message_1-3</td></tr>
+          <tr><td>ClientComplianceLaunch</td><td>Legal/launch gate</td><td>launch_approval_status, approved_ai_disclosure_script, can_say_guaranteed</td></tr>
+          <tr><td>Lead</td><td>One record per prospect</td><td>lead_state, platform_user_id, service_needed, paused_until, follow_up_step</td></tr>
+          <tr><td>Conversation</td><td>Message thread</td><td>messages[], bot_active, within_24h_window</td></tr>
+          <tr><td>CommentLog</td><td>Every comment processed</td><td>comment_id, action_taken, action_reason, reply_text</td></tr>
+          <tr><td>Escalation</td><td>Human-handoff record</td><td>trigger_message, sms_sent, human_resolved</td></tr>
+          <tr><td>FollowUpStep</td><td>Nurture sequence log</td><td>step_number, message_text, sent, skipped_reason</td></tr>
+          <tr><td>ApprovedLink</td><td>Whitelisted URLs</td><td>label, url, use_case, active</td></tr>
+          <tr><td>DQRule</td><td>Disqualification criteria</td><td>rule_type, criteria, action</td></tr>
+          <tr><td>MediaAsset</td><td>Reusable media (images/audio)</td><td>asset_key, media_type, caption — <strong>schema exists, unused in code yet</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section" id="functions">
+    <div class="section-title">4. Backend Functions</div>
+
+    <div class="sub-title">4.1 angelEngageCycle</div>
+    <div class="card">
+      <p style="font-size:0.88rem; margin-top:0;"><strong>Trigger:</strong> scheduled automation "Angel Solutions ATL Engagement Monitor" (Instagram token passed in via <code>get_connector_token</code> → payload each run).</p>
+      <p style="font-size:0.88rem;"><strong>Does:</strong> polls Instagram (last 5 posts' comments + last 20 DM threads) and Facebook (same) via Graph API GETs. Runs <code>classifyComment</code>/<code>classifyAndExtractDm</code> (Cloudflare AI) on new items, applies compliance + link checks, upserts Lead/Conversation/CommentLog, syncs GHL contact, sends escalation SMS when triggered.</p>
+      <p style="font-size:0.88rem; margin-bottom:0;"><strong>Known limitation:</strong> read-only against Meta — never calls Meta's send-message or hide-comment endpoints (see Backlog §9.1).</p>
+    </div>
+
+    <div class="sub-title">4.2 facebookWebhookReceiver</div>
+    <div class="card">
+      <p style="font-size:0.88rem; margin-top:0;"><strong>Trigger:</strong> real-time Meta webhook (GET for verification handshake using <code>VERIFY_TOKEN</code>, POST for actual events).</p>
+      <p style="font-size:0.88rem;"><strong>Does:</strong> same classify/draft/log pipeline as angelEngageCycle but event-driven instead of polled, for Facebook comments and Messenger DMs only. No Instagram equivalent exists yet.</p>
+      <p style="font-size:0.88rem; margin-bottom:0;"><strong>Verify before launch:</strong> confirm the webhook subscription is actually registered and active in the Meta App dashboard, not just deployed here.</p>
+    </div>
+
+    <div class="sub-title">4.3 angelFollowUpCycle</div>
+    <div class="card">
+      <p style="font-size:0.88rem; margin-top:0;"><strong>Trigger:</strong> scheduled automation "Angel Solutions ATL Follow-Up Nurture Sequence," daily at 8am Jordynn's time (1pm UTC).</p>
+      <p style="font-size:0.88rem;"><strong>Does:</strong> for every non-terminal, non-paused Lead, checks days since <code>last_contact_at</code> against the 7-step day offsets <code>[1,3,5,8,12,16,18]</code>. Steps 1/2/7 use fixed templates from <code>ClientAutomationRules</code>; steps 3-6 are AI-generated variants (Cloudflare) using a specific angle per step. Logs to <code>FollowUpStep</code> and <code>Conversation</code>.</p>
+      <p style="font-size:0.88rem; margin-bottom:0;"><strong>Known limitation:</strong> does not check Meta's 24-hour messaging window or use message tags — and doesn't call any send API yet either (see Backlog §9.1, §9.2).</p>
+    </div>
+  </div>
+
+  <div class="section" id="ai">
+    <div class="section-title">5. AI Layer</div>
+    <div class="section-sub">Model: Cloudflare Workers AI, <code>@cf/meta/llama-3.1-8b-instruct</code>. Called via <code>callCloudflareAI()</code> helper in all 3 functions.</div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0;">Knowledge base (BRAND_SYSTEM_PROMPT)</div>
+      <pre><code>Business: Angel Solutions ATL — credit repair, business funding, tax
+resolution. Atlanta GA. 5.5 yrs in business. Serves nationally.
+
+Offer 1 — Credit Repair ($67/mo, 3-6mo): community setting, up to 5
+disputes/mo. Fit: not in a rush, no active bankruptcy/child support,
+&lt;10 collections accounts.
+
+Offer 2 — Advanced Repair (from $795, up to $1,250): 1-on-1, 1hr
+strategy call, legal team, all collections disputed at once. Fit:
+needs funding, ≤60-day timeline, business owner blocked by credit.
+
+Voice: friendly, warm, premium, professional, expert, motivational,
+direct. Never: "credit sweep", "guarantee"/"guaranteed", "best",
+"yo", "bet". Only approved links may be referenced.</code></pre>
+      <div class="callout">Full prompt text lives in each function's <code>BRAND_SYSTEM_PROMPT</code> constant — kept in sync across all three files manually. Consider extracting to a shared entity/config if it needs to change often.</div>
+    </div>
+  </div>
+
+  <div class="section" id="integrations">
+    <div class="section-title">6. External Integrations</div>
+    <div class="card">
+      <table>
+        <thead><tr><th>Service</th><th>Auth</th><th>Endpoints used</th></tr></thead>
+        <tbody>
+          <tr><td>Instagram Graph API</td><td>OAuth connector (auto-refreshed via <code>get_connector_token</code>)</td><td><code>GET /me/media</code>, <code>GET /{media-id}/comments</code>, <code>GET /me/conversations</code>, <code>GET /{conv-id}?fields=messages</code></td></tr>
+          <tr><td>Facebook Graph API</td><td>Static secret <code>FACEBOOK_PAGE_ACCESS_TOKEN</code> — <strong>no refresh/monitoring</strong></td><td><code>GET /{page-id}/posts</code>, <code>GET /{post-id}/comments</code>, <code>GET /{page-id}/conversations</code></td></tr>
+          <tr><td>GoHighLevel</td><td>Private Integration token <code>GHL_API_TOKEN</code></td><td><code>POST /contacts/</code>, <code>PUT /contacts/{id}</code>, <code>POST /conversations/messages</code> (SMS)</td></tr>
+          <tr><td>Cloudflare Workers AI</td><td><code>CLOUDFLARE_ACCOUNT_ID</code> + <code>CLOUDFLARE_API_TOKEN</code></td><td><code>POST /accounts/{id}/ai/run/@cf/meta/llama-3.1-8b-instruct</code></td></tr>
+        </tbody>
+      </table>
+      <div class="callout">Endpoints NOT yet called anywhere: Meta's <code>POST /{comment-id}?is_hidden=true</code>, <code>POST /{comment-id}/comments</code> (reply), <code>POST /me/messages</code> (DM send), and Meta message-tag headers for outside-24h sends.</div>
+    </div>
+  </div>
+
+  <div class="section" id="compliance">
+    <div class="section-title">7. Compliance Logic</div>
+    <div class="card">
+      <p style="font-size:0.88rem; margin-top:0;"><strong>Banned phrase filter</strong> (<code>checkCompliance()</code>): word-boundary regex against <code>['credit sweep','guarantee','guaranteed','best','yo','bet']</code>. Runs on every generated reply before it's logged/sent.</p>
+      <p style="font-size:0.88rem;"><strong>Link enforcement</strong> (<code>stripUnapprovedLinks()</code>): regex-matches URLs in generated text, strips anything not in the active <code>ApprovedLink</code> list.</p>
+      <p style="font-size:0.88rem;"><strong>AI disclosure:</strong> prepended to the first bot message in a new conversation when <code>ClientComplianceLaunch.require_ai_disclosure_dms</code> is true.</p>
+      <p style="font-size:0.88rem; margin-bottom:0;"><strong>Shadow mode gate:</strong> <code>shadowMode = compliance.launch_approval_status !== 'approved'</code>, checked at the top of every function run.</p>
+    </div>
+  </div>
+
+  <div class="section" id="secrets">
+    <div class="section-title">8. Secrets &amp; Environment Variables</div>
+    <div class="card">
+      <div class="pill-row">
+        <span class="pill">CLOUDFLARE_ACCOUNT_ID</span>
+        <span class="pill">CLOUDFLARE_API_TOKEN</span>
+        <span class="pill">FACEBOOK_PAGE_ACCESS_TOKEN</span>
+        <span class="pill">FACEBOOK_PAGE_ID</span>
+        <span class="pill">GHL_API_TOKEN</span>
+      </div>
+      <p style="font-size:0.85rem; margin-bottom:0; margin-top:0.9rem;">Instagram auth is handled differently — via the platform's OAuth connector, fetched fresh per automation run rather than a static secret.</p>
+    </div>
+  </div>
+
+  <div class="section" id="backlog">
+    <div class="section-title">9. Open Gaps — Prioritized Backlog</div>
+    <div class="section-sub">Honest senior-engineer assessment as of this build. Ordered by severity.</div>
+    <div class="card">
+      <table>
+        <thead><tr><th>#</th><th>Gap</th><th>Severity</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>9.1</td><td>Send/hide implementation — real calls to Meta's send-message, hide-comment, and reply-to-comment endpoints, gated by shadow mode</td><td><span class="badge badge-ok">Done</span></td><td>Built and regression-tested; still correctly held while shadow mode is on</td></tr>
+          <tr><td>9.2</td><td>Follow-up sequence now checks Meta's 24h window per-send — sends live only within window, otherwise skips + logs (no message-tag system configured yet)</td><td><span class="badge badge-warn">Partial</span></td><td>Honest behavior in place; most touches beyond Day 1 will still skip live-send until a proper message-tag flow or alternate channel (e.g. GHL SMS with phone captured) is built</td></tr>
+          <tr><td>9.3</td><td>No real-time Instagram webhook (Facebook-only)</td><td><span class="badge badge-warn">High</span></td><td>IG response time depends on poll frequency, not instant</td></tr>
+          <tr><td>9.4</td><td>Single-tenant hardcoding (intake_id, GHL IDs baked into source)</td><td><span class="badge badge-warn">High</span></td><td>Won't scale to client #2 without duplicating code</td></tr>
+          <tr><td>9.5</td><td>Facebook page token has no refresh/expiry monitoring</td><td><span class="badge badge-warn">High</span></td><td>Will eventually expire and silently break Facebook</td></tr>
+          <tr><td>9.6</td><td>No retry/alerting on GHL sync or SMS failures</td><td><span class="badge badge-warn">Medium</span></td><td>Failures logged in a JSON summary, not proactively surfaced</td></tr>
+          <tr><td>9.7</td><td>Possible race condition between poller and webhook on Facebook</td><td><span class="badge badge-warn">Medium</span></td><td>No locking — near-simultaneous events could double-process</td></tr>
+          <tr><td>9.8</td><td>Compliance data fields unset (privacy policy URL, data retention period, deletion process)</td><td><span class="badge badge-warn">Medium</span></td><td>Real requirement for a CROA-regulated business</td></tr>
+          <tr><td>9.9</td><td>No automated test suite</td><td><span class="badge badge-ok">Low</span></td><td>All verification has been manual so far</td></tr>
+          <tr><td>9.10</td><td>MediaAsset entity exists but unused — no image/voice-note sending wired</td><td><span class="badge badge-ok">Low</span></td><td>Needed once Rick provides approved images/voice recordings</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">9.1 done, 9.2 partially addressed (see note above). Recommended remaining build order: 9.5/9.6 → 9.3 → 9.7/9.8 → 9.4 (once a second client is actually being onboarded) → 9.9/9.10.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Angel Solutions ATL × Jordynn Miller Solutions — internal engineering document. Source lives in this app's backend functions (angelEngageCycle.ts, facebookWebhookReceiver.ts, angelFollowUpCycle.ts) and entity schemas.
+  </div>
+
+</div>
+<script>
+  mermaid.initialize({
+    startOnLoad: true, theme: 'base',
+    themeVariables: {
+      background: '#ffffff', primaryColor: '#ffffff', primaryTextColor: '#1c1917',
+      primaryBorderColor: '#e7e2d9', lineColor: '#78716c', secondaryColor: '#f1ede6',
+      tertiaryColor: '#f1ede6', fontFamily: 'inherit', fontSize: '13px',
+      edgeLabelBackground: '#ffffff', clusterBkg: '#f1ede6', clusterBorder: '#e7e2d9',
+      nodeTextColor: '#1c1917', mainBkg: '#ffffff', nodeBorder: '#b45309', titleColor: '#1c1917',
+    },
+    flowchart: { curve: 'basis', padding: 12 }
+  });
+</script>
+</body>
+</html>
+`;

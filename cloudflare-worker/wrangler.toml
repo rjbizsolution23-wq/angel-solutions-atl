@@ -1,0 +1,20 @@
+name = "angel-solutions-webhook"
+main = "src/index.js"
+compatibility_date = "2026-07-08"
+compatibility_flags = [ "nodejs_compat" ]
+
+[ai]
+binding = "AI"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "angel-solutions-db"
+database_id = "f8aa8ca4-c045-4ac4-bd88-cf01fcc8448b"
+
+[vars]
+META_VERIFY_TOKEN = "ANGEL_SOLUTIONS_VERIFY_TOKEN_2026"
+META_PAGE_ID = "107318795356062"
+INTAKE_ID = "6a46c0696b95e7dc9dd6251c"
+OPENROUTER_MODEL = "openrouter/free"
+NVIDIA_MODEL = "meta/llama-3.3-70b-instruct"
+GHL_LOCATION_ID = "Sfvt5kBZ3EUOws7MDWa3"

@@ -1,0 +1,52 @@
+{
+  "lead_engine": {
+    "url": "https://buy.stripe.com/aFa4grayEge9eOreHveEp03",
+    "amount": 9700,
+    "badge": "Most Popular"
+  },
+  "deal_analyzer": {
+    "url": "https://buy.stripe.com/4gM4grayEbXT8q31UJeEp04",
+    "amount": 4700,
+    "badge": "Best ROI"
+  },
+  "crm": {
+    "url": "https://buy.stripe.com/aFabITcGM1jfeOrczneEp05",
+    "amount": 14900,
+    "badge": "Scale Killer"
+  },
+  "market_dashboard": {
+    "url": "https://buy.stripe.com/8x26ozgX2ge921FgPDeEp06",
+    "amount": 5900,
+    "badge": "Agent Favorite"
+  },
+  "alerts": {
+    "url": "https://buy.stripe.com/dRm4gr36ce61fSvfLzeEp07",
+    "amount": 7900,
+    "badge": "First Mover"
+  },
+  "copy_generator": {
+    "url": "https://buy.stripe.com/3cI7sD5ek7HD6hVbvjeEp08",
+    "amount": 2900,
+    "badge": "Time Saver"
+  },
+  "cash_buyers": {
+    "url": "https://buy.stripe.com/4gMdR18qwbXT0XB7f3eEp09",
+    "amount": 9700,
+    "badge": "Flip Faster"
+  },
+  "website": {
+    "url": "https://buy.stripe.com/eVq7sDfSY5zv6hVdDreEp0a",
+    "amount": 19700,
+    "badge": "24/7 Sales"
+  },
+  "starter": {
+    "url": "https://buy.stripe.com/aFaeV5gX28LHeOr7f3eEp0b",
+    "amount": 49700,
+    "badge": null
+  },
+  "scale": {
+    "url": "https://buy.stripe.com/3cIfZ9fSY8LHdKnfLzeEp0c",
+    "amount": 149700,
+    "badge": "MOST POPULAR"
+  }
+}

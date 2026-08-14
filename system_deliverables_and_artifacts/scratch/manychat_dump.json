@@ -1,0 +1,327 @@
+{
+  "page_info": {
+    "status": "success",
+    "data": {
+      "id": 107318795356062,
+      "name": "\u2728\ufe0fCredit | Business Funding | Tax Resolution\u2728\ufe0f",
+      "category": "Business Consultant",
+      "avatar_link": null,
+      "username": "AngelSolutionsATL",
+      "about": "We help entrepreneurs clear credit blemishes,  secure capital, & resolve IRS tax debts.\nBook your Discovery Call to learn more \n\u27a1\ufe0f AngelSolutionsATL.com/book-online",
+      "description": null,
+      "is_pro": true,
+      "timezone": "America/New_York"
+    }
+  },
+  "custom_fields": {
+    "status": "success",
+    "data": [
+      {
+        "id": 14509568,
+        "name": "messages",
+        "type": "text",
+        "description": null
+      },
+      {
+        "id": 14509569,
+        "name": "human_message",
+        "type": "text",
+        "description": null
+      }
+    ]
+  },
+  "tags": {
+    "status": "success",
+    "data": [
+      {
+        "id": 85918996,
+        "name": "IG BOT INBOUND FB"
+      },
+      {
+        "id": 85917842,
+        "name": "CUSTOMFU"
+      },
+      {
+        "id": 85917683,
+        "name": "ASSIGN"
+      },
+      {
+        "id": 85917684,
+        "name": "BOT OFF"
+      },
+      {
+        "id": 85917680,
+        "name": "VAFOLLOWUP"
+      },
+      {
+        "id": 85917679,
+        "name": "COLLAB"
+      },
+      {
+        "id": 85917678,
+        "name": "BOOKED"
+      },
+      {
+        "id": 85917677,
+        "name": "DQ"
+      },
+      {
+        "id": 85917676,
+        "name": "LINK SENT"
+      },
+      {
+        "id": 85917675,
+        "name": "IG BOT GENERAL OFF"
+      },
+      {
+        "id": 85917674,
+        "name": "IG BOT GENERAL"
+      },
+      {
+        "id": 85917673,
+        "name": "IG BOT FOLLOW"
+      },
+      {
+        "id": 85917672,
+        "name": "IG BOT FLOW"
+      },
+      {
+        "id": 85917671,
+        "name": "IG BOT INBOUND"
+      },
+      {
+        "id": 85917670,
+        "name": "SETY"
+      }
+    ]
+  },
+  "flows": {
+    "status": "success",
+    "data": {
+      "flows": [
+        {
+          "ns": "content20260528132546_032605",
+          "name": "Untitled",
+          "folder_id": 33160547
+        },
+        {
+          "ns": "content20260511153544_411703",
+          "name": "DEFAULT REPLY copy",
+          "folder_id": 33159452
+        },
+        {
+          "ns": "content20260421154252_603660",
+          "name": "INBOUND converted to Facebook",
+          "folder_id": 33160547
+        },
+        {
+          "ns": "content20260421151351_505169",
+          "name": "PROOF converted to Facebook",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "system_unsubscribe",
+          "name": "Unsubscribe from Bot",
+          "folder_id": 0
+        },
+        {
+          "ns": "system_subscribe",
+          "name": "Subscribe to Bot",
+          "folder_id": 0
+        },
+        {
+          "ns": "content20260421133955_182714",
+          "name": "PROOF",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20260421131610_952426",
+          "name": "COMMENT",
+          "folder_id": 33159452
+        },
+        {
+          "ns": "content20260411084549_794589",
+          "name": "CONFIRMATION",
+          "folder_id": 33159457
+        },
+        {
+          "ns": "content20260204161942_647362",
+          "name": "8settyvoice",
+          "folder_id": 33159456
+        },
+        {
+          "ns": "content20260204161940_188998",
+          "name": "7settyvoice",
+          "folder_id": 33159456
+        },
+        {
+          "ns": "content20260204161938_536284",
+          "name": "6settyoice",
+          "folder_id": 33159456
+        },
+        {
+          "ns": "content20260204161934_374709",
+          "name": "5settyvoice",
+          "folder_id": 33159456
+        },
+        {
+          "ns": "content20260204161933_399618",
+          "name": "4settyvoice",
+          "folder_id": 33159456
+        },
+        {
+          "ns": "content20260204161932_348672",
+          "name": "3settyvoice",
+          "folder_id": 33159456
+        },
+        {
+          "ns": "content20260204161930_263216",
+          "name": "2settyvoice",
+          "folder_id": 33159456
+        },
+        {
+          "ns": "content20260204161919_514345",
+          "name": "1settyvoice",
+          "folder_id": 33159456
+        },
+        {
+          "ns": "content20260204161805_168340",
+          "name": "4settyimage",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20260204161803_978261",
+          "name": "3settyimage",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20260204161802_735329",
+          "name": "2settyimage",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20260130080136_893837",
+          "name": "1settyimage",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20260204161812_327339",
+          "name": "9settyimage",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20260204161809_849171",
+          "name": "8settyimage",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20260204161808_567978",
+          "name": "7settyimage",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20260204161807_576356",
+          "name": "6settyimage",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20260204161806_548307",
+          "name": "5settyimage",
+          "folder_id": 33159455
+        },
+        {
+          "ns": "content20240515124320_980248",
+          "name": "3rd World Countries: Auto DQ",
+          "folder_id": 33159453
+        },
+        {
+          "ns": "content20260405120550_597100",
+          "name": "ASSIGN",
+          "folder_id": 33159452
+        },
+        {
+          "ns": "content20260211155851_745794",
+          "name": "SETY",
+          "folder_id": 33159452
+        },
+        {
+          "ns": "content20260129084648_802669",
+          "name": "DQ Deleter",
+          "folder_id": 33159452
+        },
+        {
+          "ns": "content20260119153719_331535",
+          "name": "INBOUND",
+          "folder_id": 33159452
+        },
+        {
+          "ns": "content20251114140512_396887",
+          "name": "DEFAULT REPLY",
+          "folder_id": 33159452
+        },
+        {
+          "ns": "content20251014160539_207214",
+          "name": "RESET MEMORY",
+          "folder_id": 33159452
+        },
+        {
+          "ns": "content20251013163002_607385",
+          "name": "NEW FOLLOWER FLOW",
+          "folder_id": 33159452
+        },
+        {
+          "ns": "system_ig_unsubscribe",
+          "name": "Unsubscribe from Instagram",
+          "folder_id": 0
+        },
+        {
+          "ns": "system_ig_subscribe",
+          "name": "Subscribe to Instagram",
+          "folder_id": 0
+        }
+      ],
+      "folders": [
+        {
+          "id": 33159452,
+          "name": "1. DEMO",
+          "parent_id": 33159451
+        },
+        {
+          "id": 33159451,
+          "name": "AI",
+          "parent_id": 0
+        },
+        {
+          "id": 33159453,
+          "name": "Auto DQ",
+          "parent_id": 33159452
+        },
+        {
+          "id": 33159457,
+          "name": "Booking Confirmation",
+          "parent_id": 33159454
+        },
+        {
+          "id": 33160547,
+          "name": "Facebook",
+          "parent_id": 33159452
+        },
+        {
+          "id": 33159455,
+          "name": "IMAGE",
+          "parent_id": 33159454
+        },
+        {
+          "id": 33159454,
+          "name": "MEDIA FOLDER",
+          "parent_id": 33159452
+        },
+        {
+          "id": 33159456,
+          "name": "VOICE",
+          "parent_id": 33159454
+        }
+      ]
+    }
+  }
+}

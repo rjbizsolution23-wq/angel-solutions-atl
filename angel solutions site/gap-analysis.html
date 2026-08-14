@@ -1,0 +1,262 @@
+<!doctype html><html dir="auto"><head><meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' 'unsafe-eval' https: data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<script id="__base44_dark_class__">document.documentElement.classList.add('dark');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700&display=swap">
+<style id="__base44_editor_theme__">
+:root {
+  --background: 38 27% 94%;
+  --foreground: 0 0% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 4%;
+  --primary: 21 42% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 39 17% 93%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 98%;
+  --input: 0 0% 98%;
+  --ring: 21 42% 55%;
+  --radius: 0.5rem;
+  color-scheme: light;
+}
+.dark {
+  --background: 220 5% 11%;
+  --foreground: 0 0% 99%;
+  --card: 0 1% 14%;
+  --card-foreground: 0 0% 99%;
+  --popover: 0 1% 14%;
+  --popover-foreground: 0 0% 99%;
+  --primary: 21 42% 55%;
+  --primary-foreground: 0 0% 99%;
+  --secondary: 0 0% 18%;
+  --secondary-foreground: 0 0% 99%;
+  --muted: 0 0% 18%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 0 0% 18%;
+  --accent-foreground: 0 0% 99%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 0 0% 99%;
+  --border: 0 0% 16%;
+  --input: 0 0% 16%;
+  --ring: 21 42% 55%;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+/* shadcn's base layer: default every element's border-color to the theme
+   token. Without this, Tailwind's bare `border` utility only sets width and
+   the color falls back to currentColor (near-black text) — so the model's
+   `border` cards render heavy/dark and the `--border` value is ignored.
+   Explicit `border-{color}` utilities and inline styles still override. */
+*, *::before, *::after { border-color: hsl(var(--border)); }
+html, body {
+  margin: 0 !important;
+  padding: 0;
+  overflow: auto !important;
+  /* Inline card: transparent, so the real chat surface (a gradient, not the
+     single flat `--background` stop) shows straight through and the artifact
+     reads as inline chat content in both themes. Standalone saved file: opaque
+     `--background` so it stays readable on its own page. `--card` stays
+     elevated for emphasis blocks (stat tiles, panels) so hierarchy reads. */
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground));
+  font-family: 'WixMadeforText', 'Wix Madefor Text', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* 8px (vs 16px) — minimal breathing room from the iframe edge so
+   tightly-composed dashboards don't ship a fat empty halo at the top
+   before their first element. LLMs add their own inner spacing. */
+body { padding: 8px; }
+code, kbd, pre, samp { font-family: 'WixMadeforMonospace', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+a { color: hsl(var(--primary)); }
+hr { border: 0; border-top: 1px solid hsl(var(--border)); }
+h1, h2, h3, h4, h5, h6 { font-weight: 600; color: hsl(var(--foreground)); }
+</style>
+<script id="__base44_tw_config__">
+window.tailwind = window.tailwind || {};
+window.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
+      },
+      // A bare `border` / `divide-*` (no color) falls back to Tailwind
+      // preflight's DEFAULT, which is a FIXED gray-200 (#e5e7eb) — subtle on the
+      // light card but near-white glare on the dark card. The `colors.border`
+      // map above only creates the `border-border` class; it does NOT set the
+      // uncolored default. Point the DEFAULT at the theme token so an uncolored
+      // border adapts to dark mode like the rest of the palette. (Explicit
+      // `border-primary` etc. still override.)
+      borderColor: { DEFAULT: 'hsl(var(--border))' },
+      divideColor: { DEFAULT: 'hsl(var(--border))' },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        // Same two-name stack as `FONT_SANS_STACK` above. The
+        // sandboxed null-origin iframe lands on `Wix Madefor Text`
+        // (Google Fonts' name); `WixMadeforText` is here only for
+        // defense-in-depth in case the iframe ever runs same-origin.
+        sans: ['WixMadeforText', 'Wix Madefor Text', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        mono: ['WixMadeforMonospace', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+      },
+    },
+  },
+};
+</script>
+<script src="https://cdn.tailwindcss.com" id="__base44_tw_cdn__"></script></head><body><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+</style>
+</head>
+<body class="p-6 space-y-6">
+
+  <div>
+    <h1 class="text-xl font-semibold text-foreground">RJ Revenue Architect — Full Gap Audit</h1>
+    <p class="text-sm text-muted-foreground mt-1">As of July 9, 2026 · Built vs. Blueprint</p>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="flex gap-4 text-xs">
+    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Built & Verified</span>
+    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Partial / Needs Work</span>
+    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-destructive inline-block"></span> Missing / Not Built</span>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="rounded-lg border bg-card text-card-foreground p-5 space-y-3">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">1 · Rules & Knowledge</h2>
+    <div class="space-y-2 text-sm">
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-500 shrink-0"></span><span><strong>13 operating rule files</strong> — compliance-first, no-fabrication, tech-stack-lock, visual-standard, funnel-frameworks, launch-scoring, escalation, PII, scope-refusal, regulated-industries, proactive-analysis, produce-real-files, rj-brand-default ✓</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-500 shrink-0"></span><span><strong>Build guide knowledge file</strong> — rj-build-guide-v1.md ✓</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Anti-pattern library</strong> — dedicated knowledge file listing every forbidden pattern with compliant replacements. Referenced in blueprint, not yet written.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Locked tech stack spec</strong> — detailed Next.js 16 / Tailwind 4.3 / Framer Motion / GSAP file-structure templates and conventions file. Referenced in blueprint, not yet written.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Compliance rulebook</strong> — standalone knowledge doc with FTC / WCAG 2.2 / TCPA / CAN-SPAM / CROA / FCRA required disclaimer templates and prohibited-claims lists.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Russell Brunson frameworks reference</strong> — deep-dive knowledge file per framework (Value Ladder, Soap Opera, Perfect Webinar, Challenge, VSL, Application, Lead Magnet, Book, Product Launch).</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="rounded-lg border bg-card text-card-foreground p-5 space-y-3">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">2 · Data Model / Entities</h2>
+    <div class="space-y-2 text-sm">
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-500 shrink-0"></span><span><strong>11 entities created</strong> — Build, BrandProfile, FunnelMap, StrategyBrief, ScoreReport, ComplianceCheck, CRMPipeline, AnalyticsPlan, ABTestPlan, BuildAsset, QAItem ✓</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-500 shrink-0"></span><span><strong>Default RJ BrandProfile seeded</strong> — positioning, voice, value ladder, colors, CTA, compliance tier ✓</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-500 shrink-0"></span><span><strong>Default Revenue Backend Audit FunnelMap seeded</strong> — 11-stage sequence ✓</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Default StrategyBrief, CRMPipeline, AnalyticsPlan, ABTestPlan</strong> — seed records for the default RJ funnel not yet created. Should exist as "default_rj" records alongside the FunnelMap.</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="rounded-lg border bg-card text-card-foreground p-5 space-y-3">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">3 · Backend Functions</h2>
+    <div class="space-y-2 text-sm">
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-500 shrink-0"></span><span><strong>analyzeSite</strong> — URL fetch, HTML strip, brand detect, funnel gaps, compliance flags, build type recommendation ✓</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-500 shrink-0"></span><span><strong>generateStrategyBrief</strong> — full brief with hook, offer stack, CRM pipeline, automations, analytics events, A/B ideas ✓</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-500 shrink-0"></span><span><strong>scoreBuild</strong> — 13-category scoring engine with thresholds, pass/fail, blockers, launch status ✓</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>generateCodebase</strong> — actual Next.js codebase generator. The blueprint's most critical function. Produces full page structure, components, Tailwind config, Framer Motion, GSAP, shadcn/ui. Not yet built.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>complianceAudit</strong> — structured rules-engine function that checks copy/content against FTC, WCAG, TCPA, CAN-SPAM, CROA/FCRA and returns findings + recommended fixes. Not yet built.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>generateAnalyticsPlan</strong> — function that takes a build_type and produces a full GA4/GTM event plan, UTM taxonomy, and PII-stripped dimension map. Not yet built.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>generateCRMPipeline</strong> — function that scaffolds a full 12-stage CRM config with triggers, automations, lead scoring, and integration specs. Not yet built.</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="rounded-lg border bg-card text-card-foreground p-5 space-y-3">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">4 · Skills (Build Pipeline Steps)</h2>
+    <div class="space-y-2 text-sm">
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-500 shrink-0"></span><span><strong>full-build.md</strong> — 6-step pipeline skill defined ✓</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>analyze-input skill</strong> — standalone skill file for the analysis step (URL, codebase, description normalizer). Referenced in blueprint, not yet written.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>build-strategy-brief skill</strong> — standalone skill with exact steps to produce StrategyBrief + FunnelMap records. Not yet written.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>build-landing-page skill</strong> — skill with full 13-section page generation instructions, component list, Tailwind conventions, animation patterns. Not yet written.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>build-funnel skill</strong> — skill covering all funnel types, Brunson framework mapping, page sequence generation. Not yet written.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>build-website skill</strong> — SaaS + local business multi-page generation, SEO, sitemap, structured data. Not yet written.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>score-and-review skill</strong> — exact steps for running scoreBuild, interpreting results, triggering regeneration cycles. Not yet written.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>compliance-audit skill</strong> — step-by-step compliance check workflow, escalation trigger for regulated tiers. Not yet written.</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="rounded-lg border bg-card text-card-foreground p-5 space-y-3">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">5 · Automations / Workflows</h2>
+    <div class="space-y-2 text-sm">
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Build status = human_review → alert Rick</strong> — workflow that fires when a regulated build hits human_review status. Not yet created.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>ScoreReport fails after 2 attempts → escalate</strong> — workflow that blocks and notifies Rick. Not yet created.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Daily 9am CT active-builds digest</strong> — scheduled workflow that posts a summary of in-progress, blocked, and delivered builds. Not yet created.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Build ready → package + store deliverable</strong> — automation that bundles all artifacts when a build reaches "ready" status. Not yet created.</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="rounded-lg border bg-card text-card-foreground p-5 space-y-3">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">6 · Connectors / Integrations</h2>
+    <div class="space-y-2 text-sm">
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>WhatsApp channel</strong> — mobile command channel for Rick. Blueprint item. Rick said "not yet" during build — needs to be connected when ready.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Google Drive</strong> — store deliverable bundles in /RJ Builds/&lt;client&gt;/ folder. Not connected.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>GitHub</strong> — push generated codebases to repos for client handoff. Not connected.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>Vercel</strong> — deploy approved builds and retrieve preview URLs. Not connected.</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="rounded-lg border bg-card text-card-foreground p-5 space-y-3">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">7 · Core Capability Gap — Codebase Generation</h2>
+    <div class="space-y-2 text-sm">
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>No actual Next.js codebase has been generated yet.</strong> The analyze + strategy + score pipeline is operational, but the agent hasn't yet produced a single deployable file (page.tsx, layout.tsx, components/, tailwind.config.ts, etc.). This is the core deliverable of the entire system.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>No component library scaffolded.</strong> shadcn/ui components, Framer Motion wrappers, GSAP hooks, effect components (glassmorphism, cursor-follower, magnetic-button, parallax) — none exist yet.</span></div>
+      <div class="flex items-start gap-2"><span class="w-2.5 h-2.5 mt-1 rounded-full bg-destructive shrink-0"></span><span><strong>No design system file.</strong> Color tokens, typography scale, spacing system, animation presets, Tailwind theme config — not yet produced for a build.</span></div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="rounded-lg border bg-card text-card-foreground p-5">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">Summary</h2>
+    <div class="grid grid-cols-3 gap-4 text-center">
+      <div>
+        <p class="text-2xl font-bold text-emerald-500">8</p>
+        <p class="text-xs text-muted-foreground mt-1">Built & Verified</p>
+      </div>
+      <div>
+        <p class="text-2xl font-bold text-amber-500">0</p>
+        <p class="text-xs text-muted-foreground mt-1">Partial</p>
+      </div>
+      <div>
+        <p class="text-2xl font-bold text-destructive">21</p>
+        <p class="text-xs text-muted-foreground mt-1">Missing</p>
+      </div>
+    </div>
+    <div class="mt-4 text-sm text-muted-foreground border-t pt-4">
+      <strong class="text-foreground">Critical path:</strong> The foundation is solid (rules, entities, functions, seed data). The biggest gap is the actual codebase generator — without it, the agent can analyze and strategize but can't produce a deliverable site. That's the #1 priority to build next.
+    </div>
+  </div>
+
+</body>
+</html>
+<script id="__base44_dark_class_post__">document.documentElement.classList.add('dark');</script></body></html>

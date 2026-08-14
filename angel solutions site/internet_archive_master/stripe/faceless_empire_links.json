@@ -1,0 +1,27 @@
+{
+  "prometheus_upgrade": {
+    "url": "https://buy.stripe.com/9B600b9uA0fbbCf6aZeEp0d",
+    "amount": 9700,
+    "name": "PROMETHEUS Upgrade"
+  },
+  "faceless_automation_templates": {
+    "url": "https://buy.stripe.com/aFa8wHgX2d1XbCf6aZeEp0e",
+    "amount": 2700,
+    "name": "Faceless Automation Templates"
+  },
+  "faceless_business_blueprints": {
+    "url": "https://buy.stripe.com/cNieV5cGMfa549NarfeEp0f",
+    "amount": 4700,
+    "name": "Faceless Business Blueprints"
+  },
+  "ai_automation_masterclass": {
+    "url": "https://buy.stripe.com/14A7sD2287HDdKn42ReEp0g",
+    "amount": 9700,
+    "name": "AI Automation Masterclass"
+  },
+  "elite_ai_agent_pack": {
+    "url": "https://buy.stripe.com/fZuaEP0Y4fa5fSv1UJeEp0h",
+    "amount": 19700,
+    "name": "Elite AI Agent Pack"
+  }
+}
